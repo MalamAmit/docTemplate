@@ -1,4 +1,5 @@
 require(["dojo/_base/declare",
+        "ecm/widget/dialog/AddContentItemDialog",
         "dojo/_base/lang"],
     function (declare, lang, AddContentItemDialog) {
         /**
