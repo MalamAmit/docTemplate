@@ -14,13 +14,13 @@ require(["dojo/_base/declare",
                 console.log("amit - showListOfTemplates");
             }
 
-            repository.retrieveItem(function (){
-                var addContentItemDialog = new AddContentItemDialog();
-                // addContentItemDialog.setDefaultContentClass(dossierFolderClass);
-                addContentItemDialog.show(repository, false, false, showListOfTemplates, null, false, null);
-                addContentItemDialog.set("title", "choose template");
-                addContentItemDialog.setIntroText("Na nan an nnnaa.");
-            })
+            // repository.retrieveItem(function (){
+            //     var addContentItemDialog = new AddContentItemDialog();
+            //     // addContentItemDialog.setDefaultContentClass(dossierFolderClass);
+            //     addContentItemDialog.show(repository, false, false, showListOfTemplates, null, false, null);
+            //     addContentItemDialog.set("title", "choose template");
+            //     addContentItemDialog.setIntroText("Na nan an nnnaa.");
+            // })
 
 
 
