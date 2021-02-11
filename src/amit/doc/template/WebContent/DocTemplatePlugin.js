@@ -2,11 +2,11 @@
 require(["dojo/_base/declare","dojo/_base/lang",
         "ecm/widget/dialog/AddContentItemDialog"],
     function(declare, lang, AddContentItemDialog) {
-        /**
-         * Use this function to add any global JavaScript methods your plug-in requires.
-         */
-        ``
         lang.setObject("createDocFromTemplateAction", function (repository, items, callback, teamspace, resultSet, parameterMap) {
+            var dossierRootFolder = "/CustomerDossiers"; //CM code:folder-PID
+            var dossierFolderClass = "CustomerDossier"; //CM code: item type
+            var templateDossierStructure = "/TemplateDossierStructure";
+
 
             //CM code: folder-PID of item for template folder structure
             var _createFolderSubStructure = function (dossierFolder) {
