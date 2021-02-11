@@ -1,7 +1,7 @@
 
 require(["dojo/_base/declare","dojo/_base/lang",
         "ecm/widget/dialog/AddContentItemDialog"],
-    function(declare, lang, AddContentItemDialog) {
+    function(declare, lang, ) {
         lang.setObject("createDocFromTemplateAction", function (repository, items, callback, teamspace, resultSet, parameterMap) {
             var dossierRootFolder = "/CustomerDossiers"; //CM code:folder-PID
             var dossierFolderClass = "CustomerDossier"; //CM code: item type

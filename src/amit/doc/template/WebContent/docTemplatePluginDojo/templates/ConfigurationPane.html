@@ -1,27 +1,55 @@
 <div>
-	<!--  Please add your configuration pane -->
-	<!--  For example    -->
+    <table class="propertyTable" role="presentation">
+        <tr>
+            <td class="propertyRowValue">
+                <div>
+                    <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'top'"
+                         data-dojo-attach-point="folderAssociateEntryTemplateButtonsPane">
+                        <button data-dojo-type="dijit/form/Button"
+                                data-dojo-attach-point="newfolderAssociateButton"
+                                data-dojo-attach-event="onClick: folderAssociateEntryTemplateNew"
+                                data-dojo-props="style: { 'padding-left': '10px' }">New</button>
+                        <button data-dojo-type="dijit/form/Button"
+                                data-dojo-attach-point="editfolderAssociateButton"
+                                data-dojo-attach-event="onClick: folderAssociateEntryTemplateEdit"
+                                data-dojo-props="disabled: true">Edit</button>
+                        <button data-dojo-type="dijit/form/Button"
+                                data-dojo-attach-point="deletefolderAssociateButton"
+                                data-dojo-attach-event="onClick: folderAssociateEntryTemplateDelete"
+                                data-dojo-props="disabled: true">Delete</button>
+                    </div>
 
-	<table class="propertyTable" role="presentation">
-        <tr>
-            <td class="propertyRowLabel">
-                <span class="required">*</span>
-                <label for="${id}_ecServerURI">Template Path:</label>&nbsp;
-                <div data-dojo-type="ecm/widget/HoverHelp" data-dojo-attach-point="ecServerURIHoverHelp" message="Specify a server address."></div>
-            </td>
-            <td class="propertyRowValue">
-                <div id="${id}_ecServerURI" data-dojo-attach-point="ecServerURI" data-dojo-attach-event="onKeyUp: _onFieldChange" data-dojo-type="ecm/widget/ValidationTextBox" required="true" trim="true" propercase="false"></div>
+                    <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'center'" data-dojo-attach-point="folderAssociateEntryTemplateContentPane"></div>
+                </div>
+
             </td>
         </tr>
+
         <tr>
-            <td class="propertyRowLabel">
-                <span class="required">*</span>
-                <label for="${id}_ecServerURI">Template Path:</label>&nbsp;
-                <div data-dojo-type="ecm/widget/HoverHelp" data-dojo-attach-point="ecServerURIHoverHelp" message="Specify a server address."></div>
-            </td>
             <td class="propertyRowValue">
-                <div id="${id}_ecServerURI" data-dojo-attach-point="ecServerURI" data-dojo-attach-event="onKeyUp: _onFieldChange" data-dojo-type="ecm/widget/ValidationTextBox" required="true" trim="true" propercase="false"></div>
+                <div>
+                    <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'top'"
+                         data-dojo-attach-point="documentAssociateEntryTemplateButtonsPane">
+                        <button data-dojo-type="dijit/form/Button"
+                                data-dojo-attach-point="newdocumentAssociateButton"
+                                data-dojo-attach-event="onClick: documentAssociateEntryTemplateNew"
+                                data-dojo-props="style: { 'padding-left': '10px' }">New</button>
+                        <button data-dojo-type="dijit/form/Button"
+                                data-dojo-attach-point="editdocumentAssociateButton"
+                                data-dojo-attach-event="onClick: documentAssociateEntryTemplateEdit"
+                                data-dojo-props="disabled: true">Edit</button>
+                        <button data-dojo-type="dijit/form/Button"
+                                data-dojo-attach-point="deletedocumentAssociateButton"
+                                data-dojo-attach-event="onClick: documentAssociateEntryTemplateDelete"
+                                data-dojo-props="disabled: true">Delete</button>
+                    </div>
+
+                    <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'center'" data-dojo-attach-point="documentAssociateEntryTemplateContentPane"></div>
+                </div>
+
             </td>
         </tr>
+
     </table>
+
 </div>
