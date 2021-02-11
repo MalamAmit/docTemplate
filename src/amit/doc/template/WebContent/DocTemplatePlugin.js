@@ -5,7 +5,6 @@ require(["dojo/_base/declare","dojo/_base/lang",
         lang.setObject("createDocFromTemplateAction", function (repository, items, callback, teamspace, resultSet, parameterMap) {
             var dossierRootFolder = "/CustomerDossiers"; //CM code:folder-PID
             var dossierFolderClass = "CustomerDossier"; //CM code: item type
-            var templateDossierStructure = "/TemplateDossierStructure";
 
 
             //CM code: folder-PID of item for template folder structure
@@ -16,7 +15,7 @@ require(["dojo/_base/declare","dojo/_base/lang",
             repository.retrieveItem(dossierRootFolder,
                 function(dossierRootFolderItem) {
                     var addContentItemDialog = new AddContentItemDialog();
-                    addContentItemDialog.setDefaultContentClass(dossierFolderClass);
+                    // addContentItemDialog.setDefaultContentClass(dossierFolderClass);
                     addContentItemDialog.show(repository, dossierRootFolderItem,
                         false, false, _createFolderSubStructure, null, false, null);
                     addContentItemDialog.set("title","Create new Dossier");
