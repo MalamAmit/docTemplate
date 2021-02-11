@@ -8,18 +8,19 @@ require(["dojo/_base/declare","dojo/_base/lang",
 
 
             //CM code: folder-PID of item for template folder structure
-            var _createFolderSubStructure = function (dossierFolder) {
-                console.log("Dossier folder created: " + dossierFolder.name);
+            var func = function () {
+                console.log("open dialog");
             };
 
-            repository.retrieveItem(dossierRootFolder,
+            repository.retrieveItem("",
                 function(dossierRootFolderItem) {
                     var addContentItemDialog = new AddContentItemDialog();
-                    // addContentItemDialog.setDefaultContentClass(dossierFolderClass);
-                    addContentItemDialog.show(repository, dossierRootFolderItem,
-                        false, false, _createFolderSubStructure, null, false, null);
-                    addContentItemDialog.set("title","Create new Dossier");
-                    addContentItemDialog.setIntroText("This folder will be the top level folder of your dossier.");
+
+                    // addContentItemDialog.setDefaultContentClass(class...);
+
+                    addContentItemDialog.show(repository, dossierRootFolderItem, false, false, func, null, false, null);
+                    addContentItemDialog.set("title","Show templates for doc");
+                    addContentItemDialog.setIntroText("descriptions...");
                 });
 
 
