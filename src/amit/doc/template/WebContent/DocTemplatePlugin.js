@@ -12,7 +12,7 @@ require(["dojo/_base/declare","dojo/_base/lang",
                 console.log("open dialog");
             };
 
-            repository.retrieveItem("",
+            repository.retrieveItem(dossierRootFolder,
                 function(dossierRootFolderItem) {
                     var addContentItemDialog = new AddContentItemDialog();
 
