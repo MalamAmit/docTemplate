@@ -97,7 +97,7 @@ public class DocTemplatePlugin extends Plugin {
 	 *         the plug-in.
 	 */
 	public String getVersion() {
-		return "2.0.4";
+		return "2.0.5";
 	}
 
 	/**
