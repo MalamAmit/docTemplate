@@ -226,20 +226,6 @@ public class DocTemplatePlugin extends Plugin {
 	}
 
 	/**
-	 * Provides a list of services that are provided by this plug-in. The
-	 * services run on the web server, and can be called by the web browser
-	 * logic component of the plug-in.
-	 * 
-	 * @return An array of {@link com.ibm.ecm.extension.PluginService
-	 *         PluginService} objects. The plug-in should return the same set of
-	 *         objects on every call. If there are no services defined by the
-	 *         plug-in, the call should return an empty array.
-	 */
-	public PluginService[] getServices() {
-		return pluginServices;
-	}
-
-	/**
 	 * Provides a custom service used for Content Manager OnDemand single
 	 * sign-on (SSO). This is an optional service that will be called when SSO
 	 * is enabled on a Content Manager OnDemand server. The result of the
@@ -349,5 +335,22 @@ public class DocTemplatePlugin extends Plugin {
 			pluginActions = new PluginAction[] {new amit.doc.template.CreateDocFromTemplateAction()};
 		}
 		return pluginActions;
+	}
+
+	/**
+	 * Provides a list of services that are provided by this plug-in. The
+	 * services run on the web server, and can be called by the web browser
+	 * logic component of the plug-in.
+	 * 
+	 * @return An array of {@link com.ibm.ecm.extension.PluginService
+	 *         PluginService} objects. The plug-in should return the same set of
+	 *         objects on every call. If there are no services defined by the
+	 *         plug-in, the call should return an empty array.
+	 */
+	public PluginService[] getServices() {
+		if (pluginServices.length == 0) {
+			pluginServices = new PluginService[] {new amit.doc.template.GetConfigurationService()};
+		}
+		return pluginServices;
 	}
 }
