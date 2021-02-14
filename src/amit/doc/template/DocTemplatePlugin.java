@@ -332,7 +332,7 @@ public class DocTemplatePlugin extends Plugin {
 	 */
 	public PluginAction[] getActions() {
 		if (pluginActions.length == 0) {
-			pluginActions = new PluginAction[] {new amit.doc.template.CreateDocFromTemplateAction()};
+			pluginActions = new PluginAction[] {new CreateDocFromTemplateAction()};
 		}
 		return pluginActions;
 	}

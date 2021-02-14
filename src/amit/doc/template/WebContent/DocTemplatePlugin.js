@@ -1,6 +1,6 @@
 require(["dojo/_base/declare",
         "dojo/_base/lang",
-        "ecm/model/Request",],
+        "ecm/model/Request"],
     function (declare, lang, Request) {
         lang.setObject("createDocFromTemplateAction", function (repository, items, callback, teamspace, resultSet, parameterMap) {
             console.log("amit 1 - requestCompleteCallback")
