@@ -6,11 +6,11 @@ require(["dojo/_base/declare",
             console.log("amit 1 - requestCompleteCallback")
             Request.invokePluginService("DocTemplatePlugin",
                 "GetConfigurationService",{
-                    // requestCompleteCallback: function(response) {
-                    //     response.configuration[1].value;
-                    //     response.configuration[0].value;
-                    //     console.log("amit 2 - requestCompleteCallback")
-                    // }
+                    requestCompleteCallback: function(response) {
+                        response.configuration[1].value;
+                        response.configuration[0].value;
+                        console.log("amit 2 - requestCompleteCallback")
+                    }
                 });
         });
     });
