@@ -15,12 +15,32 @@ define(["dojo/_base/declare",
                         var jsonConfig = JSON.parse(this.configurationString);
                         this.enableFolderClassName.set('value', jsonConfig.configuration[0].value);
                         this.folderTemplateName.set('value', jsonConfig.configuration[1].value);
-                        this.templateFolderStructureField.set('value',
-                            jsonConfig.configuration[2].value);
                     }
                 },
 
-                validate: function () {
+                _onParamChange: function() {
+                    var configArray = new Array();
+                    var configString = {
+                        name: "enableFolderClassName",
+                        value: this.enableFolderClassName.get('value')
+                    };
+                    configArray.push(configString);
+                    configString = {
+                        name: "folderTemplateName",
+                        value: this.folderTemplateName.get('value')
+                    };
+                    configArray.push(configString);
+                    var configJson = {
+                        "configuration" : configArray
+                    };
+                    this.configurationString = JSON.stringify(configJson);
+                    this.onSaveNeeded(true);
+                },
+
+                validate: function() {
+                    if(!this.enableFolderClassName.isValid()
+                        || !this.folderTemplateName.isValid())
+                        return false;
                     return true;
                 }
             });
