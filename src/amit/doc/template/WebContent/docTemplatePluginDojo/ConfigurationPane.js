@@ -5,7 +5,7 @@ define(["dojo/_base/declare",
         "ecm/widget/admin/PluginConfigurationPane",
         "dojo/text!./templates/ConfigurationPane.html"],
     function (declare, _TemplatedMixin, _WidgetsInTemplateMixin, ValidationTextBox, PluginConfigurationPane, template) {
-        return declare("dossierPluginDojo.ConfigurationPane",
+        return declare("docTemplatePluginDojo.ConfigurationPane",
             [PluginConfigurationPane, _TemplatedMixin, _WidgetsInTemplateMixin], {
                 templateString: template,
                 widgetsInTemplate: true,
