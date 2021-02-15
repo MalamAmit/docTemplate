@@ -1,18 +1,5 @@
 <div class="dossierContainer" data-dojo-type="dijit.layout.ContentPane">
     <table class="propertyTable">
-        <tr>
-            <td class="propertyRowLabel">
-                <span class="required">*</span>
-                <label for="fcn">Current Folder class</label>&nbsp;
-            </td>
-            <td class="propertyRowValue">
-                <div id="fcn"
-                        data-dojo-type="ecm/widget/ContentClassSelector"
-                        data-dojo-attach-point="folderClassField"
-                        data-dojo-props="selectorStyle: 'dropdown', onlySelectable: true">
-                </div>
-            </td>
-        </tr>
 
         <tr>
             <td class="propertyRowLabel">
@@ -20,10 +7,9 @@
             </td>
             <td class="propertyRowValue">
                 <div id="template_param1" maxLength="128"
-                     data-dojo-attach-point="enableFolderClassName"
-                     data-dojo-attach-event="onKeyUp: _onParamChange"
-                     data-dojo-type="ecm.widget.ValidationTextBox"
-                     data-dojo-props="required:'true',trim:'true',propercase:'false'">
+                     data-dojo-type="ecm/widget/ContentClassSelector"
+                     data-dojo-attach-point="folderClassField"
+                     data-dojo-props="selectorStyle: 'dropdown', onlySelectable: true">
                 </div>
             </td>
         </tr>
