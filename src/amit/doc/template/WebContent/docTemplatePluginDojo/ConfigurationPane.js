@@ -25,6 +25,7 @@ define(["dojo/_base/declare",
 
 
                         console.log("jsonConfig.configuration[0] " + jsonConfig.configuration[0])
+                        console.log("jsonConfig.configuration[0].value " + jsonConfig.configuration[0].value)
                         if (!jsonConfig.configuration[0]) {
                             this.enableFolderClassName.setRootClassId("Folder");
                         } else {
