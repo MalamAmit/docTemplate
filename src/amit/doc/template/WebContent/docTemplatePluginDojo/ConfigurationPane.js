@@ -56,7 +56,7 @@ define(["dojo/_base/declare",
                     }
                 },
 
-                folderClassNameChange: function() {
+                folderClassNameChange: function(test) {
                     console.log("folderClassNameChange");
                     this._onParamChange();
                 },
