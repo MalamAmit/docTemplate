@@ -1,11 +1,12 @@
 define(["dojo/_base/declare",
+        "dojo/_base/lang",
         "dijit/_TemplatedMixin",
         "dijit/_WidgetsInTemplateMixin",
         "ecm/widget/ValidationTextBox",
         "ecm/widget/admin/PluginConfigurationPane",
         "dojo/text!./templates/ConfigurationPane.html",
         "docTemplatePluginDojo/FolderAssociateEntryTemplateDialog"],
-    function (declare, _TemplatedMixin, _WidgetsInTemplateMixin, ValidationTextBox,
+    function (declare, lang, _TemplatedMixin, _WidgetsInTemplateMixin, ValidationTextBox,
               PluginConfigurationPane, template, FolderAssociateEntryTemplateDialog) {
         return declare("docTemplatePluginDojo.ConfigurationPane",
             [PluginConfigurationPane, _TemplatedMixin, _WidgetsInTemplateMixin], {
@@ -22,7 +23,7 @@ define(["dojo/_base/declare",
                     this.test();
                 },
 
-                _onParamChange: function() {
+                _onParamChange: function () {
                     var configArray = new Array();
                     var configString = {
                         name: "enableFolderClassName",
@@ -35,29 +36,29 @@ define(["dojo/_base/declare",
                     };
                     configArray.push(configString);
                     var configJson = {
-                        "configuration" : configArray
+                        "configuration": configArray
                     };
                     this.configurationString = JSON.stringify(configJson);
                     this.onSaveNeeded(true);
                 },
 
-                validate: function() {
-                    if(!this.enableFolderClassName.isValid()
+                validate: function () {
+                    if (!this.enableFolderClassName.isValid()
                         || !this.folderTemplateName.isValid())
                         return false;
                     return true;
                 },
 
-                test: function (){
+                test: function () {
                     this.repository = ecm.model.desktop.getRepositoryByName("OS1");
                     this.folderClassField.setRepository(this.repository);
                     this.folderClassField.setRootClassId("Folder");
                     this.folderClassField.setVisibleOnlyForFolder(true);
 
-                    var cb = lang.hitch(this, function(entryTemplates, cn1, cn2) {
+                    var cb = lang.hitch(this, function (entryTemplates, cn1, cn2) {
                         var items = [];
 
-                        array.forEach(entryTemplates, function(ent) {
+                        array.forEach(entryTemplates, function (ent) {
                             items.push({
                                 id: ent.vsId,
                                 name: ent.name,
