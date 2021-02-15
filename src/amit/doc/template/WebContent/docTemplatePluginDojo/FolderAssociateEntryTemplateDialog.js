@@ -41,8 +41,6 @@ define([
 
 			});
 
-			this.repository.retrieveEntryTemplates(cb, "Folder");
-
 
 			this.inherited(arguments);
 			this.setResizable(false);
@@ -70,11 +68,6 @@ define([
 						});
 					}
 				}
-				
-				this.repositoryField.set("store", new MemoryStore({
-					data: items
-				}));
-				
 													
 			} catch (e) {
 				alert("Failed to load : " + e.message);
@@ -95,13 +88,11 @@ define([
 
 
 		_loadData: function() {
-			this.repositoryField.set("value", "");
 			this.folderClassField.set("value", "");
 
 			if (this._editData) {
-				if (this._editData.repositoryId)
-					this.repositoryField.set("value", this._editData.repositoryId);
-				
+
+
 				setTimeout(lang.hitch(this, function() {
 					if (this._editData.folderClassName)
 						this.folderClassField.setSelected(this._editData.folderClassName);
@@ -151,7 +142,6 @@ define([
 			if (this._validateData()) {
 				var screenData = {};
 			
-				screenData.repositoryId = this.repositoryField.get("value");
 				screenData.folderClassName = this.folderClassField.selectedContentClass.id;
 
 				if (this._isEdit()) {

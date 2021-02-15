@@ -2,6 +2,20 @@
     <table class="propertyTable">
         <tr>
             <td class="propertyRowLabel">
+                <span class="required">*</span>
+                <label for="${id}_folderClassName">Current Folder class</label>&nbsp;
+            </td>
+            <td class="propertyRowValue">
+                <div
+                        data-dojo-type="ecm/widget/ContentClassSelector"
+                        data-dojo-attach-point="folderClassField"
+                        data-dojo-props="selectorStyle: 'dropdown', onlySelectable: true">
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="propertyRowLabel">
                 <label for="template_param1">Enable folder class name</label>
             </td>
             <td class="propertyRowValue">

@@ -45,6 +45,12 @@ define(["dojo/_base/declare",
                         || !this.folderTemplateName.isValid())
                         return false;
                     return true;
+                },
+                test: function (){
+                    this.repository = ecm.model.desktop.getRepositoryByName("OS1");
+                    this.folderClassField.setRepository(this.repository);
+                    this.folderClassField.setRootClassId("Folder");
+                    this.folderClassField.setVisibleOnlyForFolder(true);
                 }
             });
     });
