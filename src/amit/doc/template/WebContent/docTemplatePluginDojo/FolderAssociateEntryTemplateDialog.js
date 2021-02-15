@@ -21,6 +21,29 @@ define([
 		_editData: null,
 
 		postCreate: function() {
+			this.repository = ecm.model.desktop.getRepositoryByName("OS1");
+			this.folderClassField.setRepository(this.repository);
+			this.folderClassField.setRootClassId("Folder");
+			this.folderClassField.setVisibleOnlyForFolder(true);
+
+			var cb = lang.hitch(this, function(entryTemplates, cn1, cn2) {
+				var items = [];
+
+				array.forEach(entryTemplates, function(ent) {
+					items.push({
+						id: ent.vsId,
+						name: ent.name,
+						className: ent.addClassName,
+						vsId: ent.vsId,
+						entId: ent.id
+					})
+				}, this);
+
+			});
+
+			this.repository.retrieveEntryTemplates(cb, "Folder");
+
+
 			this.inherited(arguments);
 			this.setResizable(false);
 			this.setMaximized(false);
