@@ -14,13 +14,17 @@ define(["dojo/_base/declare",
                 widgetsInTemplate: true,
 
                 load: function (callback) {
+                    console.log("load 1")
                     if (this.configurationString) {
+                        console.log("load 2")
                         var jsonConfig = JSON.parse(this.configurationString);
                         this.enableFolderClassName.set('value', jsonConfig.configuration[0].value);
                         this.folderTemplateName.set('value', jsonConfig.configuration[1].value);
                         new FolderAssociateEntryTemplateDialog().show(null);
+                    } else {
+                        console.log("load 3")
+                        this.test();
                     }
-                    this.test();
                 },
 
                 _onParamChange: function () {
