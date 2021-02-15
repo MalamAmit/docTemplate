@@ -42,12 +42,12 @@ define(["dojo/_base/declare",
                     this.onSaveNeeded(true);
                 },
 
-                validate: function () {
-                    if (!this.enableFolderClassName.isValid()
-                        || !this.folderTemplateName.isValid())
-                        return false;
-                    return true;
-                },
+                // validate: function () {
+                //     if (!this.enableFolderClassName.isValid()
+                //         || !this.folderTemplateName.isValid())
+                //         return false;
+                //     return true;
+                // },
 
                 test: function () {
                     this.repository = ecm.model.desktop.getRepositoryByName("OS1");
