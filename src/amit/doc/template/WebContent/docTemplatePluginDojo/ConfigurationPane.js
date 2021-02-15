@@ -51,9 +51,9 @@ define(["dojo/_base/declare",
 
                 test: function () {
                     this.repository = ecm.model.desktop.getRepositoryByName("OS1");
-                    this.folderClassField.setRepository(this.repository);
-                    this.folderClassField.setRootClassId("Folder");
-                    this.folderClassField.setVisibleOnlyForFolder(true);
+                    this.enableFolderClassName.setRepository(this.repository);
+                    this.enableFolderClassName.setRootClassId("Folder");
+                    this.enableFolderClassName.setVisibleOnlyForFolder(true);
 
                     var cb = lang.hitch(this, function (entryTemplates, cn1, cn2) {
                         var items = [];
