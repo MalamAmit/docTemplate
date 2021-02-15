@@ -22,25 +22,34 @@ define(["dojo/_base/declare",
                     if (this.configurationString) {
                         var jsonConfig = JSON.parse(this.configurationString);
                         // this.enableFolderClassName.set('value', jsonConfig.configuration[0].value);
-                        console.log("configurationString " + jsonConfig.configuration[0].value);
-                        this.enableFolderClassName.setRootClassId(jsonConfig.configuration[0].value);
+
+
+                        console.log("jsonConfig.configuration[0] " + jsonConfig.configuration[0])
+                        if (!jsonConfig.configuration[0]) {
+                            this.enableFolderClassName.setRootClassId("Folder");
+                        } else {
+                            this.enableFolderClassName.setRootClassId(jsonConfig.configuration[0].value);
+
+                        }
+
+                        this.folderTemplateName.set('value', jsonConfig.configuration[1].value);
                     } else {
                         this.enableFolderClassName.setRootClassId("Folder");
 
-                        var cb = lang.hitch(this, function (entryTemplates, cn1, cn2) {
-                            var items = [];
-
-                            array.forEach(entryTemplates, function (ent) {
-                                items.push({
-                                    id: ent.vsId,
-                                    name: ent.name,
-                                    className: ent.addClassName,
-                                    vsId: ent.vsId,
-                                    entId: ent.id
-                                })
-                            }, this);
-
-                        });
+                        // var cb = lang.hitch(this, function (entryTemplates, cn1, cn2) {
+                        //     var items = [];
+                        //
+                        //     array.forEach(entryTemplates, function (ent) {
+                        //         items.push({
+                        //             id: ent.vsId,
+                        //             name: ent.name,
+                        //             className: ent.addClassName,
+                        //             vsId: ent.vsId,
+                        //             entId: ent.id
+                        //         })
+                        //     }, this);
+                        //
+                        // });
                     }
                 },
 
