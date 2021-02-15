@@ -39,7 +39,8 @@ define([
 				var items = [];
 				if (desktopRepositories) {
 					for (var i = 0; i < ecm.model.desktop.repositories.length; i++) {
-						var rep = ecm.model.desktop.repositories[i];					
+						var rep = ecm.model.desktop.repositories[i];
+						console.log("desktopRepositories: " + rep)
 						items.push({
 							"id": rep.id,
 							"label": rep.name
@@ -73,7 +74,6 @@ define([
 		_loadData: function() {
 			this.repositoryField.set("value", "");
 			this.folderClassField.set("value", "");
-			this.associateEntryTemplateField.set('value', "");
 
 			if (this._editData) {
 				if (this._editData.repositoryId)
@@ -82,9 +82,6 @@ define([
 				setTimeout(lang.hitch(this, function() {
 					if (this._editData.folderClassName)
 						this.folderClassField.setSelected(this._editData.folderClassName);
-					if (this._editData.associateEntryTemplateVsId)
-						this.associateEntryTemplateField.set('value', this._editData.associateEntryTemplateVsId);
-					
 					this._onFieldChange();
 				}, 200));			
 			}			
@@ -109,10 +106,7 @@ define([
 						entId: ent.id
 				    })
 		        }, this);
-	
-		        this.associateEntryTemplateField.set("store", new MemoryStore({
-					data: items
-				}));
+
 			});
 				
 			this.repository.retrieveEntryTemplates(cb, "Folder");
@@ -127,10 +121,6 @@ define([
 			if (value == null || value.id == null || value.id == "")
 				return false;
 
-			value = this.associateEntryTemplateField.get("value");
-			if (value == null || value == "")
-				return false;
-
 			return true;
 		},
 		
@@ -140,8 +130,7 @@ define([
 			
 				screenData.repositoryId = this.repositoryField.get("value");
 				screenData.folderClassName = this.folderClassField.selectedContentClass.id;
-				screenData.associateEntryTemplate = this.associateEntryTemplateField.get('item');
-				
+
 				if (this._isEdit()) {
 					this.onEdit(screenData, this._editData);
 				} else {

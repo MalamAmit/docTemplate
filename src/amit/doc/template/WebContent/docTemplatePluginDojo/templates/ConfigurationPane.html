@@ -1,18 +1,41 @@
 <div class="dossierContainer" data-dojo-type="dijit.layout.ContentPane">
     <table class="propertyTable">
+<!--        <tr>-->
+<!--            <td class="propertyRowLabel">-->
+<!--                <label for="template_param1">Enable folder class name</label>-->
+<!--            </td>-->
+<!--            <td class="propertyRowValue">-->
+<!--                <div id="template_param1" maxLength="128"-->
+<!--                     data-dojo-attach-point="enableFolderClassName"-->
+<!--                     data-dojo-attach-event="onKeyUp: _onParamChange"-->
+<!--                     data-dojo-type="ecm.widget.ValidationTextBox"-->
+<!--                     data-dojo-props="required:'true',trim:'true',propercase:'false'">-->
+<!--                </div>-->
+<!--            </td>-->
+<!--        </tr>-->
+
         <tr>
             <td class="propertyRowLabel">
+                <span class="required">*</span>
                 <label for="template_param1">Enable folder class name</label>
             </td>
             <td class="propertyRowValue">
-                <div id="template_param1" maxLength="128"
-                     data-dojo-attach-point="enableFolderClassName"
-                     data-dojo-attach-event="onKeyUp: _onParamChange"
-                     data-dojo-type="ecm.widget.ValidationTextBox"
-                     data-dojo-props="required:'true',trim:'true',propercase:'false'">
+                <div  id="template_param1" maxLength="128"
+                        data-dojo-type="ecm/widget/ContentClassSelector"
+                        data-dojo-attach-point="folderClassField"
+                        data-dojo-props="selectorStyle: 'dropdown', onlySelectable: true">
                 </div>
             </td>
         </tr>
+
+
+
+
+
+
+
+
+
         <tr>
             <td class="propertyRowLabel">
                 <label for="template_param2">Folder Template name</label>
