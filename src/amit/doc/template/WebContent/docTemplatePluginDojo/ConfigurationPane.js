@@ -4,10 +4,11 @@ define(["dojo/_base/declare",
         "dijit/_WidgetsInTemplateMixin",
         "ecm/widget/ValidationTextBox",
         "ecm/widget/admin/PluginConfigurationPane",
+        "ecm/widget/ContentClassSelector",
         "dojo/text!./templates/ConfigurationPane.html"],
     function (declare, lang, _TemplatedMixin,
               _WidgetsInTemplateMixin, ValidationTextBox,
-              PluginConfigurationPane, template) {
+              PluginConfigurationPane, ContentClassSelector, template) {
         return declare("docTemplatePluginDojo.ConfigurationPane",
             [PluginConfigurationPane, _TemplatedMixin, _WidgetsInTemplateMixin], {
                 templateString: template,
@@ -26,7 +27,7 @@ define(["dojo/_base/declare",
 
                         console.log("jsonConfig.configuration[0] " + jsonConfig.configuration[0])
                         console.log("jsonConfig.configuration[0].value " + jsonConfig.configuration[0].value)
-                        console.log("jsonConfig.configuration[0].value === undefined "+jsonConfig.configuration[0].value === undefined)
+                        console.log("jsonConfig.configuration[0].value === undefined " + jsonConfig.configuration[0].value === undefined)
                         if (jsonConfig.configuration[0].value === undefined) {
                             console.log("4")
                             this.enableFolderClassName.setRootClassId("Folder");
@@ -56,7 +57,7 @@ define(["dojo/_base/declare",
                     }
                 },
 
-                folderClassNameChange: function(test) {
+                folderClassNameChange: function (test) {
                     console.log("folderClassNameChange");
                     this._onParamChange();
                 },
