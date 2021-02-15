@@ -60,15 +60,16 @@ define(["dojo/_base/declare",
                         "configuration": configArray
                     };
                     this.configurationString = JSON.stringify(configJson);
+                    console.log("configurationString 1" + this.configurationString)
                     this.onSaveNeeded(true);
                 },
 
-                // validate: function () {
-                //     if (!this.enableFolderClassName.isValid()
-                //         || !this.folderTemplateName.isValid())
-                //         return false;
-                //     return true;
-                // },
+                validate: function () {
+                    // if (!this.enableFolderClassName.isValid()
+                    //     || !this.folderTemplateName.isValid())
+                    //     return false;
+                    return true;
+                },
 
             });
     });
