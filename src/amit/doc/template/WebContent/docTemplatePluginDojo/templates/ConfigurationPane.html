@@ -3,16 +3,17 @@
 
         <tr>
             <td class="propertyRowLabel">
-                <label for="template_param1">Enable folder class name</label>
+                <label>Enable folder class name</label>
             </td>
             <td class="propertyRowValue">
-                <div id="template_param1" maxLength="128"
-                     data-dojo-type="ecm/widget/ContentClassSelector"
-                     data-dojo-attach-point="enableFolderClassName"
-                     data-dojo-attach-event="onChange: folderClassNameChange"
-                     data-dojo-props="selectorStyle: 'dropdown', onlySelectable: true">
+                <div
+                        data-dojo-attach-event="onSelected: _onParamChange"
+                        data-dojo-type="ecm/widget/ContentClassSelector"
+                        data-dojo-attach-point="enableFolderClassName"
+                        data-dojo-props="selectorStyle: 'dropdown', onlySelectable: true">
                 </div>
             </td>
+
         </tr>
         <tr>
             <td class="propertyRowLabel">

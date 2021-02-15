@@ -57,17 +57,31 @@ define(["dojo/_base/declare",
                     }
                 },
 
-                folderClassNameChange: function (test) {
-                    console.log("folderClassNameChange");
-                    this._onParamChange();
+                _onParamChange: function () {
+                //     var configArray = new Array();
+                //     var configString = {
+                //         name: "enableFolderClassName",
+                //         value: this.enableFolderClassName.get('value')
+                //     };
+                //     configArray.push(configString);
+                //     configString = {
+                //         name: "folderTemplateName",
+                //         value: this.folderTemplateName.get('value')
+                //     };
+                //     configArray.push(configString);
+                //     var configJson = {
+                //         "configuration": configArray
+                //     };
+                //     this.configurationString = JSON.stringify(configJson);
+                //     console.log("configurationString 1" + this.configurationString)
+                    this.onSaveNeeded(true);
                 },
 
-
-                _onParamChange: function () {
+                save: function(){
                     var configArray = new Array();
                     var configString = {
                         name: "enableFolderClassName",
-                        value: this.enableFolderClassName.get('value')
+                        value: this.enableFolderClassName.selectedContentClass.id
                     };
                     configArray.push(configString);
                     configString = {
@@ -80,7 +94,6 @@ define(["dojo/_base/declare",
                     };
                     this.configurationString = JSON.stringify(configJson);
                     console.log("configurationString 1" + this.configurationString)
-                    this.onSaveNeeded(true);
                 },
 
                 validate: function () {
