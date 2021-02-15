@@ -20,12 +20,17 @@ define(["dojo/_base/declare",
 
 
                     if (this.configurationString) {
-                        var jsonConfig = JSON.parse(this.configurationString);
-                        // this.enableFolderClassName.set('value', jsonConfig.configuration[0].value);
-                        this.enableFolderClassName.setRootClassId(jsonConfig.configuration[0].value);
+                        try {
+                            var jsonConfig = JSON.parse(this.configurationString);
+                            // this.enableFolderClassName.set('value', jsonConfig.configuration[0].value);
+                            this.enableFolderClassName.setRootClassId(jsonConfig.configuration[0].value);
 
-                        this.folderTemplateName.set('value', jsonConfig.configuration[1].value);
-                        new FolderAssociateEntryTemplateDialog().show(null);
+                            this.folderTemplateName.set('value', jsonConfig.configuration[1].value);
+                            new FolderAssociateEntryTemplateDialog().show(null);
+                        } catch (e) {
+                            console.log(e);
+                            this.enableFolderClassName.setRootClassId("Folder");
+                        }
                     } else {
                         this.enableFolderClassName.setRootClassId("Folder");
 
