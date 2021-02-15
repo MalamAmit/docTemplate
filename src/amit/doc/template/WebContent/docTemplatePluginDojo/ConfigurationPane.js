@@ -56,6 +56,11 @@ define(["dojo/_base/declare",
                     }
                 },
 
+                folderClassNameChange: function() {
+                    this._onParamChange();
+                },
+
+
                 _onParamChange: function () {
                     var configArray = new Array();
                     var configString = {
