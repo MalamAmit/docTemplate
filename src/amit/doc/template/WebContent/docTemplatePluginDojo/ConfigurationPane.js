@@ -19,6 +19,7 @@ define(["dojo/_base/declare",
                         this.folderTemplateName.set('value', jsonConfig.configuration[1].value);
                         new FolderAssociateEntryTemplateDialog().show(null);
                     }
+                    this.test();
                 },
 
                 _onParamChange: function() {
@@ -46,11 +47,27 @@ define(["dojo/_base/declare",
                         return false;
                     return true;
                 },
+
                 test: function (){
                     this.repository = ecm.model.desktop.getRepositoryByName("OS1");
                     this.folderClassField.setRepository(this.repository);
                     this.folderClassField.setRootClassId("Folder");
                     this.folderClassField.setVisibleOnlyForFolder(true);
+
+                    var cb = lang.hitch(this, function(entryTemplates, cn1, cn2) {
+                        var items = [];
+
+                        array.forEach(entryTemplates, function(ent) {
+                            items.push({
+                                id: ent.vsId,
+                                name: ent.name,
+                                className: ent.addClassName,
+                                vsId: ent.vsId,
+                                entId: ent.id
+                            })
+                        }, this);
+
+                    });
                 }
             });
     });
