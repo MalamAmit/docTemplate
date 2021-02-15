@@ -23,7 +23,8 @@ define(["dojo/_base/declare",
                         try {
                             var jsonConfig = JSON.parse(this.configurationString);
                             // this.enableFolderClassName.set('value', jsonConfig.configuration[0].value);
-                            this.enableFolderClassName.setRootClassId(jsonConfig.configuration[0].value);
+                            // this.enableFolderClassName.setRootClassId(jsonConfig.configuration[0].value);
+                            this.enableFolderClassName.setRootClassId("Folder");
 
                             this.folderTemplateName.set('value', jsonConfig.configuration[1].value);
                             new FolderAssociateEntryTemplateDialog().show(null);
