@@ -14,16 +14,35 @@ define(["dojo/_base/declare",
                 widgetsInTemplate: true,
 
                 load: function (callback) {
-                    console.log("load 1")
+                    this.repository = ecm.model.desktop.getRepositoryByName("OS1");
+                    this.enableFolderClassName.setRepository(this.repository);
+                    this.enableFolderClassName.setVisibleOnlyForFolder(true);
+
+
                     if (this.configurationString) {
-                        console.log("load 2")
                         var jsonConfig = JSON.parse(this.configurationString);
-                        this.enableFolderClassName.set('value', jsonConfig.configuration[0].value);
+                        // this.enableFolderClassName.set('value', jsonConfig.configuration[0].value);
+                        this.enableFolderClassName.setRootClassId(jsonConfig.configuration[0].value);
+
                         this.folderTemplateName.set('value', jsonConfig.configuration[1].value);
                         new FolderAssociateEntryTemplateDialog().show(null);
                     } else {
-                        console.log("load 3")
-                        this.test();
+                        this.enableFolderClassName.setRootClassId("Folder");
+
+                        var cb = lang.hitch(this, function (entryTemplates, cn1, cn2) {
+                            var items = [];
+
+                            array.forEach(entryTemplates, function (ent) {
+                                items.push({
+                                    id: ent.vsId,
+                                    name: ent.name,
+                                    className: ent.addClassName,
+                                    vsId: ent.vsId,
+                                    entId: ent.id
+                                })
+                            }, this);
+
+                        });
                     }
                 },
 
@@ -53,26 +72,5 @@ define(["dojo/_base/declare",
                 //     return true;
                 // },
 
-                test: function () {
-                    this.repository = ecm.model.desktop.getRepositoryByName("OS1");
-                    this.enableFolderClassName.setRepository(this.repository);
-                    this.enableFolderClassName.setRootClassId("Folder");
-                    this.enableFolderClassName.setVisibleOnlyForFolder(true);
-
-                    var cb = lang.hitch(this, function (entryTemplates, cn1, cn2) {
-                        var items = [];
-
-                        array.forEach(entryTemplates, function (ent) {
-                            items.push({
-                                id: ent.vsId,
-                                name: ent.name,
-                                className: ent.addClassName,
-                                vsId: ent.vsId,
-                                entId: ent.id
-                            })
-                        }, this);
-
-                    });
-                }
             });
     });
