@@ -4,10 +4,10 @@ define(["dojo/_base/declare",
         "dijit/_WidgetsInTemplateMixin",
         "ecm/widget/ValidationTextBox",
         "ecm/widget/admin/PluginConfigurationPane",
-        "dojo/text!./templates/ConfigurationPane.html",
-        "docTemplatePluginDojo/FolderAssociateEntryTemplateDialog"],
-    function (declare, lang, _TemplatedMixin, _WidgetsInTemplateMixin, ValidationTextBox,
-              PluginConfigurationPane, template, FolderAssociateEntryTemplateDialog) {
+        "dojo/text!./templates/ConfigurationPane.html"],
+    function (declare, lang, _TemplatedMixin,
+              _WidgetsInTemplateMixin, ValidationTextBox,
+              PluginConfigurationPane, template) {
         return declare("docTemplatePluginDojo.ConfigurationPane",
             [PluginConfigurationPane, _TemplatedMixin, _WidgetsInTemplateMixin], {
                 templateString: template,
@@ -20,17 +20,10 @@ define(["dojo/_base/declare",
 
 
                     if (this.configurationString) {
-                        try {
-                            var jsonConfig = JSON.parse(this.configurationString);
-                            // this.enableFolderClassName.set('value', jsonConfig.configuration[0].value);
-                            this.enableFolderClassName.setRootClassId(jsonConfig.configuration[0].value);
-
-                            this.folderTemplateName.set('value', jsonConfig.configuration[1].value);
-                            new FolderAssociateEntryTemplateDialog().show(null);
-                        } catch (e) {
-                            console.log(e);
-                            this.enableFolderClassName.setRootClassId("Folder");
-                        }
+                        var jsonConfig = JSON.parse(this.configurationString);
+                        // this.enableFolderClassName.set('value', jsonConfig.configuration[0].value);
+                        console.log("configurationString " + jsonConfig.configuration[0].value);
+                        this.enableFolderClassName.setRootClassId(jsonConfig.configuration[0].value);
                     } else {
                         this.enableFolderClassName.setRootClassId("Folder");
 
