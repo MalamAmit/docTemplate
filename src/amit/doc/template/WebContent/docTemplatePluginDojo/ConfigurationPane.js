@@ -21,20 +21,23 @@ define(["dojo/_base/declare",
                     this.enableFolderClassName.setRootClassId("Folder");
 
 
-                    if (this.configurationString) {
-                        var jsonConfig = JSON.parse(this.configurationString);
+                    // if (this.configurationString) {
+                    //     var jsonConfig = JSON.parse(this.configurationString);
+                    //
+                    //     if (jsonConfig.configuration[0].value !== undefined) {
+                    //         this.enableFolderClassName.setSelected(jsonConfig.configuration[0].value);
+                    //         // this.enableFolderClassName.setSelected("Folder");
+                    //         // } else {
+                    //         // this.enableFolderClassName.setRootClassId(jsonConfig.configuration[0].value);
+                    //     }
+                    //     this.folderTemplateName.set('value', jsonConfig.configuration[1].value);
+                    // }
 
-                        if (jsonConfig.configuration[0].value !== undefined) {
-                            this.enableFolderClassName.setSelected(jsonConfig.configuration[0].value);
-                            // this.enableFolderClassName.setSelected("Folder");
-                        // } else {
-                        //     this.enableFolderClassName.setRootClassId(jsonConfig.configuration[0].value);
-                        }
-                        this.folderTemplateName.set('value', jsonConfig.configuration[1].value);
-                    }
                 },
 
                 _onParamChange: function () {
+                    console.log("_onParamChange" + this.enableFolderClassName.getRootClassId())
+
                     this.onSaveNeeded(true);
                 },
 
