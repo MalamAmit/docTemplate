@@ -23,7 +23,9 @@ define(["dojo/_base/declare",
 
                     if (this.configurationString) {
                         var jsonConfig = JSON.parse(this.configurationString);
-                    //
+
+                        console.log("jsonConfig.configuration[0].value "+jsonConfig.configuration[0].value)
+
                         if (jsonConfig.configuration[0].value !== undefined) {
                             this.enableFolderClassName.setSelected(jsonConfig.configuration[0].value);
                     //         // this.enableFolderClassName.setSelected("Folder");
@@ -36,8 +38,6 @@ define(["dojo/_base/declare",
                 },
 
                 _onParamChange: function () {
-                    console.log("_onParamChange" + this.enableFolderClassName.getRootClassId())
-
                     this.onSaveNeeded(true);
                 },
 
