@@ -27,9 +27,9 @@ define(["dojo/_base/declare",
                         console.log("jsonConfig.configuration[0].value "+jsonConfig.configuration[0].value)
 
                         if (jsonConfig.configuration[0].value !== undefined) {
-                            console.log("this.enableFolderClassName.getSelected()"+this.enableFolderClassName.getSelected())
+                            console.log("this.enableFolderClassName.getSelected() "+this.enableFolderClassName.getSelected())
                             this.enableFolderClassName.setSelected(jsonConfig.configuration[0].value);
-                            console.log("this.enableFolderClassName.getSelected()"+this.enableFolderClassName.getSelected())
+                            console.log("this.enableFolderClassName.getSelected() "+this.enableFolderClassName.getSelected())
                     //         // this.enableFolderClassName.setSelected("Folder");
                     //         // } else {
                     //         // this.enableFolderClassName.setRootClassId(jsonConfig.configuration[0].value);
@@ -47,7 +47,9 @@ define(["dojo/_base/declare",
                     var configArray = new Array();
                     var configString = {
                         name: "enableFolderClassName",
-                        value: this.enableFolderClassName.selectedContentClass.id
+                        // value: this.enableFolderClassName.selectedContentClass.id
+                        value: this.enableFolderClassName.getSelected()
+
                     };
                     configArray.push(configString);
                     configString = {
