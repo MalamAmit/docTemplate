@@ -30,7 +30,7 @@ define(["dojo/_base/declare",
                     //         // } else {
                     //         // this.enableFolderClassName.setRootClassId(jsonConfig.configuration[0].value);
                         }
-                    //     this.folderTemplateName.set('value', jsonConfig.configuration[1].value);
+                        this.folderTemplateName.set('value', jsonConfig.configuration[1].value);
                     }
 
                 },
