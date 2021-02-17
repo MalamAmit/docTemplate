@@ -41,8 +41,8 @@ define(["dojo/_base/declare",
                     this.onSaveNeeded(true);
                 },
 
-                test: function (){
-                    console.log("test")
+                folderSelect: function (){
+                    console.log("folderSelect")
                 },
 
                 save: function () {
