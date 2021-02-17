@@ -37,6 +37,7 @@ define(["dojo/_base/declare",
                 },
 
                 _onParamChange: function () {
+                    console.log("_onParamChange")
                     this.onSaveNeeded(true);
                 },
 
