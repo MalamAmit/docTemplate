@@ -21,6 +21,7 @@ define(["dojo/_base/declare",
                     this.enableFolderClassName.setVisibleOnlyForFolder(true);
                     this.enableFolderClassName.setRootClassId("Folder");
                     this.folderSelectorDropDown.setRoot(this.repository);
+                    this.folderSelectorDropDown.se(this.repository);
 
 
                     if (this.configurationString) {
@@ -30,8 +31,12 @@ define(["dojo/_base/declare",
                             this.enableFolderClassName.setSelected(jsonConfig.enableFolderClassName);
                         }
 
+
                         if (jsonConfig.folderSelectorDropDown !== undefined) {
-                            this.folderSelectorDropDown.setSelected(jsonConfig.folderSelectorDropDown);
+                            var path = jsonConfig.folderSelectorDropDown;
+
+
+                            this.folderSelectorDropDown.setSelected();
                         }
                     }
                 },
@@ -50,7 +55,8 @@ define(["dojo/_base/declare",
                     console.log("this.enableFolderClassName.getSelected()" + this.enableFolderClassName.getSelected())
 
                     configJson.folderSelectorDropDown = this.folderSelectorDropDown.getSelected().path;
-                    console.log("this.folderSelectorDropDown.getSelected()" + this.folderSelectorDropDown.getSelected().path)
+                    console.log("this.folderSelectorDropDown. path" + this.folderSelectorDropDown.getSelected().path)
+                    console.log("this.folderSelectorDropDown. id" + this.folderSelectorDropDown.getSelected().id)
 
                     this.configurationString = JSON.stringify(configJson);
                 },
