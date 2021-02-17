@@ -26,12 +26,12 @@ define(["dojo/_base/declare",
                     if (this.configurationString) {
                         var jsonConfig = JSON.parse(this.configurationString);
 
-                        if (jsonConfig.configuration[0].value !== undefined) {
-                            this.enableFolderClassName.setSelected(jsonConfig.configuration[0].value);
+                        if (jsonConfig.enableFolderClassName !== undefined) {
+                            this.enableFolderClassName.setSelected(jsonConfig.enableFolderClassName);
                         }
 
-                        if (jsonConfig.configuration[1].value !== undefined) {
-                            this.folderSelectorDropDown.setSelected(jsonConfig.configuration[1].value);
+                        if (jsonConfig.folderSelectorDropDown !== undefined) {
+                            this.folderSelectorDropDown.setSelected(jsonConfig.folderSelectorDropDown);
                         }
                     }
                 },
