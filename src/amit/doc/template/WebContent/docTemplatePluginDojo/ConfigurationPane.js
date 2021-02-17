@@ -20,7 +20,7 @@ define(["dojo/_base/declare",
                     this.enableFolderClassName.setRepository(this.repository);
                     this.enableFolderClassName.setVisibleOnlyForFolder(true);
                     this.enableFolderClassName.setRootClassId("Folder");
-                    this.folderSelectorDropDown.setRoot(this.repository);
+                    this.folderSelector.setRoot(this.repository);
 
 
                     if (this.configurationString) {
@@ -31,9 +31,10 @@ define(["dojo/_base/declare",
                         }
 
 
-                        if (jsonConfig.folderSelectorDropDown !== undefined) {
-                            this.repository.retrieveItem(jsonConfig.folderSelectorDropDown.itemId, lang.hitch(this, function(item) {
-                                this.folderSelectorDropDown.setSelected(item);
+                        debugger;
+                        if (jsonConfig.folderSelectorId !== undefined) {
+                            this.repository.retrieveItem(jsonConfig.folderSelectorId, lang.hitch(this, function(item) {
+                                this.folderSelector.setSelected(item);
                             }));
                         }
                     }
@@ -52,14 +53,14 @@ define(["dojo/_base/declare",
                     configJson.enableFolderClassName = this.enableFolderClassName.getSelected();
                     console.log("enableFolderClassName.getSelected();  " + this.enableFolderClassName.getSelected())
 
-                    configJson.folderSelectorDropDown = this.folderSelectorDropDown.getSelected().item.id;
-                    console.log("this.folderSelectorDropDown.getSelected().item.id  " + this.folderSelectorDropDown.getSelected().item.id)
+                    configJson.folderSelectorId = this.folderSelector.getSelected().item.id;
+                    console.log("this.folderSelector.getSelected().item.id  " + this.folderSelector.getSelected().item.id)
 
                     // this.configurationString = JSON.stringify(configJson);
                 },
 
                 // save: function () {
-                //     console.log("save 1 " + this.folderSelectorDropDown.getSelected())
+                //     console.log("save 1 " + this.folderSelector.getSelected())
                 //     var configArray = new Array();
                 //     var configString = {
                 //         name: "enableFolderClassName",
