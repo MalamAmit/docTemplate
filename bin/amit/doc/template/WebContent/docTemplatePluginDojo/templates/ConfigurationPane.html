@@ -1,1 +1,36 @@
-<div></div>
+<div class="dossierContainer" data-dojo-type="dijit.layout.ContentPane">
+    <table class="propertyTable">
+
+        <tr>
+            <td class="propertyRowLabel">
+                <label>Enable folder class name</label>
+            </td>
+            <td class="propertyRowValue">
+                <div
+                        data-dojo-attach-event="onSelected: _onParamChange"
+                        data-dojo-type="ecm/widget/ContentClassSelector"
+                        data-dojo-attach-point="enableFolderClassName"
+                        data-dojo-props="selectorStyle: 'dropdown', onlySelectable: true">
+                </div>
+            </td>
+
+        </tr>
+        <tr>
+            <td class="propertyRowLabel">
+                <label>Folder Template name 1111</label>
+            </td>
+            <td class="propertyRowValue">
+                <div data-dojo-type="ecm.widget.FolderSelector"
+                     dropdownid="${id}_folderLocation"
+                     arialabelledby="${id}_label_folderLocation"
+                     showIncludeSubFolders="false"
+                     showRepositoryTeamspace="false"
+                     preventSelectRoot="false"
+                     selectRootInitially="false"
+                     data-dojo-attach-event="onFolderSelect: folderSelect"
+                     data-dojo-attach-point="folderSelector">
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
