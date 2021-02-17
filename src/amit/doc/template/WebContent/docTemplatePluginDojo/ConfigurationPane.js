@@ -59,7 +59,8 @@ define(["dojo/_base/declare",
                     var configJson = {
                         "configuration": configArray
                     };
-                    console.log("save 2 " + configJson)
+                    console.log("save configArray 2 " + configArray)
+                    console.log("save 3 " + configJson)
                     this.configurationString = JSON.stringify(configJson);
                     console.log("configurationString 1" + this.configurationString)
                 },
