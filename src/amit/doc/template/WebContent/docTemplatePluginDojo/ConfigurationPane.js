@@ -21,7 +21,6 @@ define(["dojo/_base/declare",
                     this.enableFolderClassName.setVisibleOnlyForFolder(true);
                     this.enableFolderClassName.setRootClassId("Folder");
                     this.folderSelectorDropDown.setRoot(this.repository);
-                    this.folderSelectorDropDown.se(this.repository);
 
 
                     if (this.configurationString) {
@@ -36,7 +35,7 @@ define(["dojo/_base/declare",
                             var path = jsonConfig.folderSelectorDropDown;
 
 
-                            this.folderSelectorDropDown.setSelected();
+                            // this.folderSelectorDropDown.setSelected();
                         }
                     }
                 },
