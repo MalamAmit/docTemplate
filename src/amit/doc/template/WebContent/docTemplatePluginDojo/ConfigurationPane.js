@@ -40,6 +40,10 @@ define(["dojo/_base/declare",
                     this.onSaveNeeded(true);
                 },
 
+                test: function (){
+                    console.log("test")
+                },
+
                 save: function () {
                     var configArray = new Array();
                     var configString = {
