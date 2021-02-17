@@ -42,6 +42,7 @@ define(["dojo/_base/declare",
                 },
 
                 save: function () {
+                    console.log("save 1 " + this.folderSelectorDropDown.getSelected())
                     var configArray = new Array();
                     var configString = {
                         name: "enableFolderClassName",
@@ -58,6 +59,7 @@ define(["dojo/_base/declare",
                     var configJson = {
                         "configuration": configArray
                     };
+                    console.log("save 2 " + configJson)
                     this.configurationString = JSON.stringify(configJson);
                     console.log("configurationString 1" + this.configurationString)
                 },
