@@ -4,12 +4,12 @@ define(["dojo/_base/declare",
         "dijit/_WidgetsInTemplateMixin",
         "ecm/widget/ValidationTextBox",
         "ecm/widget/admin/PluginConfigurationPane",
-        "ecm/widget/FolderSelector",
+        "ecm/widget/_FolderSelectorDropDown",
         "ecm/widget/ContentClassSelector",
         "dojo/text!./templates/ConfigurationPane.html"],
     function (declare, lang, _TemplatedMixin,
               _WidgetsInTemplateMixin, ValidationTextBox,
-              PluginConfigurationPane, FolderSelector, ContentClassSelector, template) {
+              PluginConfigurationPane, _FolderSelectorDropDown, ContentClassSelector, template) {
         return declare("docTemplatePluginDojo.ConfigurationPane",
             [PluginConfigurationPane, _TemplatedMixin, _WidgetsInTemplateMixin], {
                 templateString: template,
@@ -31,7 +31,7 @@ define(["dojo/_base/declare",
                     }
 
 
-                    this.folderSelector.setRoot(this.repository);
+                    this.folderSelectorDropDown.setRoot(this.repository);
                     // var destPath=this.folderSelectorDropDown.getSelected().path;
                     // this._callback(destPath.replace(this.folderSelectorDropDown.repositoryTeamspaceName, ""));
                 },
