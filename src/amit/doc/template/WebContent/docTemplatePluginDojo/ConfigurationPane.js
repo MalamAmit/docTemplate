@@ -41,29 +41,41 @@ define(["dojo/_base/declare",
                     this.onSaveNeeded(true);
                 },
 
-                save: function () {
-                    console.log("save 1 " + this.folderSelectorDropDown.getSelected())
-                    var configArray = new Array();
-                    var configString = {
-                        name: "enableFolderClassName",
-                        // value: this.enableFolderClassName.selectedContentClass.id
-                        value: this.enableFolderClassName.getSelected()
 
-                    };
-                    configArray.push(configString);
-                    configString = {
-                        name: "folderSelectorDropDown",
-                        value: "xscv"
-                    };
-                    configArray.push(configString);
-                    var configJson = {
-                        "configuration": configArray
-                    };
-                    console.log("save configArray 2 " + configArray)
-                    console.log("save 3 " + configJson)
+                save: function() {
+                    var configJson = {};
+                    configJson.enableFolderClassName = this.enableFolderClassName.getSelected();
+
+                    configJson.folderSelectorDropDown = this.folderSelectorDropDown.getSelected();
+
                     this.configurationString = JSON.stringify(configJson);
-                    console.log("configurationString 1" + this.configurationString)
+
                 },
+
+                // save: function () {
+                //     console.log("save 1 " + this.folderSelectorDropDown.getSelected())
+                //     var configArray = new Array();
+                //     var configString = {
+                //         name: "enableFolderClassName",
+                //         // value: this.enableFolderClassName.selectedContentClass.id
+                //         value: this.enableFolderClassName.getSelected()
+                //     };
+                //     configArray.push(configString);
+                //
+                //     configString = {
+                //         name: "folderSelectorDropDown",
+                //         value: "xscv"
+                //     };
+                //     configArray.push(configString);
+                //
+                //     var configJson = {
+                //         "configuration": configArray
+                //     };
+                //     console.log("save configArray 2 " + configArray)
+                //     console.log("save 3 " + configJson)
+                //     this.configurationString = JSON.stringify(configJson);
+                //     console.log("configurationString 1" + this.configurationString)
+                // },
 
                 validate: function () {
                     return true;
