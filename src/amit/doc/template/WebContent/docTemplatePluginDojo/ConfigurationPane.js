@@ -31,7 +31,7 @@ define(["dojo/_base/declare",
                         }
 
                         if (jsonConfig.folderSelectorDropDown !== undefined) {
-                            this.folderSelectorDropDown.setselected(jsonConfig.folderSelectorDropDown);
+                            this.folderSelectorDropDown.setSelected(jsonConfig.folderSelectorDropDown);
                         }
                     }
                 },
