@@ -53,7 +53,7 @@ define(["dojo/_base/declare",
                     configArray.push(configString);
                     configString = {
                         name: "folderSelectorDropDown",
-                        value: this.folderSelectorDropDown.getSelected()
+                        value: "xscv"
                     };
                     configArray.push(configString);
                     var configJson = {
