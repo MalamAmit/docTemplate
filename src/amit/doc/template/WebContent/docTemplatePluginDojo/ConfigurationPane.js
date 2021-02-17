@@ -46,12 +46,11 @@ define(["dojo/_base/declare",
                     var configJson = {};
                     console.log("save")
 
+                    console.log("this.enableFolderClassName.getSelected()" + this.enableFolderClassName.getSelected())
                     configJson.enableFolderClassName = this.enableFolderClassName.getSelected();
-                    console.log("configJson 1" + configJson)
 
+                    console.log("this.folderSelectorDropDown.getSelected()" + this.folderSelectorDropDown.getSelected())
                     configJson.folderSelectorDropDown = this.folderSelectorDropDown.getSelected();
-
-                    console.log("configJson 2" + configJson)
 
                     this.configurationString = JSON.stringify(configJson);
                 },
