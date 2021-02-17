@@ -27,7 +27,7 @@ define(["dojo/_base/declare",
                         if (jsonConfig.configuration[0].value !== undefined) {
                             this.enableFolderClassName.setSelected(jsonConfig.configuration[0].value);
                         }
-                        this.folderTemplateName.set('value', jsonConfig.configuration[1].value);
+                        // this.folderTemplateName.set('value', jsonConfig.configuration[1].value);
                     }
 
                     var destPath=this.folderSelectorDropDown.getSelected().path;
@@ -47,11 +47,11 @@ define(["dojo/_base/declare",
 
                     };
                     configArray.push(configString);
-                    configString = {
-                        name: "folderTemplateName",
-                        value: this.folderTemplateName.get('value')
-                    };
-                    configArray.push(configString);
+                    // configString = {
+                    //     name: "folderTemplateName",
+                    //     value: this.folderTemplateName.get('value')
+                    // };
+                    // configArray.push(configString);
                     var configJson = {
                         "configuration": configArray
                     };
@@ -60,9 +60,6 @@ define(["dojo/_base/declare",
                 },
 
                 validate: function () {
-                    // if (!this.enableFolderClassName.isValid()
-                    //     || !this.folderTemplateName.isValid())
-                    //     return false;
                     return true;
                 },
 
