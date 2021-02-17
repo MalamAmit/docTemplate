@@ -4,11 +4,12 @@ define(["dojo/_base/declare",
         "dijit/_WidgetsInTemplateMixin",
         "ecm/widget/ValidationTextBox",
         "ecm/widget/admin/PluginConfigurationPane",
+        "ecm/widget/_FolderSelectorDropDown",
         "ecm/widget/ContentClassSelector",
         "dojo/text!./templates/ConfigurationPane.html"],
     function (declare, lang, _TemplatedMixin,
               _WidgetsInTemplateMixin, ValidationTextBox,
-              PluginConfigurationPane, ContentClassSelector, template) {
+              PluginConfigurationPane, _FolderSelectorDropDown, ContentClassSelector, template) {
         return declare("docTemplatePluginDojo.ConfigurationPane",
             [PluginConfigurationPane, _TemplatedMixin, _WidgetsInTemplateMixin], {
                 templateString: template,
@@ -20,30 +21,24 @@ define(["dojo/_base/declare",
                     this.enableFolderClassName.setVisibleOnlyForFolder(true);
                     this.enableFolderClassName.setRootClassId("Folder");
 
-
                     if (this.configurationString) {
                         var jsonConfig = JSON.parse(this.configurationString);
-
-                        console.log("jsonConfig.configuration[0].value "+jsonConfig.configuration[0].value)
-
+                        console.log("jsonConfig.configuration[0].value " + jsonConfig.configuration[0].value)
                         if (jsonConfig.configuration[0].value !== undefined) {
-                            console.log("this.enableFolderClassName.getSelected() "+this.enableFolderClassName.getSelected())
                             this.enableFolderClassName.setSelected(jsonConfig.configuration[0].value);
-                            console.log("this.enableFolderClassName.getSelected() "+this.enableFolderClassName.getSelected())
-                    //         // this.enableFolderClassName.setSelected("Folder");
-                    //         // } else {
-                    //         // this.enableFolderClassName.setRootClassId(jsonConfig.configuration[0].value);
                         }
                         this.folderTemplateName.set('value', jsonConfig.configuration[1].value);
                     }
 
+                    var destPath=this.folderSelectorDropDown.getSelected().path;
+                    // this._callback(destPath.replace(this.folderSelectorDropDown.repositoryTeamspaceName, ""));
                 },
 
                 _onParamChange: function () {
                     this.onSaveNeeded(true);
                 },
 
-                save: function(){
+                save: function () {
                     var configArray = new Array();
                     var configString = {
                         name: "enableFolderClassName",
