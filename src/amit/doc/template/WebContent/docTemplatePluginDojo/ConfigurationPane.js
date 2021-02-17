@@ -32,10 +32,9 @@ define(["dojo/_base/declare",
 
 
                         if (jsonConfig.folderSelectorDropDown !== undefined) {
-                            var path = jsonConfig.folderSelectorDropDown;
-
-                            // ecm.model.
-                            // this.folderSelectorDropDown.setSelected();
+                            this.repository.retrieveItem(jsonConfig.folderSelectorDropDown.itemId, lang.hitch(this, function(item) {
+                                this.folderSelectorDropDown.setSelected(item);
+                            }));
                         }
                     }
                 },
@@ -53,8 +52,8 @@ define(["dojo/_base/declare",
                     configJson.enableFolderClassName = this.enableFolderClassName.getSelected();
                     console.log("enableFolderClassName.getSelected();  " + this.enableFolderClassName.getSelected())
 
-                    configJson.folderSelectorDropDown = this.folderSelectorDropDown.getSelected().path;
-                    console.log("folderSelectorDropDown path;  " + this.folderSelectorDropDown.getSelected().path)
+                    configJson.folderSelectorDropDown = this.folderSelectorDropDown.getSelected().item.id;
+                    console.log("this.folderSelectorDropDown.getSelected().item.id  " + this.folderSelectorDropDown.getSelected().item.id)
 
                     // this.configurationString = JSON.stringify(configJson);
                 },
