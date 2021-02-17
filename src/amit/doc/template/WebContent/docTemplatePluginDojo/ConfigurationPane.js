@@ -30,7 +30,9 @@ define(["dojo/_base/declare",
                         // this.folderTemplateName.set('value', jsonConfig.configuration[1].value);
                     }
 
-                    var destPath=this.folderSelectorDropDown.getSelected().path;
+
+                    this.folderSelectorDropDown.setRoot(this.repository);
+                    // var destPath=this.folderSelectorDropDown.getSelected().path;
                     // this._callback(destPath.replace(this.folderSelectorDropDown.repositoryTeamspaceName, ""));
                 },
 
