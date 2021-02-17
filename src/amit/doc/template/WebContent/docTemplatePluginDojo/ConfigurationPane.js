@@ -20,29 +20,25 @@ define(["dojo/_base/declare",
                     this.enableFolderClassName.setRepository(this.repository);
                     this.enableFolderClassName.setVisibleOnlyForFolder(true);
                     this.enableFolderClassName.setRootClassId("Folder");
+                    this.folderSelectorDropDown.setRoot(this.repository);
+
 
                     if (this.configurationString) {
                         var jsonConfig = JSON.parse(this.configurationString);
-                        console.log("jsonConfig.configuration[0].value " + jsonConfig.configuration[0].value)
+
                         if (jsonConfig.configuration[0].value !== undefined) {
                             this.enableFolderClassName.setSelected(jsonConfig.configuration[0].value);
                         }
-                        // this.folderTemplateName.set('value', jsonConfig.configuration[1].value);
+
+                        if (jsonConfig.configuration[1].value !== undefined) {
+                            this.folderSelectorDropDown.setSelected(jsonConfig.configuration[1].value);
+                        }
                     }
-
-
-                    this.folderSelectorDropDown.setRoot(this.repository);
-                    // var destPath=this.folderSelectorDropDown.getSelected().path;
-                    // this._callback(destPath.replace(this.folderSelectorDropDown.repositoryTeamspaceName, ""));
                 },
 
                 _onParamChange: function () {
                     console.log("_onParamChange")
                     this.onSaveNeeded(true);
-                },
-
-                onFolderSelected: function (folder){
-                    console.log("onFolderSelected: "+ folder)
                 },
 
                 save: function () {
@@ -54,10 +50,10 @@ define(["dojo/_base/declare",
 
                     };
                     configArray.push(configString);
-                    // configString = {
-                    //     name: "folderTemplateName",
-                    //     value: this.folderTemplateName.get('value')
-                    // };
+                    configString = {
+                        name: "folderSelectorDropDown",
+                        value: this.folderSelectorDropDown.getSelected()
+                    };
                     // configArray.push(configString);
                     var configJson = {
                         "configuration": configArray
