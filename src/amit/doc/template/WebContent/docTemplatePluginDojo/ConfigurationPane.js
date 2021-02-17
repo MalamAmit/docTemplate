@@ -4,12 +4,12 @@ define(["dojo/_base/declare",
         "dijit/_WidgetsInTemplateMixin",
         "ecm/widget/ValidationTextBox",
         "ecm/widget/admin/PluginConfigurationPane",
-        "ecm/widget/_FolderSelectorDropDown",
+        "ecm/widget/FolderSelector",
         "ecm/widget/ContentClassSelector",
         "dojo/text!./templates/ConfigurationPane.html"],
     function (declare, lang, _TemplatedMixin,
               _WidgetsInTemplateMixin, ValidationTextBox,
-              PluginConfigurationPane, _FolderSelectorDropDown, ContentClassSelector, template) {
+              PluginConfigurationPane, FolderSelector, ContentClassSelector, template) {
         return declare("docTemplatePluginDojo.ConfigurationPane",
             [PluginConfigurationPane, _TemplatedMixin, _WidgetsInTemplateMixin], {
                 templateString: template,
