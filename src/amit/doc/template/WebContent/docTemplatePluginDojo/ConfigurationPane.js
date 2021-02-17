@@ -54,7 +54,7 @@ define(["dojo/_base/declare",
                         name: "folderSelectorDropDown",
                         value: this.folderSelectorDropDown.getSelected()
                     };
-                    // configArray.push(configString);
+                    configArray.push(configString);
                     var configJson = {
                         "configuration": configArray
                     };
