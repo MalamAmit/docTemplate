@@ -22,7 +22,6 @@ define(["dojo/_base/declare",
                     this.enableFolderClassName.setRootClassId("Folder");
                     this.folderSelector.setRoot(this.repository);
 
-
                     if (this.configurationString) {
                         var jsonConfig = JSON.parse(this.configurationString);
 
