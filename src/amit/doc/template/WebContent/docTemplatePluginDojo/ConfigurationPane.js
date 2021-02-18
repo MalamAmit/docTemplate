@@ -6,11 +6,10 @@ define(["dojo/_base/declare",
         "ecm/widget/admin/PluginConfigurationPane",
         "ecm/widget/_FolderSelectorDropDown",
         "ecm/widget/ContentClassSelector",
-        "dojo/text!./templates/ConfigurationPane.html",
-        "ecm/widget/FolderTree"],
+        "dojo/text!./templates/ConfigurationPane.html"],
     function (declare, lang, _TemplatedMixin,
               _WidgetsInTemplateMixin, ValidationTextBox,
-              PluginConfigurationPane, _FolderSelectorDropDown, ContentClassSelector, template, FolderTree) {
+              PluginConfigurationPane, _FolderSelectorDropDown, ContentClassSelector, template) {
         return declare("docTemplatePluginDojo.ConfigurationPane",
             [PluginConfigurationPane, _TemplatedMixin, _WidgetsInTemplateMixin], {
                 templateString: template,
@@ -36,9 +35,6 @@ define(["dojo/_base/declare",
                             }));
                         }
                     }
-
-                    // Setting the repository on the tree
-                    this.folderTree.setRepository(this.repository);
                 },
 
                 _onParamChange: function () {
