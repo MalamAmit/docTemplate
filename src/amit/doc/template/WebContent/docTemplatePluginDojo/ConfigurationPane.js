@@ -38,9 +38,6 @@ define(["dojo/_base/declare",
                 },
 
                 _onParamChange: function () {
-                    console.log("this.folderSelector.1", this.folderSelector._teamspace)
-                    console.log("this.folderSelector.2", this.folderSelector.getTeamspace)
-                    console.log("this.folderSelector.3", this.folderSelector.teamspace)
                     this.onSaveNeeded(true);
                 },
 
