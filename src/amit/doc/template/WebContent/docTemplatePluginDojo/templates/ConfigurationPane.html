@@ -20,21 +20,28 @@
                 <label>Folder Template name </label>
             </td>
             <td class="propertyRowValue">
-<!--                <div data-dojo-type="ecm.widget._FolderSelectorDropDown"-->
-<!--                     showRepositoryTeamspace="true"-->
-<!--                     data-dojo-attach-event="onFolderSelected: _onParamChange"-->
-<!--                     data-dojo-attach-point="folderSelector">-->
-<!--                </div>-->
 
                 <div data-dojo-type="ecm.widget._FolderSelectorDropDown"
                      dropdownid="${id}_folderLocation"
                      arialabelledby="${id}_label_folderLocation"
-                     showIncludeSubFolders="true"
                      showRepositoryTeamspace="true"
                      data-dojo-attach-point="folderSelector"
                      data-dojo-attach-event="onFolderSelected: _onParamChange">
                 </div>
             </td>
         </tr>
+
+        <tr>
+            <td class="propertyRowLabel">
+                <label>test</label>
+            </td>
+            <td class="propertyRowValue">
+                <div class="documentSelectorDialog">
+                    <div data-dojo-type="ecm.widget.FolderTree" data-dojo-attach-point="folderTree"
+                         showFoldersOnly=false></div>
+                </div>
+            </td>
+        </tr>
+
     </table>
 </div>
