@@ -29,7 +29,6 @@ define(["dojo/_base/declare",
                             this.enableFolderClassName.setSelected(jsonConfig.enableFolderClassName);
                         }
 
-                        debugger;
                         if (jsonConfig.folderSelectorId !== undefined) {
                             this.repository.retrieveItem(jsonConfig.folderSelectorId, lang.hitch(this, function(item) {
                                 this.folderSelector.setSelected(item);
@@ -39,6 +38,9 @@ define(["dojo/_base/declare",
                 },
 
                 _onParamChange: function () {
+                    console.log("this.folderSelector.1", this.folderSelector._teamspace)
+                    console.log("this.folderSelector.2", this.folderSelector.getTeamspace)
+                    console.log("this.folderSelector.3", this.folderSelector.teamspace)
                     this.onSaveNeeded(true);
                 },
 
