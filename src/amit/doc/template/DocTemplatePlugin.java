@@ -322,22 +322,6 @@ public class DocTemplatePlugin extends Plugin {
 	 }
 
 	/**
-	 * Provides a list of actions that this plug-in adds to the main toolbar of
-	 * the web client.
-	 * 
-	 * @return An array of
-	 *         <code>{@link com.ibm.ecm.extension.PluginAction PluginAction}</code>
-	 *         objects. The plug-in should return the same set of objects on
-	 *         every call.
-	 */
-	public PluginAction[] getActions() {
-		if (pluginActions.length == 0) {
-			pluginActions = new PluginAction[] {new CreateDocFromTemplateAction()};
-		}
-		return pluginActions;
-	}
-
-	/**
 	 * Provides a list of services that are provided by this plug-in. The
 	 * services run on the web server, and can be called by the web browser
 	 * logic component of the plug-in.
@@ -352,5 +336,23 @@ public class DocTemplatePlugin extends Plugin {
 			pluginServices = new PluginService[] {new amit.doc.template.GetConfigurationService()};
 		}
 		return pluginServices;
+	}
+
+	/**
+	 * Provides a list of actions that this plug-in adds to the main toolbar of
+	 * the web client.
+	 * 
+	 * @return An array of
+	 *         <code>{@link com.ibm.ecm.extension.PluginAction PluginAction}</code>
+	 *         objects. The plug-in should return the same set of objects on
+	 *         every call.
+	 */
+	public PluginAction[] getActions() {
+		if (pluginActions.length == 0) {
+			pluginActions = new PluginAction[] {
+					new amit.doc.template.CreateDocFromTemplateAction(),
+					new amit.doc.template.RightClickDocFromTemplateAction()};
+		}
+		return pluginActions;
 	}
 }
