@@ -8,18 +8,18 @@ define(["dojo/_base/declare", "ecm/model/Action"],
                 var enabled = this.inherited(arguments);
 
                 if (items && items[0].isFolder && items[0].getContentClass) {
-                    var hasChildren = false;
-                    if (!!items[0]._folderContents) {
-                        items[0]._folderContents[""]?.items.forEach(item => {
-                            if (item.mimeType && item.mimeType === "folder") {
-                                hasChildren = true;
-                            }
-                        });
-                    }
+                    // var hasChildren = false;
+                    // if (!!items[0]._folderContents) {
+                    //     items[0]._folderContents[""]?.items.forEach(item => {
+                    //         if (item.mimeType && item.mimeType === "folder") {
+                    //             hasChildren = true;
+                    //         }
+                    //     });
+                    // }
                     return enabled &&
                         items[0].isFolder() &&
-                        items[0].getContentClass().name == "CustomerDossier" &&
-                        !hasChildren;
+                        items[0].getContentClass().name == "CustomerDossier"
+                        //&& !hasChildren;
                 }
                 return false;
             },
