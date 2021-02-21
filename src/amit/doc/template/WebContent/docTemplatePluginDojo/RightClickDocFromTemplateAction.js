@@ -38,8 +38,8 @@ define(["dojo/_base/declare",
                 Request.invokePluginService("DocTemplatePlugin",
                     "GetConfigurationService", {
                         requestCompleteCallback: function (response) {
-                            root = response.enableFolderClassName.value;
-                            folderClass = response.folderSelectorId.value;
+                            root = response.enableFolderClassName;
+                            folderClass = response.folderSelectorId;
                             console.log("root " + root);
                             console.log("folderClass " + folderClass);
                         }
