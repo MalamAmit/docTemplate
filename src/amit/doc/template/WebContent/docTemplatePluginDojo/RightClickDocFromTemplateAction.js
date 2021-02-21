@@ -7,7 +7,8 @@ define(["dojo/_base/declare", "ecm/model/Action"],
                 var enabled = this.inherited(arguments);
                 if (items && items[0].isFolder && items[0].getContentClass && !items[0]._folderContents) {
                     // var sameClass = items[0].getContentClass().name == "CustomerDossier";
-                    return enabled && items[0].isFolder() && sameClass;
+                    // return enabled && items[0].isFolder() && sameClass;
+                    return true;
                 }
                 return false;
             },
