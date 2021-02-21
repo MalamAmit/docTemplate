@@ -33,15 +33,27 @@ define(["dojo/_base/declare",
 
 
             performAction: function (repository, itemList, callback, teamspace, resultSet, parameterMap) {
+               var root = "/";
+               var folderClass;
                 Request.invokePluginService("DocTemplatePlugin",
                     "GetConfigurationService", {
                         requestCompleteCallback: function (response) {
-                            response.configuration[1].value;
-                            response.configuration[0].value;
+                            root = response.configuration[0].value;
+                            folderClass = response.configuration[1].value;
                             console.log("configuration[1] " + response.configuration[1].value);
                             console.log("configuration[0] " + response.configuration[0].value);
-                            console.log("amit 2 - requestCompleteCallback")
                         }
+                    });
+
+
+                repository.retrieveItem(
+                    root,
+                    function (rootItem) {
+                        var addContentItemDialog = new AddContentItemDialog();
+                        addContentItemDialog.setDefaultContentClass(folderClass);
+                        addContentItemDialog.show(repository, rootItem, false, false, _test, null, false, null);
+                        addContentItemDialog.set("Choose Template", "Create new doc from template");
+                        addContentItemDialog.setIntroText("You will generate new doc from the template you choose.");
                     });
             },
 
