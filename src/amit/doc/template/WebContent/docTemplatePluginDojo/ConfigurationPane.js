@@ -30,7 +30,7 @@ define(["dojo/_base/declare",
                         }
 
                         if (jsonConfig.folderSelectorId !== undefined) {
-                            this.repository.retrieveItem(jsonConfig.folderSelectorId, lang.hitch(this, function(item) {
+                            this.reposito0ry.retrieveItem(jsonConfig.folderSelectorId, lang.hitch(this, function(item) {
                                 this.folderSelector.setSelected(item);
                             }));
                         }
