@@ -36,7 +36,7 @@ public class CreateDocFromTemplateAction extends PluginAction {
 	 * @return A short description of the action.
 	 */
 	public String getName(Locale locale) {
-		return "CreateDocFromTemplateAction";
+		return "Doc from template";
 	}
 
 	/**
