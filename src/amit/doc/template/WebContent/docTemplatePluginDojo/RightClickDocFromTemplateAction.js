@@ -8,10 +8,8 @@ define(["dojo/_base/declare", "ecm/model/Action"],
                 var enabled = this.inherited(arguments);
 
                 if (items && items[0].isFolder && items[0].getContentClass) {
-                    var hasChildren = true;
-                    if (!items[0]._folderContents) {
-                        hasChildren = false
-                    } else {
+                    var hasChildren = false;
+                    if (!!items[0]._folderContents) {
                         items[0]._folderContents[""]?.items.forEach(item => {
                             if (item.mimeType && item.mimeType === "folder") {
                                 hasChildren = true;
