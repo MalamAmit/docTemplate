@@ -42,17 +42,19 @@ define(["dojo/_base/declare",
                             folderClass = response.folderSelectorId;
                             console.log("root " + root);
                             console.log("folderClass " + folderClass);
-                        }
-                    });
 
-                repository.retrieveItem(
-                    root,
-                    function (rootItem) {
-                        var addContentItemDialog = new AddContentItemDialog();
-                        addContentItemDialog.setDefaultContentClass(folderClass);
-                        addContentItemDialog.show(repository, rootItem, false, false, _test, null, false, null);
-                        addContentItemDialog.set("Choose Template", "Create new doc from template");
-                        addContentItemDialog.setIntroText("You will generate new doc from the template you choose.");
+
+
+                            repository.retrieveItem(
+                                root,
+                                function (rootItem) {
+                                    var addContentItemDialog = new AddContentItemDialog();
+                                    addContentItemDialog.setDefaultContentClass(folderClass);
+                                    addContentItemDialog.show(repository, rootItem, false, false, _test, null, false, null);
+                                    addContentItemDialog.set("Choose Template", "Create new doc from template");
+                                    addContentItemDialog.setIntroText("You will generate new doc from the template you choose.");
+                                });
+                        }
                     });
             },
 
