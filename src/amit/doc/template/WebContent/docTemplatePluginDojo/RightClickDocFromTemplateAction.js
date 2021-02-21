@@ -1,5 +1,7 @@
-define(["dojo/_base/declare", "ecm/model/Action"],
-    function (declare, Action) {
+define(["dojo/_base/declare",
+        "ecm/model/Action",
+        "ecm/model/Request"],
+    function (declare, Action, Request) {
         return declare("docTemplatePluginDojo.RightClickDocFromTemplateAction", [Action], {
 
 
@@ -19,7 +21,7 @@ define(["dojo/_base/declare", "ecm/model/Action"],
                     return enabled &&
                         items[0].isFolder() &&
                         items[0].getContentClass().name == "CustomerDossier"
-                        //&& !hasChildren;
+                    //&& !hasChildren;
                 }
                 return false;
             },
@@ -31,7 +33,16 @@ define(["dojo/_base/declare", "ecm/model/Action"],
 
 
             performAction: function (repository, itemList, callback, teamspace, resultSet, parameterMap) {
-                debugger;
+                Request.invokePluginService("DocTemplatePlugin",
+                    "GetConfigurationService", {
+                        requestCompleteCallback: function (response) {
+                            response.configuration[1].value;
+                            response.configuration[0].value;
+                            console.log("configuration[1] " + response.configuration[1].value);
+                            console.log("configuration[0] " + response.configuration[0].value);
+                            console.log("amit 2 - requestCompleteCallback")
+                        }
+                    });
             },
 
 
