@@ -56,7 +56,6 @@ define(["dojo/_base/declare",
                             //     });
                             var templatesDialog = new TemplatesDialog();
                             templatesDialog.show()
-                            itemList.value()
                         }
                     });
 
