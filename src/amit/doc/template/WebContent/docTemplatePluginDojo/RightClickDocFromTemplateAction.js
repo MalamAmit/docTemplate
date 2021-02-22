@@ -42,19 +42,23 @@ define(["dojo/_base/declare",
                             className = response.enableFolderClassName;
                             folderParams = response.folderSelectorParam;
 
+                            var _createFolderSubStructure = function (dossierFolder) {
+
+                            }
                             repository.retrieveItem(
-                                folderParams.path,
-                                function (rootItem) {
+                                "/CustomerDossiers",
+                                function (dossierRootFolderItem) {
                                     var addContentItemDialog = new AddContentItemDialog();
-                                    addContentItemDialog.setDefaultContentClass(className);
-                                    addContentItemDialog.show(repository, rootItem, false, false, _test, null, false, null);
-                                    addContentItemDialog.set("Choose Template", "Create new doc from template");
-                                    addContentItemDialog.setIntroText("You will generate new doc from the template you choose.");
+                                    addContentItemDialog.setDefaultContentClass("CustomerDossier");
+                                    addContentItemDialog.show(repository, dossierRootFolderItem, false, false, _createFolderSubStructure, null, false, null);
+                                    addContentItemDialog.set("title", "Create new Dossier");
+                                    addContentItemDialog.setIntroText("This folder will be the top level folder of your dossier.");
                                 });
                         }
                     });
 
             },
+
 
             setBrowseRootFolder: function (newRootFolder, browseFeature) {
                 debugger;
