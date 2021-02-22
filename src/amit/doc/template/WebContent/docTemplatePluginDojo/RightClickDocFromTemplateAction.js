@@ -47,10 +47,10 @@ define(["dojo/_base/declare",
                             }
                             repository.retrieveItem(
                                 "/CustomerDossiers",
-                                function (dossierRootFolderItem) {
+                                function (rootFolder) {
                                     var addContentItemDialog = new AddContentItemDialog();
-                                    addContentItemDialog.setDefaultContentClass("CustomerDossier");
-                                    addContentItemDialog.show(repository, dossierRootFolderItem, false, false, _createFolderSubStructure, null, false, null);
+                                    addContentItemDialog.setDefaultContentClass(className);
+                                    addContentItemDialog.show(repository, rootFolder, false, false, _createFolderSubStructure, null, false, null);
                                     addContentItemDialog.set("title", "Create new Dossier");
                                     addContentItemDialog.setIntroText("This folder will be the top level folder of your dossier.");
                                 });
