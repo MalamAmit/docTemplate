@@ -44,8 +44,10 @@ define(["dojo/_base/declare",
                 save: function () {
                     var configJson = {};
                     configJson.enableFolderClassName = this.enableFolderClassName.getSelected().id;
-                    configJson.folderSelectorId.id = this.folderSelector.getSelected().item.id;
-                    configJson.folderSelectorId.name = this.folderSelector.getSelected().name;
+                    configJson.folderSelectorId = {
+                        id : this.folderSelector.getSelected().item.id,
+                        name : this.folderSelector.getSelected().name
+                    }
                     this.configurationString = JSON.stringify(configJson);
                 },
 
