@@ -1,7 +1,8 @@
 define(["dojo/_base/declare",
         "ecm/model/Action",
-        "ecm/model/Request"],
-    function (declare, Action, Request) {
+        "ecm/model/Request",
+        "ecm/widget/dialog/AddContentItemDialog"],
+    function (declare, Action, Request, AddContentItemDialog) {
         return declare("docTemplatePluginDojo.RightClickDocFromTemplateAction", [Action], {
 
 
