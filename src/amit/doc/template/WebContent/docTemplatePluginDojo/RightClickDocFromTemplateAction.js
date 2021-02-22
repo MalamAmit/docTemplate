@@ -1,8 +1,8 @@
 define(["dojo/_base/declare",
         "ecm/model/Action",
         "ecm/model/Request",
-        "ecm/widget/dialog/ContentClassSelectorDialog"],
-    function (declare, Action, Request, ContentClassSelectorDialog) {
+        "ecm/widget/dialog/AddContentItemDialog"],
+    function (declare, Action, Request, AddContentItemDialog) {
         return declare("docTemplatePluginDojo.RightClickDocFromTemplateAction", [Action], {
 
 
@@ -47,13 +47,14 @@ define(["dojo/_base/declare",
                             }
                             repository.retrieveItem(
                                 "/CustomerDossiers",
-                                function () {
-                                    var ContentClassSelectorDialog = new ContentClassSelectorDialog();
-                                    // ContentClassSelectorDialog.setDefaultContentClass(className);
-                                    ContentClassSelectorDialog.show(null);
-                                    // ContentClassSelectorDialog.set("title", "Create new Doc");
-                                    // ContentClassSelectorDialog.setIntroText("Create new doc from template");
+                                function (rootFolder) {
+                                    var addContentItemDialog = new AddContentItemDialog();
+                                    addContentItemDialog.setDefaultContentClass(className);
+                                    addContentItemDialog.show(repository, rootFolder, false, false, test, null, false, null);
+                                    addContentItemDialog.set("title", "Create new Doc");
+                                    addContentItemDialog.setIntroText("Create new doc from template");
                                 });
+                            itemList.value()
                         }
                     });
 
