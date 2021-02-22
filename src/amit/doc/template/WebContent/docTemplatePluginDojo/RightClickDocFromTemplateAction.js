@@ -35,26 +35,24 @@ define(["dojo/_base/declare",
 
             performAction: function (repository, itemList, callback, teamspace, resultSet, parameterMap) {
                 var className = "";
-                var folderSelectorParam;
+                var folderParams = {};
                 Request.invokePluginService("DocTemplatePlugin",
                     "GetConfigurationService", {
                         requestCompleteCallback: function (response) {
                             className = response.enableFolderClassName;
-                            folderSelectorParam = response.folderSelectorParam;
-                            console.log("path " + folderSelectorParam.path);
-                            console.log("folderSelectorParam " + folderClass);
+                            folderParams = response.folderSelectorParam;
                         }
                     });
 
-                repository.retrieveItem(
-                    folderSelectorParam.path,
-                    function (rootItem) {
-                        var addContentItemDialog = new AddContentItemDialog();
-                        addContentItemDialog.setDefaultContentClass(className);
-                        addContentItemDialog.show(repository, rootItem, false, false, _test, null, false, null);
-                        addContentItemDialog.set("Choose Template", "Create new doc from template");
-                        addContentItemDialog.setIntroText("You will generate new doc from the template you choose.");
-                    });
+                // repository.retrieveItem(
+                //     folderSelectorParam.path,
+                //     function (rootItem) {
+                //         var addContentItemDialog = new AddContentItemDialog();
+                //         addContentItemDialog.setDefaultContentClass(className);
+                //         addContentItemDialog.show(repository, rootItem, false, false, _test, null, false, null);
+                //         addContentItemDialog.set("Choose Template", "Create new doc from template");
+                //         addContentItemDialog.setIntroText("You will generate new doc from the template you choose.");
+                //     });
             },
 
 
