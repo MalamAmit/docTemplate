@@ -41,20 +41,20 @@ define(["dojo/_base/declare",
                         requestCompleteCallback: function (response) {
                             className = response.enableFolderClassName;
                             folderParams = response.folderSelectorParam;
+
+                            repository.retrieveItem(
+                                folderParams.path,
+                                function (rootItem) {
+                                    var addContentItemDialog = new AddContentItemDialog();
+                                    addContentItemDialog.setDefaultContentClass(className);
+                                    addContentItemDialog.show(repository, rootItem, false, false, _test, null, false, null);
+                                    addContentItemDialog.set("Choose Template", "Create new doc from template");
+                                    addContentItemDialog.setIntroText("You will generate new doc from the template you choose.");
+                                });
                         }
                     });
 
-                repository.retrieveItem(
-                    folderParams.path,
-                    function (rootItem) {
-                        var addContentItemDialog = new AddContentItemDialog();
-                        addContentItemDialog.setDefaultContentClass(className);
-                        addContentItemDialog.show(repository, rootItem, false, false, _test, null, false, null);
-                        addContentItemDialog.set("Choose Template", "Create new doc from template");
-                        addContentItemDialog.setIntroText("You will generate new doc from the template you choose.");
-                    });
             },
-
 
             setBrowseRootFolder: function (newRootFolder, browseFeature) {
                 debugger;
