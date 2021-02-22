@@ -52,7 +52,7 @@ define([
                         column_3 : 0,
                         column_4 : '',
                     } ]})
-
+                debugger;
                 this.grid = new Grid({
                     cacheClass: Cache,
                     // pageSize: this._resultSet.pageSize,
@@ -72,8 +72,7 @@ define([
                     // barBottom: this._isShowPaginationBar() ? [ListViewPaginationBar] : null
 
                 });
-
-                this.grid.placeAt("gridPoint");
+                this.grid.placeAt(this.gridPoint);
                 this.grid.startup();
                 // // In IE, setting the vScrollerBuffSize helps with the focus on rows jumping back several rows when using the keyboard
                 // // to go up near the top of the list.
