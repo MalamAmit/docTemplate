@@ -35,14 +35,14 @@ define(["dojo/_base/declare",
 
             performAction: function (repository, itemList, callback, teamspace, resultSet, parameterMap) {
                 var root = "/";
-                var folderClass;
+                var folderSelectorParam;
                 Request.invokePluginService("DocTemplatePlugin",
                     "GetConfigurationService", {
                         requestCompleteCallback: function (response) {
                             root = response.enableFolderClassName;
-                            folderClass = response.folderSelectorId;
+                            folderSelectorParam = response.folderSelectorParam;
                             console.log("root " + root);
-                            console.log("folderClass " + folderClass);
+                            console.log("folderSelectorParam " + folderClass);
                         }
                     });
 
@@ -50,7 +50,7 @@ define(["dojo/_base/declare",
                     root,
                     function (rootItem) {
                         var addContentItemDialog = new AddContentItemDialog();
-                        addContentItemDialog.setDefaultContentClass(folderClass.item.name);
+                        addContentItemDialog.setDefaultContentClass(folderSelectorParam.name);
                         addContentItemDialog.show(repository, rootItem, false, false, _test, null, false, null);
                         addContentItemDialog.set("Choose Template", "Create new doc from template");
                         addContentItemDialog.setIntroText("You will generate new doc from the template you choose.");
