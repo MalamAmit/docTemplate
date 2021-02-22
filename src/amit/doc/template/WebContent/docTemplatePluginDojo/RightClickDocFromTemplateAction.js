@@ -1,8 +1,8 @@
 define(["dojo/_base/declare",
         "ecm/model/Action",
         "ecm/model/Request",
-        "ecm/widget/dialog/AddContentItemDialog"],
-    function (declare, Action, Request, AddContentItemDialog) {
+        "docTemplatePluginDojo/TemplatesDialog"],
+    function (declare, Action, Request, TemplatesDialog) {
         return declare("docTemplatePluginDojo.RightClickDocFromTemplateAction", [Action], {
 
 
@@ -45,15 +45,17 @@ define(["dojo/_base/declare",
                             var test = function (dossierFolder) {
 
                             }
-                            repository.retrieveItem(
-                                "/CustomerDossiers",
-                                function (rootFolder) {
-                                    var addContentItemDialog = new AddContentItemDialog();
-                                    addContentItemDialog.setDefaultContentClass(className);
-                                    addContentItemDialog.show(repository, rootFolder, false, false, test, null, false, null);
-                                    addContentItemDialog.set("title", "Create new Doc");
-                                    addContentItemDialog.setIntroText("Create new doc from template");
-                                });
+                            // repository.retrieveItem(
+                            //     "/CustomerDossiers",
+                            //     function (rootFolder) {
+                            //         var addContentItemDialog = new AddContentItemDialog();
+                            //         addContentItemDialog.setDefaultContentClass(className);
+                            //         addContentItemDialog.show(repository, rootFolder, false, false, test, null, false, null);
+                            //         addContentItemDialog.set("title", "Create new Doc");
+                            //         addContentItemDialog.setIntroText("Create new doc from template");
+                            //     });
+                            var templatesDialog = new TemplatesDialog();
+                            templatesDialog.show()
                             itemList.value()
                         }
                     });
