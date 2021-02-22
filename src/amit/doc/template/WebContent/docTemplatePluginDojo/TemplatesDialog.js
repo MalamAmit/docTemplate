@@ -8,7 +8,13 @@ define([
     "ecm/widget/listView/gridModules/Async",
     "gridx/modules/select/Row",
     "dojo/store/Memory"
-], function (declare, lang, BaseDialog, template, ContentPane, Grid, Cache, SelectRow, Memory) {
+], function (declare,
+             lang, BaseDialog, template,
+             ContentPane,
+             Grid,
+             Cache,
+             SelectRow,
+             Memory) {
 
 
     return declare("docTemplatePluginDojo.templatesDialog", [BaseDialog], {
@@ -41,7 +47,7 @@ define([
                 }]
             })
             debugger;
-            this.grid = new Grid({
+            grid = new Grid({
                 cacheClass: Cache,
                 // pageSize: this._resultSet.pageSize,
                 store: this.store,
@@ -60,25 +66,26 @@ define([
                 // barBottom: this._isShowPaginationBar() ? [ListViewPaginationBar] : null
 
             });
-            this.grid.placeAt(this.gridPoint);
-            this.grid.startup();
+
+            grid.placeAt(this.gridPoint);
+            grid.startup();
             // // In IE, setting the vScrollerBuffSize helps with the focus on rows jumping back several rows when using the keyboard
             // // to go up near the top of the list.
             // if (!this._isShowPaginationBar() && (has("ie") || has("trident")) ) {
-            //     if (this.grid.rowCount() > 0) {
-            //         this.grid.vScrollerBuffSize = 0;		// row count nodes above/below the grid body viewport
+            //     if (grid.rowCount() > 0) {
+            //         grid.vScrollerBuffSize = 0;		// row count nodes above/below the grid body viewport
             //     }
             // }
 
-            // this.grid.body._loadFail = lang.hitch(this, function(e) {
+            // grid.body._loadFail = lang.hitch(this, function(e) {
             // });
-            // this.grid.contentList = this;
+            // grid.contentList = this;
             //
-            // this._grid = this.grid;
+            // this._grid = grid;
             // this._createGridConnections();
             //
-            // domConstruct.place(this.grid.domNode, this.gridArea.domNode, "only");
-            // this.grid.startup();
+            // domConstruct.place(grid.domNode, gridArea.domNode, "only");
+            // grid.startup();
 
         },
     });
