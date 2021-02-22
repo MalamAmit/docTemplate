@@ -41,7 +41,7 @@ define(["dojo/_base/declare",
                         requestCompleteCallback: function (response) {
                             className = response.enableFolderClassName;
                             folderSelectorParam = response.folderSelectorParam;
-                            console.log("root " + root);
+                            console.log("path " + folderSelectorParam.path);
                             console.log("folderSelectorParam " + folderClass);
                         }
                     });
