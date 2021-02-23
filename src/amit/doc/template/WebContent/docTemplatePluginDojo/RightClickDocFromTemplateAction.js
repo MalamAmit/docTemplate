@@ -7,6 +7,7 @@ define(["dojo/_base/declare",
 
 
             isEnabled: function (repository, listType, items, teamspace, resultSet) {
+                debugger;
 
                 var enabled = this.inherited(arguments);
 
@@ -29,16 +30,19 @@ define(["dojo/_base/declare",
 
 
             isVisible: function (repository, listType) {
+                debugger;
                 return this.inherited(arguments);
             },
 
 
             performAction: function (repository, itemList, callback, teamspace, resultSet, parameterMap) {
+                debugger;
                 var className = "";
                 var folderParams = {};
                 Request.invokePluginService("DocTemplatePlugin",
                     "GetConfigurationService", {
                         requestCompleteCallback: function (response) {
+                            debugger;
                             className = response.enableFolderClassName;
                             folderParams = response.folderSelectorParam;
 
