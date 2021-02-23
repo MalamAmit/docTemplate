@@ -9,7 +9,9 @@ define([
     "gridx/modules/select/Row",
     "dojo/store/Memory"
 ], function (declare,
-             lang, BaseDialog, template,
+             lang,
+             BaseDialog,
+             template,
              ContentPane,
              Cache,
              Grid,
