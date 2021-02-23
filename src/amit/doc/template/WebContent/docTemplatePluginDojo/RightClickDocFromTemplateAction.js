@@ -22,7 +22,7 @@ define(["dojo/_base/declare",
                     // }
                     return enabled &&
                         items[0].isFolder() &&
-                        items[0].getContentClass().name == "CustomerDossier"
+                        items[0].getContentClass().name == "AmitFolder"
                     //&& !hasChildren;
                 }
                 return false;
