@@ -4,20 +4,20 @@ define([
     "ecm/widget/dialog/BaseDialog",
     "dojo/text!./templates/TemplatesDialog.html",
     "dijit/layout/ContentPane",
-    "gridx/Grid",
     "ecm/widget/listView/gridModules/Async",
+    "gridx/Grid",
     "gridx/modules/select/Row",
     "dojo/store/Memory"
 ], function (declare,
              lang, BaseDialog, template,
              ContentPane,
-             Grid,
              Cache,
+             Grid,
              SelectRow,
              Memory) {
 
 
-    return declare("docTemplatePluginDojo.templatesDialog", [BaseDialog], {
+    return declare("docTemplatePluginDojo.TemplatesDialog", [BaseDialog], {
         constructor: function () {
             this._createGrid();
         },
@@ -36,18 +36,16 @@ define([
                     id: 1,
                     column_1: 'Feed4',
                     column_2: '444',
-                    column_3: '',
-                    column_4: ''
+                    column_3: ''
                 }, {
                     id: 2,
                     column_1: 'Feed5',
                     column_2: '555',
-                    column_3: 0,
-                    column_4: '',
+                    column_3: 0
                 }]
             })
             debugger;
-            grid = new Grid({
+            let grid = new Grid({
                 cacheClass: Cache,
                 // pageSize: this._resultSet.pageSize,
                 store: this.store,
@@ -64,7 +62,6 @@ define([
                 contentList: this,
                 selectRowTriggerOnCell: true,
                 // barBottom: this._isShowPaginationBar() ? [ListViewPaginationBar] : null
-
             });
 
             grid.placeAt(this.gridPoint);
