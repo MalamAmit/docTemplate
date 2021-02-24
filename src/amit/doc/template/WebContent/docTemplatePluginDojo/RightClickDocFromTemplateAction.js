@@ -73,14 +73,14 @@ define(["dojo/_base/declare",
                                 showSearch: true
                             });
                             this.search.setTitle("Choose template");
-                            this.search.addButton("buttonLabel", "_funcClick", false, true);
+                            this.search.addButton("buttonLabel", "funcClick", false, true, null, null);
                             this.search.show();
                         }
                     });
 
             },
 
-            _funcClick: function() {
+            funcClick: function() {
                 console.log("amit")
             },
 
