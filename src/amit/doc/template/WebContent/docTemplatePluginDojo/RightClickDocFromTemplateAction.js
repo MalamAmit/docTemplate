@@ -73,11 +73,15 @@ define(["dojo/_base/declare",
                                 showSearch: true
                             });
                             this.search.setTitle("Choose template");
-
+                            this.search.addButton("buttonLabel", this.clickFunction, false, true);
                             this.search.show();
                         }
                     });
 
+            },
+
+            clickFunction: function (){
+              debugger;
             },
 
 
