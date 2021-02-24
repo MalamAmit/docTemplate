@@ -49,9 +49,6 @@ define(["dojo/_base/declare",
 
                             }
 
-                            var funcClick = function () {
-                                console.log("adfg")
-                            }
 
                             // repository.retrieveItem(
                             //     "/CustomerDossiers",
@@ -80,13 +77,15 @@ define(["dojo/_base/declare",
                             });
 
                             this.search.setTitle("Choose template");
-                            this.search.addButton("buttonLabel", "funcClick", false, true);
+                            this.search.addButton("buttonLabel", this.testFunc, false, true);
                             this.search.show();
                         }
 
                     });
             },
-
+            testFunc: function () {
+                debugger;
+            },
 
             setBrowseRootFolder: function (newRootFolder, browseFeature) {
                 browseFeature.folderTree.setFolder(newRootFolder);
