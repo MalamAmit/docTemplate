@@ -72,7 +72,7 @@ define(["dojo/_base/declare",
                                 repository: ecm.model.desktop.getRepository("OS1"),
                                 showSearch: true
                             });
-                            this.search.setSize(500, 500);
+                            this.search.setMaximized(false);
                             this.search.show();
                         }
                     });
