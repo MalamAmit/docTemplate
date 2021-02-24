@@ -38,18 +38,16 @@ define(["dojo/_base/declare",
             performAction: function (repository, itemList, callback, teamspace, resultSet, parameterMap) {
                 var className = "";
                 var folderParams = {};
+                var self = this;
                 Request.invokePluginService("DocTemplatePlugin",
                     "GetConfigurationService", {
                         requestCompleteCallback: function (response) {
                             className = response.enableFolderClassName;
                             folderParams = response.folderSelectorParam;
 
-
                             var test = function (dossierFolder) {
 
                             }
-
-
                             // repository.retrieveItem(
                             //     "/CustomerDossiers",
                             //     function (rootFolder) {
@@ -61,7 +59,6 @@ define(["dojo/_base/declare",
                             //     });
                             // var templatesDialog = new TemplatesDialog();
                             // templatesDialog.show()
-
                             // var cls = item._unifiedSearch ? UnifiedSearchTemplate : SearchTemplate;
                             var template = new SearchTemplate({
                                 id: "StoredSearch,{0DC081DE-3B0D-42C6-B213-63729230F9A9},{60F57A6E-0000-CD1D-815E-3F792C408580}",
@@ -77,7 +74,7 @@ define(["dojo/_base/declare",
                             });
 
                             this.search.setTitle("Choose template");
-                            this.search.addButton("buttonLabel", this.testFunc, false, true);
+                            this.search.addButton("buttonLabel", self.testFunc, false, true);
                             this.search.show();
                         }
 
