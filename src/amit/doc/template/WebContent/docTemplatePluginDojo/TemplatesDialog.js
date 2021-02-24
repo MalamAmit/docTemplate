@@ -66,8 +66,8 @@ define([
                 // barBottom: this._isShowPaginationBar() ? [ListViewPaginationBar] : null
             });
 
-            grid.placeAt(this.gridPoint);
-            grid.startup();
+            // grid.placeAt(this.gridPoint);
+            // grid.startup();
             // // In IE, setting the vScrollerBuffSize helps with the focus on rows jumping back several rows when using the keyboard
             // // to go up near the top of the list.
             // if (!this._isShowPaginationBar() && (has("ie") || has("trident")) ) {
