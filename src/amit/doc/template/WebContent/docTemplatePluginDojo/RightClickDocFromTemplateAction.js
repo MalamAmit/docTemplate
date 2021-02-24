@@ -72,10 +72,7 @@ define(["dojo/_base/declare",
                                 repository: ecm.model.desktop.getRepository("OS1"),
                                 showSearch: true
                             });
-                            this.search.setResizable(false);
-                            this.search.setMaximized(false);
-                            this.search.setExpandable(false);
-                            this.search.setTitle("title");
+                            this.search.setTitle("Choose template");
 
                             this.search.show();
                         }
