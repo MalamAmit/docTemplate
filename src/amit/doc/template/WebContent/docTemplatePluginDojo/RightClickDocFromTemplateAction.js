@@ -73,6 +73,8 @@ define(["dojo/_base/declare",
                                 showSearch: true
                             });
                             this.search.setMaximized(false);
+                            this.search.setSize(600,900);
+
                             this.search.show();
                         }
                     });
