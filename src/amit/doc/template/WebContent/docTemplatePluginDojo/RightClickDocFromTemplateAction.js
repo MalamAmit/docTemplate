@@ -44,9 +44,15 @@ define(["dojo/_base/declare",
                             className = response.enableFolderClassName;
                             folderParams = response.folderSelectorParam;
 
+
                             var test = function (dossierFolder) {
 
                             }
+
+                            var funcClick = function () {
+                                console.log("adfg")
+                            }
+
                             // repository.retrieveItem(
                             //     "/CustomerDossiers",
                             //     function (rootFolder) {
@@ -72,13 +78,11 @@ define(["dojo/_base/declare",
                                 repository: ecm.model.desktop.getRepository("OS1"),
                                 showSearch: true
                             });
+
                             this.search.setTitle("Choose template");
                             this.search.addButton("buttonLabel", "funcClick", false, true);
                             this.search.show();
-                        },
-                        funcClick: function() {
-                            console.log("amit")
-                        },
+                        }
 
                     });
             },
