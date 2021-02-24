@@ -2,8 +2,9 @@ define(["dojo/_base/declare",
         "ecm/model/Action",
         "ecm/model/Request",
         "docTemplatePluginDojo/TemplatesDialog",
-        "ecm/widget/search/SearchDialog"],
-    function (declare, Action, Request, TemplatesDialog, SearchDialog) {
+        "ecm/widget/search/SearchDialog",
+        "ecm/model/SearchTemplate"],
+    function (declare, Action, Request, TemplatesDialog, SearchDialog, SearchTemplate) {
         return declare("docTemplatePluginDojo.RightClickDocFromTemplateAction", [Action], {
 
 
@@ -61,7 +62,20 @@ define(["dojo/_base/declare",
                             //     });
                             // var templatesDialog = new TemplatesDialog();
                             // templatesDialog.show()
-                            this.search = new SearchDialog();
+
+                            // var cls = item._unifiedSearch ? UnifiedSearchTemplate : SearchTemplate;
+                            var template = new SearchTemplate({
+                                id: "StoredSearch,{0DC081DE-3B0D-42C6-B213-63729230F9A9},{60F57A6E-0000-CD1D-815E-3F792C408580}",
+                                name: "StoredSearch",
+                                repository: ecm.model.desktop.getRepository("OS1"),
+                                description: "item.description"
+                            });
+
+                            this.search = new SearchDialog({
+                                searchTemplate: template,
+                                repository: ecm.model.desktop.getRepository("OS1"),
+                                showSearch: true
+                            });
                             this.search.show();
                         }
                     });
