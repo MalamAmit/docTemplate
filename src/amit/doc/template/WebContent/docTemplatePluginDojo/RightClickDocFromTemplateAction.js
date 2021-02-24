@@ -75,7 +75,7 @@ define(["dojo/_base/declare",
                             });
 
                             this.search.setTitle("Choose template");
-                            this.setMaximized(false)
+                            this.search.setMaximized(false)
                             this.search.addButton("buttonLabel", self.testFunc, false, true);
                             this.search.show();
                         }
