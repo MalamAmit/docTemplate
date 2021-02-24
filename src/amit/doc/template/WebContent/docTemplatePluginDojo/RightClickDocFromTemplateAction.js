@@ -1,8 +1,9 @@
 define(["dojo/_base/declare",
         "ecm/model/Action",
         "ecm/model/Request",
-        "docTemplatePluginDojo/TemplatesDialog"],
-    function (declare, Action, Request, TemplatesDialog) {
+        "docTemplatePluginDojo/TemplatesDialog",
+        "ecm/widget/search/SearchDialog"],
+    function (declare, Action, Request, TemplatesDialog, SearchDialog) {
         return declare("docTemplatePluginDojo.RightClickDocFromTemplateAction", [Action], {
 
 
@@ -58,8 +59,10 @@ define(["dojo/_base/declare",
                             //         addContentItemDialog.set("title", "Create new Doc");
                             //         addContentItemDialog.setIntroText("Create new doc from template");
                             //     });
-                            var templatesDialog = new TemplatesDialog();
-                            templatesDialog.show()
+                            // var templatesDialog = new TemplatesDialog();
+                            // templatesDialog.show()
+                            this.search = new SearchDialog();
+                            this.search.show();
                         }
                     });
 
