@@ -9,7 +9,6 @@ define(["dojo/_base/declare",
 
 
             isEnabled: function (repository, listType, items, teamspace, resultSet) {
-                debugger;
 
                 var enabled = this.inherited(arguments);
 
@@ -32,19 +31,16 @@ define(["dojo/_base/declare",
 
 
             isVisible: function (repository, listType) {
-                debugger;
                 return this.inherited(arguments);
             },
 
 
             performAction: function (repository, itemList, callback, teamspace, resultSet, parameterMap) {
-                debugger;
                 var className = "";
                 var folderParams = {};
                 Request.invokePluginService("DocTemplatePlugin",
                     "GetConfigurationService", {
                         requestCompleteCallback: function (response) {
-                            debugger;
                             className = response.enableFolderClassName;
                             folderParams = response.folderSelectorParam;
 
@@ -76,7 +72,7 @@ define(["dojo/_base/declare",
                                 repository: ecm.model.desktop.getRepository("OS1"),
                                 showSearch: true
                             });
-                            this.search.size(100, 100);
+                            this.search.setSize(500, 500);
                             this.search.show();
                         }
                     });
@@ -85,7 +81,6 @@ define(["dojo/_base/declare",
 
 
             setBrowseRootFolder: function (newRootFolder, browseFeature) {
-                debugger;
                 browseFeature.folderTree.setFolder(newRootFolder);
                 // optionally set content list to the first child.
             }
