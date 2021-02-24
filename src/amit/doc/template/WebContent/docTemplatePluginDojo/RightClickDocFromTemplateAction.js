@@ -70,7 +70,8 @@ define(["dojo/_base/declare",
                             this.search = new SearchDialog({
                                 searchTemplate: template,
                                 repository: ecm.model.desktop.getRepository("OS1"),
-                                showSearch: true
+                                showSearch: true,
+                                style: {minHeight: "700px", minWidth: "1000px"}
                             });
 
                             this.search.setTitle("Choose template");
