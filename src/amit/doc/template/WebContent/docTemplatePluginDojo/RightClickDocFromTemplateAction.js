@@ -99,7 +99,7 @@ define(["dojo/_base/declare",
                 }
                 var selected = selectedArr[0];
                 console.log("selected", selected);
-                this.search.disconnect();
+                this.search.remove();
 
                 // this.addDocumentDialog = new AddDocumentDialog();
                 // targetRepository = ecm.model.desktop.getRepository("OS1");
