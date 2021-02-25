@@ -64,31 +64,31 @@ define(["dojo/_base/declare",
                                 description: "item.description"
                             });
 
-                            self.search = new SearchDialog({
+                            self.srchDialog = new SearchDialog({
                                 searchTemplate: template,
                                 repository: ecm.model.desktop.getRepository("OS1"),
                                 showSearch: true,
                                 style: {minHeight: "700px", minWidth: "1000px"}
                             });
 
-                            self.search.setTitle("Choose template");
-                            self.search.setMaximized(false)
-                            self.search.addButton("Select Template", self.selectTemplate, false, true);
-                            self.search.show();
-                            self.search.destroy();
+                            self.srchDialog.setTitle("Choose template");
+                            self.srchDialog.setMaximized(false)
+                            self.srchDialog.addButton("Select Template", self.selectTemplate, false, true);
+                            self.srchDialog.show();
                         }
                     });
             },
 
             selectTemplate: function () {
-                var selectedArr = this.search.searchResults.grid.select.row._lastSelectedIds;
-                if (!selectedArr) {
-                    console.log("no item selected in this grid");
-                    return;
-                }
-                var selected = selectedArr[0];
-                console.log("selected", selected);
-                this.search.remove();
+                this.srchDialog.destroy();
+
+                // var selectedArr = this.srchDialog.searchResults.grid.select.row._lastSelectedIds;
+                // if (!selectedArr) {
+                //     console.log("no item selected in this grid");
+                //     return;
+                // }
+                // var selected = selectedArr[0];
+                // console.log("selected", selected);
 
                 // this.addDocumentDialog = new AddDocumentDialog();
                 // targetRepository = ecm.model.desktop.getRepository("OS1");
