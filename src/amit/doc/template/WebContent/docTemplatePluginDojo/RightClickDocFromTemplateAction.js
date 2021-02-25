@@ -45,10 +45,27 @@ define(["dojo/_base/declare",
 
 
             performAction: function (repository, itemList, callback, teamspace, resultSet, parameterMap) {
-                var baseD = new BaseDialog();
-                baseD.show();
-                baseD.destroy();
+                // var baseD = new BaseDialog();
+                // baseD.show();
+                // baseD.destroy();
 
+
+                var template = new SearchTemplate({
+                    id: "StoredSearch,{0DC081DE-3B0D-42C6-B213-63729230F9A9},{60F57A6E-0000-CD1D-815E-3F792C408580}",
+                    name: "StoredSearch",
+                    repository: ecm.model.desktop.getRepository("OS1"),
+                    description: "item.description"
+                });
+
+                self.search = new SearchDialog({
+                    searchTemplate: template,
+                    repository: ecm.model.desktop.getRepository("OS1"),
+                    showSearch: true,
+                    style: {minHeight: "700px", minWidth: "1000px"}
+                });
+
+                self.search.show();
+                self.search.destroy();
 
                 // var className = "";
                 // var folderParams = {};
@@ -100,7 +117,7 @@ define(["dojo/_base/declare",
 
             selectTemplate: function () {
                 var selectedArr = this.search.searchResults.grid.select.row._lastSelectedIds;
-                if (!selectedArr){
+                if (!selectedArr) {
                     console.log("no item selected in this grid");
                     return;
                 }
