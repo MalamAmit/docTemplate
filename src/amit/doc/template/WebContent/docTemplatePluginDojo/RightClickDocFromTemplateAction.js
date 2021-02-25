@@ -46,7 +46,8 @@ define(["dojo/_base/declare",
 
             performAction: function (repository, itemList, callback, teamspace, resultSet, parameterMap) {
                 var baseD = new BaseDialog();
-                baseD.show()
+                baseD.show();
+                baseD.destroy();
 
 
                 // var className = "";
