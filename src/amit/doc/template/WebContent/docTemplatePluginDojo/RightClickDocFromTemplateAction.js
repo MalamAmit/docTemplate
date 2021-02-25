@@ -69,7 +69,7 @@ define(["dojo/_base/declare",
                             // var cls = item._unifiedSearch ? UnifiedSearchTemplate : SearchTemplate;
 
                             //todo: replace id from configuration
-                            var template = new SearchTemplate({
+                            this.template = new SearchTemplate({
                                 id: "StoredSearch,{0DC081DE-3B0D-42C6-B213-63729230F9A9},{60F57A6E-0000-CD1D-815E-3F792C408580}",
                                 name: "StoredSearch",
                                 repository: ecm.model.desktop.getRepository("OS1"),
@@ -92,13 +92,19 @@ define(["dojo/_base/declare",
             },
 
             selectTemplate: function () {
-                var selected = this.search.searchResults.grid.select.row._lastSelectedIds[0];
+                var selectedArr = this.search.searchResults.grid.select.row._lastSelectedIds;
+                if (!selectedArr){
+                    console.log("no item selected in this grid");
+                    return;
+                }
+                var selected = selectedArr[0];
                 console.log("selected", selected);
                 this.search.destroy();
-                this.addDocumentDialog = new AddDocumentDialog();
-                targetRepository = ecm.model.desktop.getRepository("OS1");
-                parentFolder = targetRepository.rootItem
-                this.addDocumentDialog.show(targetRepository, parentFolder, true, false, null, null, true);
+                this.template.destroy()
+                // this.addDocumentDialog = new AddDocumentDialog();
+                // targetRepository = ecm.model.desktop.getRepository("OS1");
+                // parentFolder = targetRepository.rootItem
+                // this.addDocumentDialog.show(targetRepository, parentFolder, true, false, null, null, true);
 
             },
 
