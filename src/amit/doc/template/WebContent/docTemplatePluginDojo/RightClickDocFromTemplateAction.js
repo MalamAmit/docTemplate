@@ -64,6 +64,9 @@ define(["dojo/_base/declare",
                     style: {minHeight: "700px", minWidth: "1000px"}
                 });
 
+                self.search.setTitle("Choose template");
+                self.search.setMaximized(false)
+                self.search.addButton("Select Template", self.selectTemplate, false, true);
                 self.search.show();
                 self.search.destroy();
 
