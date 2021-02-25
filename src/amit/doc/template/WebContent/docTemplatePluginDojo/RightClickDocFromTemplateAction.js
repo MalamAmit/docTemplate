@@ -3,8 +3,15 @@ define(["dojo/_base/declare",
         "ecm/model/Request",
         "docTemplatePluginDojo/TemplatesDialog",
         "ecm/widget/search/SearchDialog",
-        "ecm/model/SearchTemplate"],
-    function (declare, Action, Request, TemplatesDialog, SearchDialog, SearchTemplate) {
+        "ecm/model/SearchTemplate",
+        "ecm/widget/dialog/AddDocumentFromEditServiceTemplateDialog"],
+    function (declare,
+              Action,
+              Request,
+              TemplatesDialog,
+              SearchDialog,
+              SearchTemplate,
+              AddDocumentDialog) {
         return declare("docTemplatePluginDojo.RightClickDocFromTemplateAction", [Action], {
 
 
@@ -87,6 +94,12 @@ define(["dojo/_base/declare",
             selectTemplate: function () {
                 var selected = this.search.searchResults.grid.select.row._lastSelectedIds[0];
                 console.log("selected", selected);
+                this.search.destroy();
+                this.addDocumentDialog = new AddDocumentDialog();
+                targetRepository = ecm.model.desktop.getRepository("OS1");
+                parentFolder = targetRepository.rootItem
+                this.addDocumentDialog.show(targetRepository, parentFolder, true, false, null, null, true);
+
             },
 
             setBrowseRootFolder: function (newRootFolder, browseFeature) {
