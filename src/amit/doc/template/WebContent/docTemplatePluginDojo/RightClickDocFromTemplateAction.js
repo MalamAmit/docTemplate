@@ -73,30 +73,29 @@ define(["dojo/_base/declare",
 
                             self.srchDialog.setTitle("Choose template");
                             self.srchDialog.setMaximized(false)
-                            self.srchDialog.addButton("Select Template", self.selectTemplate(self), false, true);
+                            self.srchDialog.addButton("Select Template", self.selectTemplate, false, true);
                             self.srchDialog.show();
 
-                        }
+                        }, selectTemplate: function () {
+                            this.srchDialog.destroy();
+
+                            // var selectedArr = this.srchDialog.searchResults.grid.select.row._lastSelectedIds;
+                            // if (!selectedArr) {
+                            //     console.log("no item selected in this grid");
+                            //     return;
+                            // }
+                            // var selected = selectedArr[0];
+                            // console.log("selected", selected);
+
+                            // this.addDocumentDialog = new AddDocumentDialog();
+                            // targetRepository = ecm.model.desktop.getRepository("OS1");
+                            // parentFolder = targetRepository.rootItem
+                            // this.addDocumentDialog.show(targetRepository, parentFolder, true, false, null, null, true);
+
+                        },
                     });
             },
 
-            selectTemplate: function (oSelf) {
-                oSelf.srchDialog.destroy();
-
-                // var selectedArr = this.srchDialog.searchResults.grid.select.row._lastSelectedIds;
-                // if (!selectedArr) {
-                //     console.log("no item selected in this grid");
-                //     return;
-                // }
-                // var selected = selectedArr[0];
-                // console.log("selected", selected);
-
-                // this.addDocumentDialog = new AddDocumentDialog();
-                // targetRepository = ecm.model.desktop.getRepository("OS1");
-                // parentFolder = targetRepository.rootItem
-                // this.addDocumentDialog.show(targetRepository, parentFolder, true, false, null, null, true);
-
-            },
 
             setBrowseRootFolder: function (newRootFolder, browseFeature) {
                 browseFeature.folderTree.setFolder(newRootFolder);
