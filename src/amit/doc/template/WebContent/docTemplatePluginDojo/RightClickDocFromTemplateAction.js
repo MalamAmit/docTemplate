@@ -76,17 +76,17 @@ define(["dojo/_base/declare",
                                 description: "item.description"
                             });
 
-                            this.search = new SearchDialog({
+                            self.search = new SearchDialog({
                                 searchTemplate: template,
                                 repository: ecm.model.desktop.getRepository("OS1"),
                                 showSearch: true,
                                 style: {minHeight: "700px", minWidth: "1000px"}
                             });
 
-                            this.search.setTitle("Choose template");
-                            this.search.setMaximized(false)
-                            this.search.addButton("Select Template", self.selectTemplate, false, true);
-                            this.search.show();
+                            self.search.setTitle("Choose template");
+                            self.search.setMaximized(false)
+                            self.search.addButton("Select Template", self.selectTemplate, false, true);
+                            self.search.show();
                         }
                     });
             },
