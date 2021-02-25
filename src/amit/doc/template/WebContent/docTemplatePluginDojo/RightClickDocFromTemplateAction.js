@@ -83,7 +83,8 @@ define(["dojo/_base/declare",
                     });
             },
             testFunc: function () {
-                debugger;
+                var selected = this.search.searchResults.grid.select.row._lastSelectedIds[0];
+                console.log("selected", selected);
             },
 
             setBrowseRootFolder: function (newRootFolder, browseFeature) {
