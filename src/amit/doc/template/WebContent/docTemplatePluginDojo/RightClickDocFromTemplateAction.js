@@ -60,6 +60,8 @@ define(["dojo/_base/declare",
                             // var templatesDialog = new TemplatesDialog();
                             // templatesDialog.show()
                             // var cls = item._unifiedSearch ? UnifiedSearchTemplate : SearchTemplate;
+
+                            //todo: replace id from configuration
                             var template = new SearchTemplate({
                                 id: "StoredSearch,{0DC081DE-3B0D-42C6-B213-63729230F9A9},{60F57A6E-0000-CD1D-815E-3F792C408580}",
                                 name: "StoredSearch",
@@ -76,13 +78,13 @@ define(["dojo/_base/declare",
 
                             this.search.setTitle("Choose template");
                             this.search.setMaximized(false)
-                            this.search.addButton("buttonLabel", self.testFunc, false, true);
+                            this.search.addButton("Select Template", self.selectTemplate, false, true);
                             this.search.show();
                         }
-
                     });
             },
-            testFunc: function () {
+
+            selectTemplate: function () {
                 var selected = this.search.searchResults.grid.select.row._lastSelectedIds[0];
                 console.log("selected", selected);
             },
