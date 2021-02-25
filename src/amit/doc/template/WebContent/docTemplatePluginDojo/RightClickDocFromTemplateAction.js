@@ -73,14 +73,15 @@ define(["dojo/_base/declare",
 
                             self.srchDialog.setTitle("Choose template");
                             self.srchDialog.setMaximized(false)
-                            self.srchDialog.addButton("Select Template", self.selectTemplate, false, true);
+                            self.srchDialog.addButton("Select Template", self.selectTemplate(self), false, true);
                             self.srchDialog.show();
+
                         }
                     });
             },
 
-            selectTemplate: function () {
-                this.srchDialog.destroy();
+            selectTemplate: function (oSelf) {
+                oSelf.srchDialog.destroy();
 
                 // var selectedArr = this.srchDialog.searchResults.grid.select.row._lastSelectedIds;
                 // if (!selectedArr) {
