@@ -80,9 +80,8 @@ define(["dojo/_base/declare",
 
 
             selectTemplate: function (dialog) {
-                dialog.destroy();
-
                 var selectedArr = dialog.searchResults.grid.select.row._lastSelectedIds;
+                dialog.destroy();
                 if (!selectedArr) {
                     console.log("no item selected in this grid");
                     return;
