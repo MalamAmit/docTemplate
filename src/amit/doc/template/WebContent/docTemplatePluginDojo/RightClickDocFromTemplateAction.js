@@ -74,7 +74,7 @@ define(["dojo/_base/declare",
                             self.srchDialog.setMaximized(false)
                             // self.srchDialog.addButton("Select Template", self.selectTemplate, false, true);
                             // self.srchDialog.addButton("Select Template", self.selectTemplate, false, true);
-                            self.srchDialog.addButton("Select Template", function(){ self.selectTemplate("Hello World!") }, false, true);
+                            self.srchDialog.addButton("Select Template", function(){ self.selectTemplate(self.srchDialog) }, false, true);
                             self.srchDialog.show();
                         }
                     });
