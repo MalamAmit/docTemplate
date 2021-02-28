@@ -56,13 +56,13 @@ define(["dojo/_base/declare",
                             className = response.enableFolderClassName;
                             folderParams = response.folderSelectorParam;
 
-                           self.createSearchDialog();
+                           self.createSearchDialog(self);
                         }
                     });
             },
 
 
-            createSearchDialog: function () {
+            createSearchDialog: function (self) {
                 //todo: replace id from configuration
                 var template = new SearchTemplate({
                     id: "StoredSearch,{0DC081DE-3B0D-42C6-B213-63729230F9A9},{60F57A6E-0000-CD1D-815E-3F792C408580}",
@@ -71,18 +71,18 @@ define(["dojo/_base/declare",
                     description: "item.description"
                 });
 
-                this.srchDialog = new SearchDialog({
+                self.srchDialog = new SearchDialog({
                     searchTemplate: template,
                     repository: ecm.model.desktop.getRepository("OS1"),
                     showSearch: true,
                     style: {minHeight: "700px", minWidth: "1000px"}
                 });
 
-                this.srchDialog.setTitle("Choose template");
-                this.srchDialog.setMaximized(false)
-                // this.srchDialog.addButton("Select Template", this.selectTemplate, false, true);
-                this.srchDialog.addButton("Select Template", this.selectTemplate, false, true);
-                this.srchDialog.show();
+                self.srchDialog.setTitle("Choose template");
+                self.srchDialog.setMaximized(false)
+                // self.srchDialog.addButton("Select Template", self.selectTemplate, false, true);
+                self.srchDialog.addButton("Select Template", self.selectTemplate, false, true);
+                self.srchDialog.show();
             },
 
             selectTemplate: function () {
