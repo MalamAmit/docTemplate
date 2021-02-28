@@ -45,7 +45,25 @@ define(["dojo/_base/declare",
 
 
             performAction: function (repository, itemList, callback, teamspace, resultSet, parameterMap) {
+                //todo: replace id from configuration
+                var template = new SearchTemplate({
+                    id: "StoredSearch,{0DC081DE-3B0D-42C6-B213-63729230F9A9},{60F57A6E-0000-CD1D-815E-3F792C408580}",
+                    name: "StoredSearch",
+                    repository: ecm.model.desktop.getRepository("OS1"),
+                    description: "item.description"
+                });
 
+                this.srchDialog = new SearchDialog({
+                    searchTemplate: template,
+                    repository: ecm.model.desktop.getRepository("OS1"),
+                    showSearch: true,
+                    style: {minHeight: "700px", minWidth: "1000px"}
+                });
+
+                this.srchDialog.setTitle("Choose template");
+                this.srchDialog.setMaximized(false)
+                // self.srchDialog.addButton("Select Template", self.selectTemplate, false, true);
+                this.srchDialog.addButton("Select Template", this.selectTemplate, false, true);
 
                 var className = "";
                 var folderParams = {};
@@ -56,28 +74,7 @@ define(["dojo/_base/declare",
                             className = response.enableFolderClassName;
                             folderParams = response.folderSelectorParam;
 
-                            //todo: replace id from configuration
-                            var template = new SearchTemplate({
-                                id: "StoredSearch,{0DC081DE-3B0D-42C6-B213-63729230F9A9},{60F57A6E-0000-CD1D-815E-3F792C408580}",
-                                name: "StoredSearch",
-                                repository: ecm.model.desktop.getRepository("OS1"),
-                                description: "item.description"
-                            });
-
-                            self.srchDialog = new SearchDialog({
-                                searchTemplate: template,
-                                repository: ecm.model.desktop.getRepository("OS1"),
-                                showSearch: true,
-                                style: {minHeight: "700px", minWidth: "1000px"}
-                            });
-
-                            self.srchDialog.setTitle("Choose template");
-                            self.srchDialog.setMaximized(false)
-                            // self.srchDialog.addButton("Select Template", self.selectTemplate, false, true);
-                            self.srchDialog.addButton("Select Template", "test", false, true);
                             self.srchDialog.show();
-                        }, test: function () {
-                            debugger;
                         }
                     });
             },
@@ -92,7 +89,7 @@ define(["dojo/_base/declare",
                 // }
                 // var selected = selectedArr[0];
                 // console.log("selected", selected);
-
+                //
                 // this.addDocumentDialog = new AddDocumentDialog();
                 // targetRepository = ecm.model.desktop.getRepository("OS1");
                 // parentFolder = targetRepository.rootItem
