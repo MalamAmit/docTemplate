@@ -59,10 +59,10 @@ define(["dojo/_base/declare",
                             folderParams = response.folderSelectorParam;
 
                             var template = new SearchTemplate({
-                                id: folderParams.id,
+                                id: "StoredSearch,{0DC081DE-3B0D-42C6-B213-63729230F9A9},{60F57A6E-0000-CD1D-815E-3F792C408580}",
                                 name: "StoredSearch",
                                 repository: ecm.model.desktop.getRepository("OS1"),
-                                description: "description..."
+                                description: "item.description"
                             });
 
                             self.srchDialog = new SearchDialog({
