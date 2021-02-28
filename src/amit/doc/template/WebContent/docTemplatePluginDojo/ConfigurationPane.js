@@ -33,8 +33,9 @@ define(["dojo/_base/declare",
                     this.inherited(arguments);
                     this.configurationGrid = this.createGrid();
                 },
-                createGrid: function () {
 
+
+                createGrid: function () {
                     var store = new MemoryStore({
                         idProperty: "id",
                         data: []
@@ -83,9 +84,9 @@ define(["dojo/_base/declare",
                     grid.startup();
                     grid.resize();
 
-                    this.own(aspect.after(grid.select.row, "onSelectionChange", lang.hitch(this, function (evt) {
-                        this.checkFldAssButtons();
-                    }), true));
+                    // this.own(aspect.after(grid.select.row, "onSelectionChange", lang.hitch(this, function (evt) {
+                    //     this.checkFldAssButtons();
+                    // }), true));
 
 
                     return grid;
@@ -93,39 +94,39 @@ define(["dojo/_base/declare",
 
 
                 load: function (callback) {
-                    this.repository = ecm.model.desktop.getRepositoryByName("OS1");
-                    this.enableFolderClassName.setRepository(this.repository);
-                    this.enableFolderClassName.setVisibleOnlyForFolder(true);
-                    this.enableFolderClassName.setRootClassId("Folder");
-                    this.folderSelector.setRoot(this.repository);
-
-                    if (this.configurationString) {
-                        var jsonConfig = JSON.parse(this.configurationString);
-
-                        if (jsonConfig.enableFolderClassName !== undefined) {
-                            this.enableFolderClassName.setSelected(jsonConfig.enableFolderClassName);
-                        }
-
-                        if (jsonConfig.folderSelectorParam !== undefined) {
-                            this.repository.retrieveItem(jsonConfig.folderSelectorParam.id, lang.hitch(this, function (item) {
-                                this.folderSelector.setSelected(item);
-                            }));
-                        }
-                    }
+                    // this.repository = ecm.model.desktop.getRepositoryByName("OS1");
+                    // this.enableFolderClassName.setRepository(this.repository);
+                    // this.enableFolderClassName.setVisibleOnlyForFolder(true);
+                    // this.enableFolderClassName.setRootClassId("Folder");
+                    // this.folderSelector.setRoot(this.repository);
+                    //
+                    // if (this.configurationString) {
+                    //     var jsonConfig = JSON.parse(this.configurationString);
+                    //
+                    //     if (jsonConfig.enableFolderClassName !== undefined) {
+                    //         this.enableFolderClassName.setSelected(jsonConfig.enableFolderClassName);
+                    //     }
+                    //
+                    //     if (jsonConfig.folderSelectorParam !== undefined) {
+                    //         this.repository.retrieveItem(jsonConfig.folderSelectorParam.id, lang.hitch(this, function (item) {
+                    //             this.folderSelector.setSelected(item);
+                    //         }));
+                    //     }
+                    // }
                 },
 
                 _onParamChange: function () {
-                    this.onSaveNeeded(true);
+                    // this.onSaveNeeded(true);
                 },
 
                 save: function () {
-                    var configJson = {};
-                    configJson.enableFolderClassName = this.enableFolderClassName.getSelected().id;
-                    configJson.folderSelectorParam = {
-                        id: this.folderSelector.getSelected().item.id,
-                        path: this.folderSelector.getSelected().path
-                    }
-                    this.configurationString = JSON.stringify(configJson);
+                    // var configJson = {};
+                    // configJson.enableFolderClassName = this.enableFolderClassName.getSelected().id;
+                    // configJson.folderSelectorParam = {
+                    //     id: this.folderSelector.getSelected().item.id,
+                    //     path: this.folderSelector.getSelected().path
+                    // }
+                    // this.configurationString = JSON.stringify(configJson);
                 },
 
                 validate: function () {
