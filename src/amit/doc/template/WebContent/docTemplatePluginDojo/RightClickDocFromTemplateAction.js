@@ -5,6 +5,7 @@ define(["dojo/_base/declare",
         "ecm/widget/search/SearchDialog",
         "ecm/model/SearchTemplate",
         "ecm/widget/dialog/AddDocumentFromEditServiceTemplateDialog",
+        "ecm/widget/dialog/AddContentItemDialog",
         "ecm/widget/dialog/BaseDialog"],
     function (declare,
               Action,
@@ -13,6 +14,7 @@ define(["dojo/_base/declare",
               SearchDialog,
               SearchTemplate,
               AddDocumentDialog,
+              AddContentItemDialog,
               BaseDialog) {
         return declare("docTemplatePluginDojo.RightClickDocFromTemplateAction", [Action], {
 
@@ -90,13 +92,18 @@ define(["dojo/_base/declare",
                 var selected = selectedArr[0];
                 console.log("selected", selected);
 
-                this.addDocumentDialog = new AddDocumentDialog({
-                    style: {minHeight: "700px", minWidth: "1000px"}
+                // this.addDocumentDialog = new AddDocumentDialog({
+                //     style: {minHeight: "700px", minWidth: "1000px"}
+                // });
+                // this.addDocumentDialog.setMaximized(false)
+                // targetRepository = ecm.model.desktop.getRepository("OS1");
+                // parentFolder = targetRepository.rootItem
+                // this.addDocumentDialog.show(targetRepository, parentFolder, true, false, null, null, true);
+
+                this.addContentItem = new AddContentItemDialog({
+                    destroyWhenFinished: true
                 });
-                this.addDocumentDialog.setMaximized(false)
-                targetRepository = ecm.model.desktop.getRepository("OS1");
-                parentFolder = targetRepository.rootItem
-                this.addDocumentDialog.show(targetRepository, parentFolder, true, false, null, null, true);
+                this.addContentItem.show();
 
             },
 
