@@ -1,6 +1,7 @@
 define(["dojo/_base/declare",
         "dojo/_base/lang",
         "dojo/store/Memory",
+        "dojo/aspect",
 
         "gridx/Grid",
         "gridx/core/model/cache/Sync",
@@ -13,9 +14,8 @@ define(["dojo/_base/declare",
         "ecm/widget/_FolderSelectorDropDown",
         "ecm/widget/ContentClassSelector",
         "dojo/text!./templates/ConfigurationPane.html"],
-    function (declare, lang, MemoryStore,
+    function (declare, lang, MemoryStore, aspect,
               Grid, Cache, SelectRow,
-
               _TemplatedMixin,
               _WidgetsInTemplateMixin,
               ValidationTextBox,
@@ -84,12 +84,17 @@ define(["dojo/_base/declare",
                     grid.startup();
                     grid.resize();
 
-                    // this.own(aspect.after(grid.select.row, "onSelectionChange", lang.hitch(this, function (evt) {
-                    //     this.checkFldAssButtons();
-                    // }), true));
-
+                    this.own(aspect.after(grid.select.row, "onSelectionChange", lang.hitch(this, function (evt) {
+                        this.checkFldAssButtons();
+                    }), true));
 
                     return grid;
+                },
+
+                checkFldAssButtons: function() {
+                    // var items = this.getFldAssSelected();
+                    // this.editfolderAssociateButton.set("disabled", !(items.length == 1));
+                    // this.deletefolderAssociateButton.set("disabled", !(items.length > 0));
                 },
 
 
