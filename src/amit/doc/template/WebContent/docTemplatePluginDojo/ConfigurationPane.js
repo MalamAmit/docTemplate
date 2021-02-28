@@ -13,7 +13,9 @@ define(["dojo/_base/declare",
         "ecm/widget/admin/PluginConfigurationPane",
         "ecm/widget/_FolderSelectorDropDown",
         "ecm/widget/ContentClassSelector",
-        "dojo/text!./templates/ConfigurationPane.html"],
+        "dojo/text!./templates/ConfigurationPane.html",
+
+        "docTemplatePluginDojo.FolderAssociateEntryTemplateDialog"],
     function (declare, lang, MemoryStore, aspect,
               Grid, Cache, SelectRow,
               _TemplatedMixin,
@@ -22,16 +24,18 @@ define(["dojo/_base/declare",
               PluginConfigurationPane,
               _FolderSelectorDropDown,
               ContentClassSelector,
-              template) {
+              template,
+              FolderAssociateEntryTemplateDialog) {
 
         return declare("docTemplatePluginDojo.ConfigurationPane",
             [PluginConfigurationPane, _TemplatedMixin, _WidgetsInTemplateMixin], {
                 templateString: template,
                 widgetsInTemplate: true,
+                folderAssociateEntryTemplateGrid: null,
 
                 postCreate: function () {
                     this.inherited(arguments);
-                    this.configurationGrid = this.createGrid();
+                    this.folderAssociateEntryTemplateGrid = this.createGrid();
                 },
 
 
@@ -46,25 +50,25 @@ define(["dojo/_base/declare",
                             id: "repositoryId",
                             field: "repositoryId",
                             name: "Repository",
-                            width: "10%"
+                            width: "25%"
                         },
                         {
                             id: "OrgUnit",
                             field: "OrgUnit",
                             name: "OrgUnit",
-                            width: "10%"
+                            width: "25%"
                         },
                         {
                             id: "FolderClass ",
                             field: "FolderClass ",
                             name: "FolderClass ",
-                            width: "20%"
+                            width: "25%"
                         },
                         {
                             id: "SearchTemplateVsId",
                             field: "SearchTemplateVsId",
                             name: "Search template VsId",
-                            width: "40%"
+                            width: "25%"
                         },
                     ];
 
@@ -91,10 +95,34 @@ define(["dojo/_base/declare",
                     return grid;
                 },
 
-                checkFldAssButtons: function() {
+                checkFldAssButtons: function () {
                     // var items = this.getFldAssSelected();
                     // this.editfolderAssociateButton.set("disabled", !(items.length == 1));
                     // this.deletefolderAssociateButton.set("disabled", !(items.length > 0));
+                },
+
+                // getFldAssSelected: function() {
+                //     return this.folderAssociateEntryTemplateGrid && this.folderAssociateEntryTemplateGrid.select ? this.getFldAssItems(this.folderAssociateEntryTemplateGrid.select.row.getSelected()) : [];
+                // },
+
+
+                folderAssociateEntryTemplateNew: function () {
+                    var fldAssDialog = new FolderAssociateEntryTemplateDialog();
+
+                    this.own(aspect.after(fldAssDialog, "onAdd", lang.hitch(this, function (saveData) {
+                        console.log(saveData)
+                        // this.folderAssociateEntryTemplateGrid.model.store.add({
+                        //     "repositoryId": saveData.repositoryId,
+                        //     "folderClassName": saveData.folderClassName,
+                        //     "associateEntryTemplateName": saveData.associateEntryTemplate.name,
+                        //     "associateEntryTemplateClassName": saveData.associateEntryTemplate.className,
+                        //     "associateEntryTemplateVsId": saveData.associateEntryTemplate.vsId,
+                        // });
+                        // this._onFieldChange();
+                        // this.folderAssociateEntryTemplateGrid.resize();
+                    }), true));
+
+                    fldAssDialog.show(null);
                 },
 
 
