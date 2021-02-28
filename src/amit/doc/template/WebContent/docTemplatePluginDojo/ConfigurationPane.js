@@ -109,8 +109,8 @@ define(["dojo/_base/declare",
                 folderAssociateEntryTemplateNew: function () {
                     var fldAssDialog = new FolderAssociateEntryTemplateDialog();
 
-                    this.own(aspect.after(fldAssDialog, "onAdd", lang.hitch(this, function (saveData) {
-                        console.log(saveData)
+                    // this.own(aspect.after(fldAssDialog, "onAdd", lang.hitch(this, function (saveData) {
+                    //     console.log(saveData)
                         // this.folderAssociateEntryTemplateGrid.model.store.add({
                         //     "repositoryId": saveData.repositoryId,
                         //     "folderClassName": saveData.folderClassName,
@@ -120,7 +120,7 @@ define(["dojo/_base/declare",
                         // });
                         // this._onFieldChange();
                         // this.folderAssociateEntryTemplateGrid.resize();
-                    }), true));
+                    // }), true));
 
                     fldAssDialog.show(null);
                 },
