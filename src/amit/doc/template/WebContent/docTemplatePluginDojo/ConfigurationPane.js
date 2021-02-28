@@ -33,7 +33,6 @@ define(["dojo/_base/declare",
                     this.inherited(arguments);
                     this.configurationGrid = this.createGrid();
                 },
-
                 createGrid: function () {
 
                     var store = new MemoryStore({
@@ -80,13 +79,13 @@ define(["dojo/_base/declare",
                         selectRowTriggerOnCell: true
                     });
 
-                    grid.placeAt(this.myGrid);
+                    grid.placeAt(this.folderAssociateEntryTemplateContentPane);
                     grid.startup();
                     grid.resize();
 
-                    // this.own(aspect.after(grid.select.row, "onSelectionChange", lang.hitch(this, function (evt) {
-                    //     this.checkFldAssButtons();
-                    // }), true));
+                    this.own(aspect.after(grid.select.row, "onSelectionChange", lang.hitch(this, function (evt) {
+                        this.checkFldAssButtons();
+                    }), true));
 
 
                     return grid;
