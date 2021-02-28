@@ -84,9 +84,9 @@ define(["dojo/_base/declare",
                     grid.startup();
                     grid.resize();
 
-                    this.own(aspect.after(grid.select.row, "onSelectionChange", lang.hitch(this, function (evt) {
-                        this.checkFldAssButtons();
-                    }), true));
+                    // this.own(aspect.after(grid.select.row, "onSelectionChange", lang.hitch(this, function (evt) {
+                    //     this.checkFldAssButtons();
+                    // }), true));
 
 
                     return grid;
