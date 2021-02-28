@@ -12,7 +12,7 @@ define([
 	function(declare, lang, array, aspect, MemoryStore,
 			 BaseDialog, ContentClassSelector, template) {
 
-		return declare("usingEntryTemplateActionsPluginDojo.FolderAssociateEntryTemplateDialog", [ 
+		return declare("docTemplatePluginDojo.FolderAssociateEntryTemplateDialog", [
 			BaseDialog
 		], {
 		
