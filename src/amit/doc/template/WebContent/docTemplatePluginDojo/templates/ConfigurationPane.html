@@ -1,33 +1,27 @@
-<div class="dossierContainer" data-dojo-type="dijit.layout.ContentPane">
-    <table class="propertyTable">
-
+<div>
+    <table class="propertyTable" role="presentation">
         <tr>
-            <td class="propertyRowLabel">
-                <label>Enable folder class name</label>
-            </td>
             <td class="propertyRowValue">
-                <div
-                        data-dojo-attach-event="onSelected: _onParamChange"
-                        data-dojo-type="ecm/widget/ContentClassSelector"
-                        data-dojo-attach-point="enableFolderClassName"
-                        data-dojo-props="selectorStyle: 'dropdown', onlySelectable: true">
-                </div>
-            </td>
+                <div>
+                    <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'top'"
+                         data-dojo-attach-point="folderAssociateEntryTemplateButtonsPane">
+                        <button data-dojo-type="dijit/form/Button"
+                                data-dojo-attach-point="newfolderAssociateButton"
+                                data-dojo-attach-event="onClick: folderAssociateEntryTemplateNew"
+                                data-dojo-props="style: { 'padding-left': '10px' }">New</button>
+                        <button data-dojo-type="dijit/form/Button"
+                                data-dojo-attach-point="editfolderAssociateButton"
+                                data-dojo-attach-event="onClick: folderAssociateEntryTemplateEdit"
+                                data-dojo-props="disabled: true">Edit</button>
+                        <button data-dojo-type="dijit/form/Button"
+                                data-dojo-attach-point="deletefolderAssociateButton"
+                                data-dojo-attach-event="onClick: folderAssociateEntryTemplateDelete"
+                                data-dojo-props="disabled: true">Delete</button>
+                    </div>
 
-        </tr>
-        <tr>
-            <td class="propertyRowLabel">
-                <label>Folder Template name </label>
-            </td>
-            <td class="propertyRowValue">
-
-                <div data-dojo-type="ecm.widget._FolderSelectorDropDown"
-                     dropdownid="${id}_folderLocation"
-                     arialabelledby="${id}_label_folderLocation"
-                     showRepositoryTeamspace="true"
-                     data-dojo-attach-point="folderSelector"
-                     data-dojo-attach-event="onFolderSelected: _onParamChange">
+                    <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region: 'center'" data-dojo-attach-point="myGrid"></div>
                 </div>
+
             </td>
         </tr>
     </table>
