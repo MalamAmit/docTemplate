@@ -13,9 +13,7 @@ define(["dojo/_base/declare",
         "ecm/widget/admin/PluginConfigurationPane",
         "ecm/widget/_FolderSelectorDropDown",
         "ecm/widget/ContentClassSelector",
-        "dojo/text!./templates/ConfigurationPane.html",
-
-        "docTemplatePluginDojo.FolderAssociateEntryTemplateDialog"],
+        "dojo/text!./templates/ConfigurationPane.html"],
     function (declare, lang, MemoryStore, aspect,
               Grid, Cache, SelectRow,
               _TemplatedMixin,
@@ -24,8 +22,7 @@ define(["dojo/_base/declare",
               PluginConfigurationPane,
               _FolderSelectorDropDown,
               ContentClassSelector,
-              template,
-              FolderAssociateEntryTemplateDialog) {
+              template) {
 
         return declare("docTemplatePluginDojo.ConfigurationPane",
             [PluginConfigurationPane, _TemplatedMixin, _WidgetsInTemplateMixin], {
@@ -107,22 +104,6 @@ define(["dojo/_base/declare",
 
 
                 folderAssociateEntryTemplateNew: function () {
-                    // var fldAssDialog = new FolderAssociateEntryTemplateDialog();
-
-                    // this.own(aspect.after(fldAssDialog, "onAdd", lang.hitch(this, function (saveData) {
-                    //     console.log(saveData)
-                        // this.folderAssociateEntryTemplateGrid.model.store.add({
-                        //     "repositoryId": saveData.repositoryId,
-                        //     "folderClassName": saveData.folderClassName,
-                        //     "associateEntryTemplateName": saveData.associateEntryTemplate.name,
-                        //     "associateEntryTemplateClassName": saveData.associateEntryTemplate.className,
-                        //     "associateEntryTemplateVsId": saveData.associateEntryTemplate.vsId,
-                        // });
-                        // this._onFieldChange();
-                        // this.folderAssociateEntryTemplateGrid.resize();
-                    // }), true));
-
-                    // fldAssDialog.show(null);
                 },
 
 
