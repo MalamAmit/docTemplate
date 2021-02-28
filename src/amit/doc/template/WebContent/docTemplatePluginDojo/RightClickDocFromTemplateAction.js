@@ -56,37 +56,34 @@ define(["dojo/_base/declare",
                             className = response.enableFolderClassName;
                             folderParams = response.folderSelectorParam;
 
-                           self.createSearchDialog(self);
+                            var template = new SearchTemplate({
+                                id: "StoredSearch,{0DC081DE-3B0D-42C6-B213-63729230F9A9},{60F57A6E-0000-CD1D-815E-3F792C408580}",
+                                name: "StoredSearch",
+                                repository: ecm.model.desktop.getRepository("OS1"),
+                                description: "item.description"
+                            });
+
+                            self.srchDialog = new SearchDialog({
+                                searchTemplate: template,
+                                repository: ecm.model.desktop.getRepository("OS1"),
+                                showSearch: true,
+                                style: {minHeight: "700px", minWidth: "1000px"}
+                            });
+
+                            self.srchDialog.setTitle("Choose template");
+                            self.srchDialog.setMaximized(false)
+                            // self.srchDialog.addButton("Select Template", self.selectTemplate, false, true);
+                            // self.srchDialog.addButton("Select Template", self.selectTemplate, false, true);
+                            self.srchDialog.addButton("Select Template", function(){ self.selectTemplate("Hello World!") }, false, true);
+                            self.srchDialog.show();
                         }
                     });
             },
 
 
-            createSearchDialog: function (self) {
-                //todo: replace id from configuration
-                var template = new SearchTemplate({
-                    id: "StoredSearch,{0DC081DE-3B0D-42C6-B213-63729230F9A9},{60F57A6E-0000-CD1D-815E-3F792C408580}",
-                    name: "StoredSearch",
-                    repository: ecm.model.desktop.getRepository("OS1"),
-                    description: "item.description"
-                });
-
-                self.srchDialog = new SearchDialog({
-                    searchTemplate: template,
-                    repository: ecm.model.desktop.getRepository("OS1"),
-                    showSearch: true,
-                    style: {minHeight: "700px", minWidth: "1000px"}
-                });
-
-                self.srchDialog.setTitle("Choose template");
-                self.srchDialog.setMaximized(false)
-                // self.srchDialog.addButton("Select Template", self.selectTemplate, false, true);
-                self.srchDialog.addButton("Select Template", self.selectTemplate, false, true);
-                self.srchDialog.show();
-            },
-
-            selectTemplate: function () {
-                this.srchDialog.destroy();
+            selectTemplate: function (test) {
+                console.log(test)
+                // this.srchDialog.destroy();
 
                 // var selectedArr = this.srchDialog.searchResults.grid.select.row._lastSelectedIds;
                 // if (!selectedArr) {
