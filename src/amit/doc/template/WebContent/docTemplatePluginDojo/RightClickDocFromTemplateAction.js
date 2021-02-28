@@ -45,6 +45,24 @@ define(["dojo/_base/declare",
 
 
             performAction: function (repository, itemList, callback, teamspace, resultSet, parameterMap) {
+
+
+                var className = "";
+                var folderParams = {};
+                var self = this;
+                Request.invokePluginService("DocTemplatePlugin",
+                    "GetConfigurationService", {
+                        requestCompleteCallback: function (response) {
+                            className = response.enableFolderClassName;
+                            folderParams = response.folderSelectorParam;
+
+                           self.createSearchDialog();
+                        }
+                    });
+            },
+
+
+            createSearchDialog: function () {
                 //todo: replace id from configuration
                 var template = new SearchTemplate({
                     id: "StoredSearch,{0DC081DE-3B0D-42C6-B213-63729230F9A9},{60F57A6E-0000-CD1D-815E-3F792C408580}",
@@ -62,21 +80,9 @@ define(["dojo/_base/declare",
 
                 this.srchDialog.setTitle("Choose template");
                 this.srchDialog.setMaximized(false)
-                // self.srchDialog.addButton("Select Template", self.selectTemplate, false, true);
+                // this.srchDialog.addButton("Select Template", this.selectTemplate, false, true);
                 this.srchDialog.addButton("Select Template", this.selectTemplate, false, true);
-
-                var className = "";
-                var folderParams = {};
-                var self = this;
-                Request.invokePluginService("DocTemplatePlugin",
-                    "GetConfigurationService", {
-                        requestCompleteCallback: function (response) {
-                            className = response.enableFolderClassName;
-                            folderParams = response.folderSelectorParam;
-
-                            self.srchDialog.show();
-                        }
-                    });
+                this.srchDialog.show();
             },
 
             selectTemplate: function () {
