@@ -72,8 +72,6 @@ define(["dojo/_base/declare",
 
                             self.srchDialog.setTitle("Choose template");
                             self.srchDialog.setMaximized(false)
-                            // self.srchDialog.addButton("Select Template", self.selectTemplate, false, true);
-                            // self.srchDialog.addButton("Select Template", self.selectTemplate, false, true);
                             self.srchDialog.addButton("Select Template", function(){ self.selectTemplate(self.srchDialog) }, false, true);
                             self.srchDialog.show();
                         }
@@ -81,23 +79,21 @@ define(["dojo/_base/declare",
             },
 
 
-            selectTemplate: function (test) {
-                console.log(test)
-                test.destroy();
-                // this.srchDialog.destroy();
+            selectTemplate: function (dialog) {
+                dialog.destroy();
 
-                // var selectedArr = this.srchDialog.searchResults.grid.select.row._lastSelectedIds;
-                // if (!selectedArr) {
-                //     console.log("no item selected in this grid");
-                //     return;
-                // }
-                // var selected = selectedArr[0];
-                // console.log("selected", selected);
-                //
-                // this.addDocumentDialog = new AddDocumentDialog();
-                // targetRepository = ecm.model.desktop.getRepository("OS1");
-                // parentFolder = targetRepository.rootItem
-                // this.addDocumentDialog.show(targetRepository, parentFolder, true, false, null, null, true);
+                var selectedArr = dialog.searchResults.grid.select.row._lastSelectedIds;
+                if (!selectedArr) {
+                    console.log("no item selected in this grid");
+                    return;
+                }
+                var selected = selectedArr[0];
+                console.log("selected", selected);
+
+                this.addDocumentDialog = new AddDocumentDialog();
+                targetRepository = ecm.model.desktop.getRepository("OS1");
+                parentFolder = targetRepository.rootItem
+                this.addDocumentDialog.show(targetRepository, parentFolder, true, false, null, null, true);
 
             },
 
