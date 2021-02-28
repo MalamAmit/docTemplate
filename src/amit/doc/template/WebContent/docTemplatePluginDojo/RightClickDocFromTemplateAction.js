@@ -83,6 +83,7 @@ define(["dojo/_base/declare",
 
             selectTemplate: function (test) {
                 console.log(test)
+                test.destroy();
                 // this.srchDialog.destroy();
 
                 // var selectedArr = this.srchDialog.searchResults.grid.select.row._lastSelectedIds;
