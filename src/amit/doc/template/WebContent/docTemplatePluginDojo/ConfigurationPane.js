@@ -130,34 +130,28 @@ define(["dojo/_base/declare",
 
 
                 load: function (callback) {
-                    // this.repository = ecm.model.desktop.getRepositoryByName("OS1");
-                    // this.enableFolderClassName.setRepository(this.repository);
-                    // this.enableFolderClassName.setVisibleOnlyForFolder(true);
-                    // this.enableFolderClassName.setRootClassId("Folder");
-                    // this.folderSelector.setRoot(this.repository);
-                    //
-                    // if (this.configurationString) {
-                    //     var jsonConfig = JSON.parse(this.configurationString);
-                    //
-                    //     if (jsonConfig.enableFolderClassName !== undefined) {
-                    //         this.enableFolderClassName.setSelected(jsonConfig.enableFolderClassName);
-                    //     }
-                    //
-                    //     if (jsonConfig.folderSelectorParam !== undefined) {
-                    //         this.repository.retrieveItem(jsonConfig.folderSelectorParam.id, lang.hitch(this, function (item) {
-                    //             this.folderSelector.setSelected(item);
-                    //         }));
-                    //     }
-                    // }
+                    try {
+                        if (this.configurationString) {
+                            var jsonConfig = JSON.parse(this.configurationString);
+
+                            this.configurationGrid.setStore(new MemoryStore({
+                                idProperty: "id",
+                                data: jsonConfig.configurationGridData == null ? [] : jsonConfig.configurationGridData
+                            }));
+
+                        }
+                    } catch (e) {
+                        alert("Failed to load configuration: " + e.message);
+                    }
                 },
 
                 _onParamChange: function () {
                     // this.onSaveNeeded(true);
                 },
 
-                save: function(){
+                save: function () {
                     var configJson = {};
-                    configJson.configurationGrid = this.configurationGrid.model.store.data;
+                    configJson.configurationGridData = this.configurationGrid.model.store.data;
                     this.configurationString = JSON.stringify(configJson);
                 },
 
