@@ -19,6 +19,7 @@ define([
             contentString: template,
             widgetsInTemplate: true,
             _editData: null,
+            staticRepository: ecm.model.desktop.getRepositoryByName("OS1"),
 
             show: function (editData) {
                 this.okButton.set("disabled", true);
@@ -28,20 +29,16 @@ define([
             },
 
             _loadData: function () {
-                // this.enableFolderClassName.setSelected();
-                // this.searchTemplateSelector.setSelected();
-
-
                 if (this._editData) {
                     setTimeout(lang.hitch(this, function () {
-                        if (this._editData.OrgUnit)
-                            this.orgUnitPrefixField.set('value', this._editData.OrgUnit);
+                        if (this._editData.orgUnit)
+                            this.orgUnitPrefixField.set('value', this._editData.orgUnit);
 
-                        if (this._editData.FolderClass) {
-                            this.enableFolderClassName.setSelected(this._editData.FolderClass);
+                        if (this._editData.folderClass) {
+                            this.enableFolderClassName.setSelected(this._editData.folderClass);
                         }
-                        if (this._editData.SearchTemplateVsId)
-                            this.searchTemplateSelector.set('value', this._editData.SearchTemplateVsId);
+                        if (this._editData.searchTemplateVsId)
+                            this.searchTemplateSelector.set('value', this._editData.searchTemplateVsId);
                         this._onFieldChange();
                     }, 300));
                 }
@@ -50,6 +47,7 @@ define([
             _onParamChange: function () {
                 this.okButton.set('disabled', !this._validateData());
             },
+
             postCreate: function () {
                 this.inherited(arguments);
                 this.setResizable(false);
@@ -57,16 +55,13 @@ define([
                 this.setExpandable(false);
                 this.setTitle("Add Doc Template configuration");
 
-                this.okButton = this.addButton("OK", "saveAssociate", true, true);
+                this.okButton = this.addButton("OK", "saveData", true, true);
 
 
                 this.searchTemplateSelector.repository == null;
                 this.enableFolderClassName.repository == null;
-                this.repository = ecm.model.desktop.getRepositoryByName("OS1");
-
-
-                this.searchTemplateSelector.setRepository(this.repository);
-                this.enableFolderClassName.setRepository(this.repository);
+                this.searchTemplateSelector.setRepository(this.staticRepository);
+                this.enableFolderClassName.setRepository(this.staticRepository);
 
                 this.enableFolderClassName.setVisibleOnlyForFolder(true);
                 this.enableFolderClassName.setRootClassId("Folder");
@@ -75,7 +70,7 @@ define([
                 //     this.searchTemplateSelector.setSelected(params.searchTemplate);
                 // }
             },
-            saveAssociate: function () {
+            saveData: function () {
                 if (this._validateData()) {
                     var body = {};
                     body.orgUnitPrefixParam = this.orgUnitPrefixField.get("value");
@@ -84,15 +79,15 @@ define([
                     if (this._isEdit()) {
                         this.onEdit(body, this._editData);
                     } else {
-                    this.onAdd(body);
+                        this.onAdd(body);
                     }
                     this.onCancel();
                 }
             },
-            _isEdit: function() {
+            _isEdit: function () {
                 return this._editData != null && this._editData;
             },
-            _onFieldChange: function() {
+            _onFieldChange: function () {
                 this.okButton.set('disabled', !this._validateData()); // Disable ok button if not valid
             },
             _validateData: function () {

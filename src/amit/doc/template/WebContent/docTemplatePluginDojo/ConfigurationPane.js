@@ -31,6 +31,7 @@ define(["dojo/_base/declare",
                 templateString: template,
                 widgetsInTemplate: true,
                 configurationGrid: null,
+                staticRepository: ecm.model.desktop.getRepositoryByName("OS1"),
 
                 postCreate: function () {
                     this.inherited(arguments);
@@ -46,26 +47,26 @@ define(["dojo/_base/declare",
 
                     var structure = [
                         {
-                            id: "repositoryId",
-                            field: "repositoryId",
+                            id: "repository",
+                            field: "repository",
                             name: "Repository",
                             width: "25%"
                         },
                         {
-                            id: "OrgUnit",
-                            field: "OrgUnit",
+                            id: "orgUnit",
+                            field: "orgUnit",
                             name: "Org Unit",
                             width: "25%"
                         },
                         {
-                            id: "FolderClass",
-                            field: "FolderClass",
+                            id: "folderClass",
+                            field: "folderClass",
                             name: "Folder Class",
                             width: "25%"
                         },
                         {
-                            id: "SearchTemplateVsId",
-                            field: "SearchTemplateVsId",
+                            id: "searchTemplateVsId",
+                            field: "searchTemplateVsId",
                             name: "Search template VsId",
                             width: "25%"
                         },
@@ -96,14 +97,12 @@ define(["dojo/_base/declare",
                 newButtonClick: function () {
                     var dialog = new AddConfigDialog();
 
-
                     this.own(aspect.after(dialog, "onAdd", lang.hitch(this, function (data) {
-                        debugger;
                         this.configurationGrid.model.store.add({
-                            "repositoryId": "repositoryId",
-                            "OrgUnit": data.orgUnitPrefixParam,
-                            "FolderClass": data.enableFolderClassParam,
-                            "SearchTemplateVsId": data.searchTemplateVsIdParam,
+                            "repository": this.staticRepository.id,
+                            "orgUnit": data.orgUnitPrefixParam,
+                            "folderClass": data.enableFolderClassParam,
+                            "searchTemplateVsId": data.searchTemplateVsIdParam,
                         });
                         this._onFieldChange();
                         this.configurationGrid.resize();
@@ -116,26 +115,23 @@ define(["dojo/_base/declare",
                     var currItem = this.getRowSelected()[0];
 
                     var currData = {};
-                    currData.repositoryId = currItem.repositoryId;
-                    currData.OrgUnit = currItem.OrgUnit;
-                    currData.FolderClass = currItem.FolderClass;
-                    currData.SearchTemplateVsId = currItem.SearchTemplateVsId;
-
+                    currData.repository = currItem.repository;
+                    currData.orgUnit = currItem.orgUnit;
+                    currData.folderClass = currItem.folderClass;
+                    currData.searchTemplateVsId = currItem.searchTemplateVsId;
 
                     var dialog = new AddConfigDialog();
 
-                    this.own(aspect.after(dialog, "onEdit", lang.hitch(this, function (saveData, originalData) {
-                        // currItem.repositoryId = saveData.repositoryId;
-                        // currItem.orgUnitPrefixParam = saveData.orgUnitPrefixParam;
-                        // currItem.folderClassName = saveData.folderClassName;
-                        // currItem.associateEntryTemplateName = saveData.associateEntryTemplate.name;
-                        // currItem.associateEntryTemplateClassName = saveData.associateEntryTemplate.className;
-                        // currItem.associateEntryTemplateVsId = saveData.associateEntryTemplate.vsId;
-                        // this.documentAssociateEntryTemplateGrid.model.store.put(currItem, {
-                        //     id: currItem.id,
-                        //     overwrite: true
-                        // });
-                        // this._onFieldChange();
+                    this.own(aspect.after(dialog, "onEdit", lang.hitch(this, function (data, originalData) {
+                        currItem.repository = this.staticRepository.id;
+                        currItem.orgUnit = data.orgUnitPrefixParam,
+                        currItem.folderClass =  data.enableFolderClassParam,
+                        currItem.searchTemplateVsId =  data.searchTemplateVsIdParam,
+                        this.configurationGrid.model.store.put(currItem, {
+                            id: currItem.id,
+                            overwrite: true
+                        });
+                        this._onFieldChange();
                     }), true));
 
                     dialog.show(currData);
@@ -144,6 +140,7 @@ define(["dojo/_base/declare",
                 getRowSelected: function () {
                     return this.configurationGrid && this.configurationGrid.select ? this.getAssItems(this.configurationGrid.select.row.getSelected()) : [];
                 },
+
                 getAssItems: function (rowIndexs) {
                     var items = [];
                     for (var i = 0; i < rowIndexs.length; i++) {
@@ -161,11 +158,9 @@ define(["dojo/_base/declare",
                     this.deleteButton.set("disabled", !(items.length > 0));
                 },
 
-
                 _onFieldChange: function () {
                     this.onSaveNeeded(true);
                 },
-
 
                 load: function (callback) {
                     try {
