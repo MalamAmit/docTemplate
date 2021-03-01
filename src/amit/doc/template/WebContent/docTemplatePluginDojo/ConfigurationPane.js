@@ -124,6 +124,50 @@ define(["dojo/_base/declare",
                     dialog.show(null);
                 },
 
+                editButtonClick: function() {
+                    var currItem = this.getRowSelected()[0];
+
+                    var currData = {};
+                    currData.repositoryId = currItem.repositoryId;
+                    currData.OrgUnit = currItem.orgUnitPrefix;
+                    currData.FolderClass = currItem.enableFolderClassName;
+                    currData.SearchTemplateVsId = currItem.searchTemplateVsId;
+
+
+                    var dialog = new AddConfigDialog();
+
+                    this.own(aspect.after(dialog, "onEdit", lang.hitch(this, function(saveData, originalData) {
+                        // currItem.repositoryId = saveData.repositoryId;
+                        // currItem.orgUnitPrefix = saveData.orgUnitPrefix;
+                        // currItem.folderClassName = saveData.folderClassName;
+                        // currItem.associateEntryTemplateName = saveData.associateEntryTemplate.name;
+                        // currItem.associateEntryTemplateClassName = saveData.associateEntryTemplate.className;
+                        // currItem.associateEntryTemplateVsId = saveData.associateEntryTemplate.vsId;
+                        // this.documentAssociateEntryTemplateGrid.model.store.put(currItem, {
+                        //     id: currItem.id,
+                        //     overwrite: true
+                        // });
+                        // this._onFieldChange();
+                    }), true));
+
+                    dialog.show(currData);
+                },
+
+                getRowSelected: function() {
+                    return this.configurationGrid && this.configurationGrid.select ? this.getAssItems(this.configurationGrid.select.row.getSelected()) : [];
+                },
+
+                getAssItems: function(rowIndexs) {
+                    var items = [];
+                    for (var i = 0; i < rowIndexs.length; i++) {
+                        var row = this.configurationGrid.row(rowIndexs[i]);
+                        if (row) {
+                            items.push(row.item());
+                        }
+                    }
+                    return items;
+                },
+
                 _onFieldChange: function () {
                     this.onSaveNeeded(true);
                 },

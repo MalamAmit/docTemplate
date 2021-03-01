@@ -18,9 +18,37 @@ define([
 
             contentString: template,
             widgetsInTemplate: true,
-            constructor: function (args) {
-                // this.title = args.title;
+            _editData: null,
+
+
+            show: function (editData) {
+                this.okButton.set("disabled", true);
+                this._editData = editData;
+                this._loadData();
+                this.inherited(arguments);
             },
+
+            _loadData: function () {
+                this.orgUnitPrefixFiled.set("value", "");
+                this.enableFolderClassName.setSelected("value", "");
+                this.templateSelector.setSelected();
+
+                // if (this._editData) {
+                //     if (this._editData.repositoryId)
+                //         this.repositoryField.set("value", this._editData.repositoryId);
+                //
+                //     setTimeout(lang.hitch(this, function () {
+                //         if (this._editData.folderClassName)
+                //             this.folderClassField.setSelected(this._editData.folderClassName);
+                //         if (this._editData.associateEntryTemplateVsId)
+                //             this.associateEntryTemplateField.set('value', this._editData.associateEntryTemplateVsId);
+                //         if (this._editData.orgUnitPrefix)
+                //             this.orgUnitPrefixFiled.set('value', this._editData.orgUnitPrefix);
+                //         this._onFieldChange();
+                //     }, 300));
+                // }
+            },
+
             _onParamChange: function () {
                 this.okButton.set('disabled', !this._validateData());
             },
@@ -58,7 +86,7 @@ define([
                     // if (this._isEdit()) {
                     //     this.onEdit(screenData, this._editData);
                     // } else {
-                        this.onAdd(body);
+                    this.onAdd(body);
                     // }
                     this.onCancel();
                 }
@@ -85,6 +113,7 @@ define([
             // override to get data entered on the screen
             onAdd: function (screenData) {
             },
+
 
             // _isEdit: function () {
             //     return this._editData != null && this._editData;
