@@ -87,23 +87,11 @@ define(["dojo/_base/declare",
                     grid.startup();
                     grid.resize();
 
-                    // this.own(aspect.after(grid.select.row, "onSelectionChange", lang.hitch(this, function (evt) {
-                    //     this.checkFldAssButtons();
-                    // }), true));
-
+                    this.own(aspect.after(grid.select.row, "onSelectionChange", lang.hitch(this, function(evt) {
+                        this.checkDocAssButtons();
+                    }), true));
                     return grid;
                 },
-
-                checkFldAssButtons: function () {
-                    // var items = this.getFldAssSelected();
-                    // this.editfolderAssociateButton.set("disabled", !(items.length == 1));
-                    // this.deletefolderAssociateButton.set("disabled", !(items.length > 0));
-                },
-
-                // getFldAssSelected: function() {
-                //     return this.folderAssociateEntryTemplateGrid && this.folderAssociateEntryTemplateGrid.select ? this.getFldAssItems(this.folderAssociateEntryTemplateGrid.select.row.getSelected()) : [];
-                // },
-
 
                 newButtonClick: function () {
                     var dialog = new AddConfigDialog();
@@ -124,7 +112,7 @@ define(["dojo/_base/declare",
                     dialog.show(null);
                 },
 
-                editButtonClick: function() {
+                editButtonClick: function () {
                     var currItem = this.getRowSelected()[0];
 
                     var currData = {};
@@ -136,7 +124,7 @@ define(["dojo/_base/declare",
 
                     var dialog = new AddConfigDialog();
 
-                    this.own(aspect.after(dialog, "onEdit", lang.hitch(this, function(saveData, originalData) {
+                    this.own(aspect.after(dialog, "onEdit", lang.hitch(this, function (saveData, originalData) {
                         // currItem.repositoryId = saveData.repositoryId;
                         // currItem.orgUnitPrefix = saveData.orgUnitPrefix;
                         // currItem.folderClassName = saveData.folderClassName;
@@ -153,11 +141,10 @@ define(["dojo/_base/declare",
                     dialog.show(currData);
                 },
 
-                getRowSelected: function() {
+                getRowSelected: function () {
                     return this.configurationGrid && this.configurationGrid.select ? this.getAssItems(this.configurationGrid.select.row.getSelected()) : [];
                 },
-
-                getAssItems: function(rowIndexs) {
+                getAssItems: function (rowIndexs) {
                     var items = [];
                     for (var i = 0; i < rowIndexs.length; i++) {
                         var row = this.configurationGrid.row(rowIndexs[i]);
@@ -167,6 +154,13 @@ define(["dojo/_base/declare",
                     }
                     return items;
                 },
+
+                checkDocAssButtons: function () {
+                    var items = this.getDocAssSelected();
+                    this.editdocumentAssociateButton.set("disabled", !(items.length == 1));
+                    this.deletedocumentAssociateButton.set("disabled", !(items.length > 0));
+                },
+
 
                 _onFieldChange: function () {
                     this.onSaveNeeded(true);
@@ -202,6 +196,5 @@ define(["dojo/_base/declare",
                 validate: function () {
                     return true;
                 },
-
             });
     });
