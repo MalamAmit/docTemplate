@@ -117,9 +117,9 @@ define(["dojo/_base/declare",
 
                     var currData = {};
                     currData.repositoryId = currItem.repositoryId;
-                    currData.OrgUnit = currItem.orgUnitPrefix;
-                    currData.FolderClass = currItem.enableFolderClassName;
-                    currData.SearchTemplateVsId = currItem.searchTemplateVsId;
+                    currData.OrgUnit = currItem.OrgUnit;
+                    currData.FolderClass = currItem.FolderClass;
+                    currData.SearchTemplateVsId = currItem.SearchTemplateVsId;
 
 
                     var dialog = new AddConfigDialog();
