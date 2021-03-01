@@ -30,11 +30,11 @@ define(["dojo/_base/declare",
             [PluginConfigurationPane, _TemplatedMixin, _WidgetsInTemplateMixin], {
                 templateString: template,
                 widgetsInTemplate: true,
-                folderAssociateEntryTemplateGrid: null,
+                configurationGrid: null,
 
                 postCreate: function () {
                     this.inherited(arguments);
-                    this.folderAssociateEntryTemplateGrid = this.createGrid();
+                    this.configurationGrid = this.createGrid();
                 },
 
 
@@ -87,9 +87,9 @@ define(["dojo/_base/declare",
                     grid.startup();
                     grid.resize();
 
-                    this.own(aspect.after(grid.select.row, "onSelectionChange", lang.hitch(this, function (evt) {
-                        this.checkFldAssButtons();
-                    }), true));
+                    // this.own(aspect.after(grid.select.row, "onSelectionChange", lang.hitch(this, function (evt) {
+                    //     this.checkFldAssButtons();
+                    // }), true));
 
                     return grid;
                 },
@@ -114,21 +114,23 @@ define(["dojo/_base/declare",
                     var dialog = new AddConfigDialog();
 
 
-                    this.own(aspect.after(dialog, "onAdd", lang.hitch(this, function(saveData) {
+                    this.own(aspect.after(dialog, "onAdd", lang.hitch(this, function (data) {
                         debugger;
-                        // this.documentAssociateEntryTemplateGrid.model.store.add({
-                        //     "repositoryId": saveData.repositoryId,
-                        //     "orgUnitPrefix": saveData.orgUnitPrefix,
-                        //     "folderClassName": saveData.folderClassName,
-                        //     "associateEntryTemplateName" :saveData.associateEntryTemplate.name,
-                        //     "associateEntryTemplateClassName" :saveData.associateEntryTemplate.className,
-                        //     "associateEntryTemplateVsId" :saveData.associateEntryTemplate.vsId,
-                        // });
-                        // this._onFieldChange();
-                        // this.documentAssociateEntryTemplateGrid.resize();
+                        this.configurationGrid.model.store.add({
+                            "repositoryId": "repositoryId",
+                            "OrgUnit": data.orgUnitPrefix,
+                            "FolderClass": data.enableFolderClassName,
+                            "SearchTemplateVsId": data.searchTemplateVsId,
+                        });
+                        this._onFieldChange();
+                        this.configurationGrid.resize();
                     }), true));
 
                     dialog.show(null);
+                },
+
+                _onFieldChange: function () {
+                    this.onSaveNeeded(true);
                 },
 
 
