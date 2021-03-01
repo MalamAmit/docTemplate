@@ -7,12 +7,12 @@ define([
         "ecm/widget/dialog/BaseDialog",
         "ecm/widget/ContentClassSelector",
 
-        "dojo/text!./templates/.html"
+        "dojo/text!./templates/AddConfigDialog.html"
     ],
     function (declare, lang, array, aspect, MemoryStore,
               BaseDialog, ContentClassSelector, template) {
 
-        return declare("usingEntryTemplateActionsPluginDojo.FolderAssociateEntryTemplateDialog", [
+        return declare("docTemplatePluginDojo.AddConfigDialog", [
             BaseDialog
         ], {
 

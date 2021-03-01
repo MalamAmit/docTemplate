@@ -1,39 +1,32 @@
 <div class="ecmAdminTab" style="width:450px; height:160px;">
-    <table class="propertyTable" role="presentation">
+    <table class="propertyTable">
+
         <tr>
             <td class="propertyRowLabel">
-                <span class="required">*</span>
-                <label>1</label></td>
-            <td class="propertyRowValue">
-                <div data-dojo-type="ecm/widget/FilteringSelect"
-                     data-dojo-attach-point="1"
-                     data-dojo-props="id: '${id}_main-repository-value', required: true, labelType: 'text', label: 'label', searchAttr: 'label'">
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td class="propertyRowLabel">
-                <span class="required">*</span>
-                <label for="${id}_folderClassName">Current Folder class</label>&nbsp;
+                <label>Enable folder class name</label>
             </td>
             <td class="propertyRowValue">
                 <div
+                        data-dojo-attach-event="onSelected: _onParamChange"
                         data-dojo-type="ecm/widget/ContentClassSelector"
-                        data-dojo-attach-point="folderClassField"
+                        data-dojo-attach-point="enableFolderClassName"
                         data-dojo-props="selectorStyle: 'dropdown', onlySelectable: true">
                 </div>
             </td>
+
         </tr>
         <tr>
             <td class="propertyRowLabel">
-                <span class="required">*</span>
-                <label for="${id}_associateEntryTemplate">Entry template (sub class)</label>&nbsp;
+                <label>Folder Template name </label>
             </td>
             <td class="propertyRowValue">
-                <div data-dojo-attach-point="associateEntryTemplateField"
-                     data-dojo-type="dijit/form/FilteringSelect"
-                     data-dojo-attach-event="onChange: _onFieldChange"
-                     data-dojo-props="id: '${id}_associateEntryTemplate', required: true, labelType: 'text', label: 'name', searchAttr: 'name'">
+
+                <div data-dojo-type="ecm.widget._FolderSelectorDropDown"
+                     dropdownid="${id}_folderLocation"
+                     arialabelledby="${id}_label_folderLocation"
+                     showRepositoryTeamspace="true"
+                     data-dojo-attach-point="folderSelector"
+                     data-dojo-attach-event="onFolderSelected: _onParamChange">
                 </div>
             </td>
         </tr>

@@ -13,7 +13,8 @@ define(["dojo/_base/declare",
         "ecm/widget/admin/PluginConfigurationPane",
         "ecm/widget/_FolderSelectorDropDown",
         "ecm/widget/ContentClassSelector",
-        "dojo/text!./templates/ConfigurationPane.html"],
+        "dojo/text!./templates/ConfigurationPane.html",
+        "docTemplatePluginDojo.AddConfigDialog"],
     function (declare, lang, MemoryStore, aspect,
               Grid, Cache, SelectRow,
               _TemplatedMixin,
@@ -22,7 +23,8 @@ define(["dojo/_base/declare",
               PluginConfigurationPane,
               _FolderSelectorDropDown,
               ContentClassSelector,
-              template) {
+              template,
+              AddConfigDialog) {
 
         return declare("docTemplatePluginDojo.ConfigurationPane",
             [PluginConfigurationPane, _TemplatedMixin, _WidgetsInTemplateMixin], {
@@ -110,7 +112,8 @@ define(["dojo/_base/declare",
                 },
 
                 openDialog: function () {
-
+                    var dialog = new AddConfigDialog();
+                    dialog.show()
                 },
 
 
