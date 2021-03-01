@@ -54,13 +54,13 @@ define(["dojo/_base/declare",
                         {
                             id: "OrgUnit",
                             field: "OrgUnit",
-                            name: "OrgUnit",
+                            name: "Org Unit",
                             width: "25%"
                         },
                         {
-                            id: "FolderClass ",
-                            field: "FolderClass ",
-                            name: "FolderClass ",
+                            id: "FolderClass",
+                            field: "FolderClass",
+                            name: "Folder Class",
                             width: "25%"
                         },
                         {
@@ -106,11 +106,6 @@ define(["dojo/_base/declare",
 
 
                 newButtonClick: function () {
-                    this.openDialog();
-
-                },
-
-                openDialog: function () {
                     var dialog = new AddConfigDialog();
 
 
@@ -160,14 +155,10 @@ define(["dojo/_base/declare",
                     // this.onSaveNeeded(true);
                 },
 
-                save: function () {
-                    // var configJson = {};
-                    // configJson.enableFolderClassName = this.enableFolderClassName.getSelected().id;
-                    // configJson.folderSelectorParam = {
-                    //     id: this.folderSelector.getSelected().item.id,
-                    //     path: this.folderSelector.getSelected().path
-                    // }
-                    // this.configurationString = JSON.stringify(configJson);
+                save: function(){
+                    var configJson = {};
+                    configJson.configurationGrid = this.configurationGrid.model.store.data;
+                    this.configurationString = JSON.stringify(configJson);
                 },
 
                 validate: function () {
