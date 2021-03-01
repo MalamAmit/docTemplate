@@ -20,7 +20,6 @@ define([
             widgetsInTemplate: true,
             _editData: null,
 
-
             show: function (editData) {
                 this.okButton.set("disabled", true);
                 this._editData = editData;
@@ -34,20 +33,19 @@ define([
                 // this.templateSelector.setSelected();
 
 
-                // if (this._editData) {
-                //     if (this._editData.repositoryId)
-                //         this.repositoryField.set("value", this._editData.repositoryId);
-                //
-                //     setTimeout(lang.hitch(this, function () {
-                //         if (this._editData.folderClassName)
-                //             this.folderClassField.setSelected(this._editData.folderClassName);
-                //         if (this._editData.associateEntryTemplateVsId)
-                //             this.associateEntryTemplateField.set('value', this._editData.associateEntryTemplateVsId);
-                //         if (this._editData.orgUnitPrefix)
-                //             this.orgUnitPrefixFiled.set('value', this._editData.orgUnitPrefix);
-                //         this._onFieldChange();
-                //     }, 300));
-                // }
+                if (this._editData) {
+                    setTimeout(lang.hitch(this, function () {
+                        if (this._editData.OrgUnit)
+                            this.orgUnitPrefixFiled.set('value', this._editData.OrgUnit);
+
+                        if (this._editData.FolderClass) {
+                            this.enableFolderClassName.setSelected(this._editData.FolderClass);
+                        }
+                        if (this._editData.SearchTemplateVsId)
+                            this.templateSelector.set('value', this._editData.SearchTemplateVsId);
+                        this._onFieldChange();
+                    }, 300));
+                }
             },
 
             _onParamChange: function () {
@@ -91,6 +89,9 @@ define([
                     // }
                     this.onCancel();
                 }
+            },
+            _onFieldChange: function() {
+                this.okButton.set('disabled', !this._validateData()); // Disable ok button if not valid
             },
             _validateData: function () {
                 var value = this.enableFolderClassName.selectedContentClass;
