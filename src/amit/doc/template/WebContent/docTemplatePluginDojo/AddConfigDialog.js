@@ -32,19 +32,19 @@ define([
                 // this.searchTemplateSelector.setSelected();
 
 
-                // if (this._editData) {
-                //     setTimeout(lang.hitch(this, function () {
-                //         if (this._editData.OrgUnit)
-                //             this.orgUnitPrefixFiled.set('value', this._editData.OrgUnit);
-                //
-                //         if (this._editData.FolderClass) {
-                //             this.enableFolderClassName.setSelected(this._editData.FolderClass);
-                //         }
-                //         if (this._editData.SearchTemplateVsId)
-                //             this.searchTemplateSelector.set('value', this._editData.SearchTemplateVsId);
-                //         this._onFieldChange();
-                //     }, 300));
-                // }
+                if (this._editData) {
+                    setTimeout(lang.hitch(this, function () {
+                        if (this._editData.OrgUnit)
+                            this.orgUnitPrefixField.set('value', this._editData.OrgUnit);
+
+                        if (this._editData.FolderClass) {
+                            this.enableFolderClassName.setSelected(this._editData.FolderClass);
+                        }
+                        if (this._editData.SearchTemplateVsId)
+                            this.searchTemplateSelector.set('value', this._editData.SearchTemplateVsId);
+                        this._onFieldChange();
+                    }, 300));
+                }
             },
 
             _onParamChange: function () {
@@ -78,16 +78,19 @@ define([
             saveAssociate: function () {
                 if (this._validateData()) {
                     var body = {};
-                    body.orgUnitPrefix = this.orgUnitPrefixFiled.get("value");
-                    body.enableFolderClassName = this.enableFolderClassName.getSelected().id;
-                    body.searchTemplateVsId = this.searchTemplateSelector.getSelected().vsId;
-                    // if (this._isEdit()) {
-                    //     this.onEdit(screenData, this._editData);
-                    // } else {
+                    body.orgUnitPrefixParam = this.orgUnitPrefixField.get("value");
+                    body.enableFolderClassParam = this.enableFolderClassName.getSelected().id;
+                    body.searchTemplateVsIdParam = this.searchTemplateSelector.getSelected().vsId;
+                    if (this._isEdit()) {
+                        this.onEdit(body, this._editData);
+                    } else {
                     this.onAdd(body);
-                    // }
+                    }
                     this.onCancel();
                 }
+            },
+            _isEdit: function() {
+                return this._editData != null && this._editData;
             },
             _onFieldChange: function() {
                 this.okButton.set('disabled', !this._validateData()); // Disable ok button if not valid
@@ -101,7 +104,7 @@ define([
                 if (value == null || value.id == null || value.id == "")
                     return false;
 
-                value = this.orgUnitPrefixFiled.get("value");
+                value = this.orgUnitPrefixField.get("value");
                 if (value == null || value == "")
                     return false;
 

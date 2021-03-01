@@ -101,9 +101,9 @@ define(["dojo/_base/declare",
                         debugger;
                         this.configurationGrid.model.store.add({
                             "repositoryId": "repositoryId",
-                            "OrgUnit": data.orgUnitPrefix,
-                            "FolderClass": data.enableFolderClassName,
-                            "SearchTemplateVsId": data.searchTemplateVsId,
+                            "OrgUnit": data.orgUnitPrefixParam,
+                            "FolderClass": data.enableFolderClassParam,
+                            "SearchTemplateVsId": data.searchTemplateVsIdParam,
                         });
                         this._onFieldChange();
                         this.configurationGrid.resize();
@@ -126,7 +126,7 @@ define(["dojo/_base/declare",
 
                     this.own(aspect.after(dialog, "onEdit", lang.hitch(this, function (saveData, originalData) {
                         // currItem.repositoryId = saveData.repositoryId;
-                        // currItem.orgUnitPrefix = saveData.orgUnitPrefix;
+                        // currItem.orgUnitPrefixParam = saveData.orgUnitPrefixParam;
                         // currItem.folderClassName = saveData.folderClassName;
                         // currItem.associateEntryTemplateName = saveData.associateEntryTemplate.name;
                         // currItem.associateEntryTemplateClassName = saveData.associateEntryTemplate.className;
