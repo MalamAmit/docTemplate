@@ -156,9 +156,9 @@ define(["dojo/_base/declare",
                 },
 
                 checkDocAssButtons: function () {
-                    var items = this.getDocAssSelected();
-                    this.editdocumentAssociateButton.set("disabled", !(items.length == 1));
-                    this.deletedocumentAssociateButton.set("disabled", !(items.length > 0));
+                    var items = this.getRowSelected();
+                    this.editButton.set("disabled", !(items.length == 1));
+                    this.deleteButton.set("disabled", !(items.length > 0));
                 },
 
 
