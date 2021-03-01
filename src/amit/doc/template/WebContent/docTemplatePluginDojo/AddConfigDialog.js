@@ -18,7 +18,16 @@ define([
 
             contentString: template,
             widgetsInTemplate: true,
+            _onParamChange: function () {
 
+            },
+            postCreate: function (){
+                this.templateSelector.repository == null;
+                this.templateSelector.setRepository(ecm.model.desktop.getRepository("OS1"));
 
+                // if (params.searchTemplate) {
+                //     this.templateSelector.setSelected(params.searchTemplate);
+                // }
+            }
         })
     })
