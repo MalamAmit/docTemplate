@@ -19,7 +19,7 @@ define([
             contentString: template,
             widgetsInTemplate: true,
             constructor: function(args){
-                this.title = args.title;
+                // this.title = args.title;
             },
             _onParamChange: function () {
 
