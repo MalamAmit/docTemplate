@@ -106,13 +106,13 @@ define(["dojo/_base/declare",
 
 
                 newButtonClick: function () {
-
                     this.openDialog();
 
                 },
 
                 openDialog: function () {
                     var dialog = new AddConfigDialog();
+                    dialog.setTitle("add conf")
                     dialog.show()
                 },
 
