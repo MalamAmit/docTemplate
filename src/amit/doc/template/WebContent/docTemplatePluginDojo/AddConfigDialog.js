@@ -6,11 +6,12 @@ define([
         "dojo/store/Memory",
         "ecm/widget/dialog/BaseDialog",
         "ecm/widget/ContentClassSelector",
+        "ecm/model/SearchTemplate",
 
         "dojo/text!./templates/AddConfigDialog.html"
     ],
     function (declare, lang, array, aspect, MemoryStore,
-              BaseDialog, ContentClassSelector, template) {
+              BaseDialog, ContentClassSelector, SearchTemplate, template) {
 
         return declare("docTemplatePluginDojo.AddConfigDialog", [
             BaseDialog
@@ -39,13 +40,13 @@ define([
                             this.enableFolderClassName.setSelected(this._editData.folderClass);
                         }
                         if (this._editData.searchTemplateVsId)
-                            template = new SearchTemplate({
+                            var sTemplate = new SearchTemplate({
                                 id: this._editData.searchTemplateVsId,
                                 name: "StoredSearch",
                                 repository: ecm.model.desktop.getRepository("OS1"),
                                 description: "item.description"
                             });
-                        this.searchTemplateSelector.setSelected(template);
+                        this.searchTemplateSelector.setSelected(sTemplate);
                         this._onFieldChange();
                     }, 300));
                 }
