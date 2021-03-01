@@ -103,7 +103,14 @@ define(["dojo/_base/declare",
                 // },
 
 
-                folderAssociateEntryTemplateNew: function () {
+                newButtonClick: function () {
+
+                    this.openDialog();
+
+                },
+
+                openDialog: function () {
+
                 },
 
 
