@@ -89,7 +89,7 @@ define(["dojo/_base/declare",
                     grid.resize();
 
                     this.own(aspect.after(grid.select.row, "onSelectionChange", lang.hitch(this, function(evt) {
-                        this.checkDocAssButtons();
+                        this.updateEnableButton();
                     }), true));
                     return grid;
                 },
@@ -137,6 +137,18 @@ define(["dojo/_base/declare",
                     dialog.show(currData);
                 },
 
+                deleteButtonClick: function() {
+                    var items = this.getRowSelected();
+                    if (items) {
+                        for (var i = 0; i < items.length; i++) {
+                            var item = items[i];
+                            this.configurationGrid.model.store.remove(item.id);
+                        }
+                    }
+
+                    this.updateEnableButton();
+                },
+
                 getRowSelected: function () {
                     return this.configurationGrid && this.configurationGrid.select ? this.getAssItems(this.configurationGrid.select.row.getSelected()) : [];
                 },
@@ -152,7 +164,7 @@ define(["dojo/_base/declare",
                     return items;
                 },
 
-                checkDocAssButtons: function () {
+                updateEnableButton: function () {
                     var items = this.getRowSelected();
                     this.editButton.set("disabled", !(items.length == 1));
                     this.deleteButton.set("disabled", !(items.length > 0));
