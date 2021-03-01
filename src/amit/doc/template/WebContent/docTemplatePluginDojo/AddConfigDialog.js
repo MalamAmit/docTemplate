@@ -25,6 +25,11 @@ define([
 
             },
             postCreate: function() {
+                this.inherited(arguments);
+                this.setResizable(false);
+                this.setMaximized(false);
+                this.setExpandable(false);
+                this.setTitle("title");
                 console.log("postCreate")
             }
 
