@@ -29,8 +29,10 @@ define([
                 this.setResizable(false);
                 this.setMaximized(false);
                 this.setExpandable(false);
-                this.setTitle("title");
-                console.log("postCreate")
+                this.setTitle("Add Doc Template configuration");
+
+                this.okButton = this.addButton("OK", "saveAssociate", true, true);
+
 
                 this.templateSelector.repository == null;
                 this.enableFolderClassName.repository == null;
@@ -46,6 +48,23 @@ define([
                 // if (params.searchTemplate) {
                 //     this.templateSelector.setSelected(params.searchTemplate);
                 // }
-            }
+            },
+            saveAssociate: function() {
+                // if (this._validateData()) {
+                //     var screenData = {};
+                //     //debugger;
+                //     screenData.repositoryId = this.repositoryField.get("value");
+                //     screenData.folderClassName = this.folderClassField.selectedContentClass.id;
+                //     screenData.orgUnitPrefix = this.orgUnitPrefixFiled.get("value");
+                //     screenData.associateEntryTemplate = this.associateEntryTemplateField.get('item');
+                //
+                //     if (this._isEdit()) {
+                //         this.onEdit(screenData, this._editData);
+                //     } else {
+                //         this.onAdd(screenData);
+                //     }
+                //     this.onCancel();
+                // }
+            },
         })
     })
