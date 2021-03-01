@@ -33,7 +33,15 @@ define([
                 console.log("postCreate")
 
                 this.templateSelector.repository == null;
-                this.templateSelector.setRepository(ecm.model.desktop.getRepository("OS1"));
+                this.enableFolderClassName.repository == null;
+                this.repository = ecm.model.desktop.getRepositoryByName("OS1");
+
+
+                this.templateSelector.setRepository(this.repository);
+                this.enableFolderClassName.setRepository(this.repository);
+
+                this.enableFolderClassName.setVisibleOnlyForFolder(true);
+                this.enableFolderClassName.setRootClassId("Folder");
 
                 // if (params.searchTemplate) {
                 //     this.templateSelector.setSelected(params.searchTemplate);
