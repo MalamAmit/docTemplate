@@ -112,7 +112,23 @@ define(["dojo/_base/declare",
 
                 openDialog: function () {
                     var dialog = new AddConfigDialog();
-                    dialog.show()
+
+
+                    this.own(aspect.after(dialog, "onAdd", lang.hitch(this, function(saveData) {
+                        debugger;
+                        // this.documentAssociateEntryTemplateGrid.model.store.add({
+                        //     "repositoryId": saveData.repositoryId,
+                        //     "orgUnitPrefix": saveData.orgUnitPrefix,
+                        //     "folderClassName": saveData.folderClassName,
+                        //     "associateEntryTemplateName" :saveData.associateEntryTemplate.name,
+                        //     "associateEntryTemplateClassName" :saveData.associateEntryTemplate.className,
+                        //     "associateEntryTemplateVsId" :saveData.associateEntryTemplate.vsId,
+                        // });
+                        // this._onFieldChange();
+                        // this.documentAssociateEntryTemplateGrid.resize();
+                    }), true));
+
+                    dialog.show(null);
                 },
 
 

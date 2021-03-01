@@ -55,11 +55,11 @@ define([
                     body.orgUnitPrefix = this.orgUnitPrefixFiled.get("value");
                     body.enableFolderClassName = this.enableFolderClassName.getSelected().id;
                     body.searchTemplateVsId = this.templateSelector.getSelected().vsId;
-                    //     if (this._isEdit()) {
-                    //         this.onEdit(screenData, this._editData);
-                    //     } else {
-                    this.onAdd(screenData);
-                    //     }
+                    // if (this._isEdit()) {
+                    //     this.onEdit(screenData, this._editData);
+                    // } else {
+                        this.onAdd(body);
+                    // }
                     this.onCancel();
                 }
             },
@@ -78,5 +78,16 @@ define([
 
                 return true;
             },
+            // override to get data entered on the screen
+            onEdit: function (screenData, originalData) {
+            },
+
+            // override to get data entered on the screen
+            onAdd: function (screenData) {
+            },
+
+            // _isEdit: function () {
+            //     return this._editData != null && this._editData;
+            // },
         })
     })
