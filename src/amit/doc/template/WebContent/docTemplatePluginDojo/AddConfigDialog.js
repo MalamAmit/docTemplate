@@ -39,7 +39,13 @@ define([
                             this.enableFolderClassName.setSelected(this._editData.folderClass);
                         }
                         if (this._editData.searchTemplateVsId)
-                            this.searchTemplateSelector.setSelected(this._editData.searchTemplateVsId);
+                            template = new SearchTemplate({
+                                id: this._editData.searchTemplateVsId,
+                                name: "StoredSearch",
+                                repository: ecm.model.desktop.getRepository("OS1"),
+                                description: "item.description"
+                            });
+                        this.searchTemplateSelector.setSelected();
                         this._onFieldChange();
                     }, 300));
                 }
