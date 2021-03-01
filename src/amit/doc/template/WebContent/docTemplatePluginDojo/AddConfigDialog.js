@@ -18,13 +18,13 @@ define([
 
             contentString: template,
             widgetsInTemplate: true,
-            constructor: function(args){
+            constructor: function (args) {
                 // this.title = args.title;
             },
             _onParamChange: function () {
 
             },
-            postCreate: function() {
+            postCreate: function () {
                 this.inherited(arguments);
                 this.setResizable(false);
                 this.setMaximized(false);
@@ -49,22 +49,37 @@ define([
                 //     this.templateSelector.setSelected(params.searchTemplate);
                 // }
             },
-            saveAssociate: function() {
-                // if (this._validateData()) {
-                //     var screenData = {};
-                //     //debugger;
-                //     screenData.repositoryId = this.repositoryField.get("value");
-                //     screenData.folderClassName = this.folderClassField.selectedContentClass.id;
-                //     screenData.orgUnitPrefix = this.orgUnitPrefixFiled.get("value");
-                //     screenData.associateEntryTemplate = this.associateEntryTemplateField.get('item');
-                //
-                //     if (this._isEdit()) {
-                //         this.onEdit(screenData, this._editData);
-                //     } else {
-                //         this.onAdd(screenData);
-                //     }
-                //     this.onCancel();
-                // }
+            saveAssociate: function () {
+                if (this._validateData()) {
+                    //     var screenData = {};
+                    //     //debugger;
+                    //     screenData.repositoryId = this.repositoryField.get("value");
+                    //     screenData.folderClassName = this.folderClassField.selectedContentClass.id;
+                    //     screenData.orgUnitPrefix = this.orgUnitPrefixFiled.get("value");
+                    //     screenData.associateEntryTemplate = this.associateEntryTemplateField.get('item');
+                    //
+                    //     if (this._isEdit()) {
+                    //         this.onEdit(screenData, this._editData);
+                    //     } else {
+                    //         this.onAdd(screenData);
+                    //     }
+                    //     this.onCancel();
+                }
+            },
+            _validateData: function () {
+                var value = this.enableFolderClassName.selectedContentClass;
+                if (value == null || value.id == null || value.id == "")
+                    return false;
+
+                value = this.templateSelector.get("value");
+                if (value == null || value == "")
+                    return false;
+
+                value = this.orgUnitPrefixFiled.get("value");
+                if (value == null || value == "")
+                    return false;
+
+                return true;
             },
         })
     })
