@@ -51,19 +51,16 @@ define([
             },
             saveAssociate: function () {
                 if (this._validateData()) {
-                    //     var screenData = {};
-                    //     //debugger;
-                    //     screenData.repositoryId = this.repositoryField.get("value");
-                    //     screenData.folderClassName = this.folderClassField.selectedContentClass.id;
-                    //     screenData.orgUnitPrefix = this.orgUnitPrefixFiled.get("value");
-                    //     screenData.associateEntryTemplate = this.associateEntryTemplateField.get('item');
-                    //
+                    var body = {};
+                    body.orgUnitPrefix = this.orgUnitPrefixFiled.get("value");
+                    body.enableFolderClassName = this.enableFolderClassName.getSelected().id;
+                    body.searchTemplateVsId = this.templateSelector.getSelected().vsId;
                     //     if (this._isEdit()) {
                     //         this.onEdit(screenData, this._editData);
                     //     } else {
-                    //         this.onAdd(screenData);
+                    this.onAdd(screenData);
                     //     }
-                    //     this.onCancel();
+                    this.onCancel();
                 }
             },
             _validateData: function () {
@@ -71,8 +68,8 @@ define([
                 if (value == null || value.id == null || value.id == "")
                     return false;
 
-                value = this.templateSelector.get("value");
-                if (value == null || value == "")
+                value = this.templateSelector.getSelected();
+                if (value == null || value.id == null || value.id == "")
                     return false;
 
                 value = this.orgUnitPrefixFiled.get("value");
