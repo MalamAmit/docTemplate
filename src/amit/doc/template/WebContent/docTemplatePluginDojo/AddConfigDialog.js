@@ -16,6 +16,8 @@ define([
             BaseDialog
         ], {
 
+            contentString: template,
+            widgetsInTemplate: true,
 
 
         })
