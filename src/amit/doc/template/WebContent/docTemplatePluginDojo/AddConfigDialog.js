@@ -28,24 +28,23 @@ define([
             },
 
             _loadData: function () {
-                this.orgUnitPrefixFiled.set("value", "");
                 // this.enableFolderClassName.setSelected();
-                // this.templateSelector.setSelected();
+                // this.searchTemplateSelector.setSelected();
 
 
-                if (this._editData) {
-                    setTimeout(lang.hitch(this, function () {
-                        if (this._editData.OrgUnit)
-                            this.orgUnitPrefixFiled.set('value', this._editData.OrgUnit);
-
-                        if (this._editData.FolderClass) {
-                            this.enableFolderClassName.setSelected(this._editData.FolderClass);
-                        }
-                        if (this._editData.SearchTemplateVsId)
-                            this.templateSelector.set('value', this._editData.SearchTemplateVsId);
-                        this._onFieldChange();
-                    }, 300));
-                }
+                // if (this._editData) {
+                //     setTimeout(lang.hitch(this, function () {
+                //         if (this._editData.OrgUnit)
+                //             this.orgUnitPrefixFiled.set('value', this._editData.OrgUnit);
+                //
+                //         if (this._editData.FolderClass) {
+                //             this.enableFolderClassName.setSelected(this._editData.FolderClass);
+                //         }
+                //         if (this._editData.SearchTemplateVsId)
+                //             this.searchTemplateSelector.set('value', this._editData.SearchTemplateVsId);
+                //         this._onFieldChange();
+                //     }, 300));
+                // }
             },
 
             _onParamChange: function () {
@@ -61,19 +60,19 @@ define([
                 this.okButton = this.addButton("OK", "saveAssociate", true, true);
 
 
-                this.templateSelector.repository == null;
+                this.searchTemplateSelector.repository == null;
                 this.enableFolderClassName.repository == null;
                 this.repository = ecm.model.desktop.getRepositoryByName("OS1");
 
 
-                this.templateSelector.setRepository(this.repository);
+                this.searchTemplateSelector.setRepository(this.repository);
                 this.enableFolderClassName.setRepository(this.repository);
 
                 this.enableFolderClassName.setVisibleOnlyForFolder(true);
                 this.enableFolderClassName.setRootClassId("Folder");
 
                 // if (params.searchTemplate) {
-                //     this.templateSelector.setSelected(params.searchTemplate);
+                //     this.searchTemplateSelector.setSelected(params.searchTemplate);
                 // }
             },
             saveAssociate: function () {
@@ -81,7 +80,7 @@ define([
                     var body = {};
                     body.orgUnitPrefix = this.orgUnitPrefixFiled.get("value");
                     body.enableFolderClassName = this.enableFolderClassName.getSelected().id;
-                    body.searchTemplateVsId = this.templateSelector.getSelected().vsId;
+                    body.searchTemplateVsId = this.searchTemplateSelector.getSelected().vsId;
                     // if (this._isEdit()) {
                     //     this.onEdit(screenData, this._editData);
                     // } else {
@@ -98,7 +97,7 @@ define([
                 if (value == null || value.id == null || value.id == "")
                     return false;
 
-                value = this.templateSelector.getSelected();
+                value = this.searchTemplateSelector.getSelected();
                 if (value == null || value.id == null || value.id == "")
                     return false;
 
