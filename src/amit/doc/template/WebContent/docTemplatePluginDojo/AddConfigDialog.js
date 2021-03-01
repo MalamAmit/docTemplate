@@ -22,7 +22,7 @@ define([
                 // this.title = args.title;
             },
             _onParamChange: function () {
-
+                this.okButton.set('disabled', !this._validateData());
             },
             postCreate: function () {
                 this.inherited(arguments);
