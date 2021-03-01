@@ -31,15 +31,13 @@ define([
                 this.setExpandable(false);
                 this.setTitle("title");
                 console.log("postCreate")
-            }
 
-        //     postCreate: function (){
-        //         this.templateSelector.repository == null;
-        //         this.templateSelector.setRepository(ecm.model.desktop.getRepository("OS1"));
-        //
-        //         // if (params.searchTemplate) {
-        //         //     this.templateSelector.setSelected(params.searchTemplate);
-        //         // }
-        //     }
+                this.templateSelector.repository == null;
+                this.templateSelector.setRepository(ecm.model.desktop.getRepository("OS1"));
+
+                // if (params.searchTemplate) {
+                //     this.templateSelector.setSelected(params.searchTemplate);
+                // }
+            }
         })
     })
