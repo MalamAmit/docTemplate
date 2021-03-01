@@ -45,7 +45,7 @@ define([
                                 repository: ecm.model.desktop.getRepository("OS1"),
                                 description: "item.description"
                             });
-                        this.searchTemplateSelector.setSelected();
+                        this.searchTemplateSelector.setSelected(template);
                         this._onFieldChange();
                     }, 300));
                 }
