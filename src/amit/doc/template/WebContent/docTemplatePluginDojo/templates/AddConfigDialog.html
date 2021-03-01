@@ -1,5 +1,19 @@
 <div class="ecmAdminTab" style="width:450px; height:160px;">
     <table class="propertyTable" role="presentation">
+
+        <tr>
+            <td class="propertyRowLabel">
+                <span class="required">*</span>
+                <label>Organization Unit Prefix</label>&nbsp;
+            </td>
+            <td class="propertyRowValue">
+                <div
+                        data-dojo-type="ecm/widget/ValidationTextBox"
+                        data-dojo-attach-point="orgUnitPrefixFiled">
+                </div>
+            </td>
+        </tr>
+
         <tr>
             <td class="propertyRowLabel">
                 <label>Enable folder class name</label>
@@ -16,7 +30,7 @@
         </tr>
         <tr>
             <td class="propertyRowLabel">
-                <label>Folder Template name </label>
+                <label>Search Template name</label>
             </td>
             <td class="propertyRowValue">
 
@@ -39,7 +53,7 @@
                      data-dojo-props="showOpenedSearches:false,toolbarContainsNewSearchButton:false"
                      data-dojo-attach-point="templateSelector"
                      id="${id}_templateSelector"
-                     data-dojo-attach-event="onSea: _onParamChange">
+                     data-dojo-attach-event="onSearchTemplateSelected: _onParamChange">
                 </div>
             </td>
         </tr>
