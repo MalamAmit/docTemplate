@@ -30,8 +30,9 @@ define([
 
             _loadData: function () {
                 this.orgUnitPrefixFiled.set("value", "");
-                this.enableFolderClassName.setSelected("value", "");
-                this.templateSelector.setSelected();
+                // this.enableFolderClassName.setSelected();
+                // this.templateSelector.setSelected();
+
 
                 // if (this._editData) {
                 //     if (this._editData.repositoryId)
