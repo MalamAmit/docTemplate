@@ -88,7 +88,7 @@ define(["dojo/_base/declare",
                     grid.startup();
                     grid.resize();
 
-                    this.own(aspect.after(grid.select.row, "onSelectionChange", lang.hitch(this, function(evt) {
+                    this.own(aspect.after(grid.select.row, "onSelectionChange", lang.hitch(this, function (evt) {
                         this.updateEnableButton();
                     }), true));
                     return grid;
@@ -125,25 +125,26 @@ define(["dojo/_base/declare",
                     this.own(aspect.after(dialog, "onEdit", lang.hitch(this, function (data, originalData) {
                         currItem.repository = this.staticRepository.id;
                         currItem.orgUnit = data.orgUnitPrefixParam,
-                        currItem.folderClass =  data.enableFolderClassParam,
-                        currItem.searchTemplateVsId =  data.searchTemplateVsIdParam,
-                        this.configurationGrid.model.store.put(currItem, {
-                            id: currItem.id,
-                            overwrite: true
-                        });
+                            currItem.folderClass = data.enableFolderClassParam,
+                            currItem.searchTemplateVsId = data.searchTemplateVsIdParam,
+                            this.configurationGrid.model.store.put(currItem, {
+                                id: currItem.id,
+                                overwrite: true
+                            });
                         this._onFieldChange();
                     }), true));
 
                     dialog.show(currData);
                 },
 
-                deleteButtonClick: function() {
+                deleteButtonClick: function () {
                     var items = this.getRowSelected();
                     if (items) {
                         for (var i = 0; i < items.length; i++) {
                             var item = items[i];
                             this.configurationGrid.model.store.remove(item.id);
                         }
+                        this._onFieldChange();
                     }
 
                     this.updateEnableButton();
@@ -190,9 +191,6 @@ define(["dojo/_base/declare",
                     }
                 },
 
-                _onParamChange: function () {
-                    // this.onSaveNeeded(true);
-                },
 
                 save: function () {
                     var configJson = {};

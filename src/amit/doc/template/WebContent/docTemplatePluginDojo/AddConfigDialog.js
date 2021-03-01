@@ -22,6 +22,7 @@ define([
             staticRepository: ecm.model.desktop.getRepositoryByName("OS1"),
 
             show: function (editData) {
+                console.log("show: function");
                 this.okButton.set("disabled", true);
                 this._editData = editData;
                 this._loadData();
@@ -38,7 +39,7 @@ define([
                             this.enableFolderClassName.setSelected(this._editData.folderClass);
                         }
                         if (this._editData.searchTemplateVsId)
-                            this.searchTemplateSelector.set('value', this._editData.searchTemplateVsId);
+                            this.searchTemplateSelector.setSelected(this._editData.searchTemplateVsId);
                         this._onFieldChange();
                     }, 300));
                 }
@@ -49,6 +50,7 @@ define([
             },
 
             postCreate: function () {
+                console.log("postCreate: function");
                 this.inherited(arguments);
                 this.setResizable(false);
                 this.setMaximized(false);
