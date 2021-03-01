@@ -18,9 +18,16 @@ define([
 
             contentString: template,
             widgetsInTemplate: true,
+            constructor: function(args){
+                this.title = args.title;
+            },
             _onParamChange: function () {
 
             },
+            postCreate: function() {
+                console.log("postCreate")
+            }
+
         //     postCreate: function (){
         //         this.templateSelector.repository == null;
         //         this.templateSelector.setRepository(ecm.model.desktop.getRepository("OS1"));
