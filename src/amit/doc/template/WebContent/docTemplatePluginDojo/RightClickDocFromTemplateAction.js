@@ -1,4 +1,6 @@
 define(["dojo/_base/declare",
+        "dojo/_base/lang",
+
         "ecm/model/Action",
         "ecm/model/Request",
         "docTemplatePluginDojo/TemplatesDialog",
@@ -9,7 +11,7 @@ define(["dojo/_base/declare",
         "ecm/model/Desktop",
 
         "ecm/widget/dialog/BaseDialog"],
-    function (declare,
+    function (declare, lang,
               Action,
               Request,
               TemplatesDialog,
@@ -88,7 +90,9 @@ define(["dojo/_base/declare",
 
                             self.srchDialog.setTitle("Choose template");
                             self.srchDialog.setMaximized(false)
-                            self.srchDialog.addButton("Select Template", function(){ self.selectTemplate(self.srchDialog) }, false, true);
+                            self.srchDialog.addButton("Select Template", function () {
+                                self.selectTemplate(self.srchDialog)
+                            }, false, true);
                             self.srchDialog.show();
                         }
                     });
