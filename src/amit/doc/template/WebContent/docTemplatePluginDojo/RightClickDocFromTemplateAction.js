@@ -73,11 +73,11 @@ define(["dojo/_base/declare",
                             // todo - replace
                             // todo - replace
                             // todo - replace
-                            var vsId = "{1031E877-0000-CC1E-BAFF-E5B64CF41B41}";
+                            var vsId = response.configurationGridData[0].searchTemplateVsId;
+                            var folderClass = response.configurationGridData[0].folderClass;
 
                             Desktop.getDefaultRepository().retrieveSearchTemplate("", vsId, "released", lang.hitch(this, function (searchTemplate) {
                                 console.log("amit")
-
                                 self.srchDialog = new SearchDialog({
                                     searchTemplate: searchTemplate,
                                     repository: ecm.model.desktop.getRepository("OS1"),
@@ -88,7 +88,7 @@ define(["dojo/_base/declare",
                                 self.srchDialog.setTitle("Choose template");
                                 self.srchDialog.setMaximized(false)
                                 self.srchDialog.addButton("Select Template", function () {
-                                    self.selectTemplate(self.srchDialog)
+                                    self.selectTemplate(self.srchDialog, folderClass)
                                 }, false, true);
                                 self.srchDialog.show();
 
@@ -103,7 +103,22 @@ define(["dojo/_base/declare",
             },
 
 
-            selectTemplate: function (dialog) {
+            onDocumentReady: function (currentItem) {
+                if (this._addDocumentFromEditServiceTemplateDialog) {
+                    this._addDocumentFromEditServiceTemplateDialog.destroyRecursive();
+                }
+                this._addDocumentFromEditServiceTemplateDialog = AddDocumentFromEditServiceTemplateDialog({
+                    categoryId: null,
+                    sourceDocument: currentItem,
+                    style: {minHeight: "700px", minWidth: "1000px"}
+                });
+                this._addDocumentFromEditServiceTemplateDialog.setMaximized(false);
+
+                this._addDocumentFromEditServiceTemplateDialog.show(ecm.model.desktop.getRepository("OS1"), null, true, false, lang.hitch(this, function (item) {
+                    // this.actionEditWithNativeApplication(repository,  [item], null, null, null, {newAdded: true});
+                }), null, false);
+            },
+            selectTemplate: function (dialog, folderClass) {
                 var selectedArr = dialog.search.searchResults.grid.select.row._lastSelectedIds;
                 dialog.destroy();
                 if (!selectedArr) {
@@ -111,36 +126,14 @@ define(["dojo/_base/declare",
                     alert("Please select template from the list");
                     return;
                 }
-                var selected = selectedArr[0];
-                console.log("selected", selected);
+                var documentId = selectedArr[0];
+                Desktop.getDefaultRepository().retrieveItem(documentId, lang.hitch(this, function (currentItem) {
+                    this.onDocumentReady(currentItem);
+                }));
 
-                // this.addDocumentDialog = new AddDocumentDialog({
-                //     style: {minHeight: "700px", minWidth: "1000px"}
-                // });
-                // this.addDocumentDialog.setMaximized(false)
-                // targetRepository = ecm.model.desktop.getRepository("OS1");
-                // parentFolder = targetRepository.rootItem
-                // this.addDocumentDialog.show(targetRepository, parentFolder, true, false, null, null, true);
-                // this.addContentItem = new AddContentItemDialog({
-                //     destroyWhenFinished: true
-                // });
-                // this.addContentItem.show();
 
-                Desktop.getDefaultRepository().retrieveItem(selected, lang.hitch(this, function (currentItem) {
-                    if (this._addDocumentFromEditServiceTemplateDialog) {
-                        this._addDocumentFromEditServiceTemplateDialog.destroyRecursive();
-                    }
-
-                    this._addDocumentFromEditServiceTemplateDialog = AddDocumentFromEditServiceTemplateDialog({
-                        categoryId: null,
-                        sourceDocument: currentItem,
-                        style: {minHeight: "700px", minWidth: "1000px"}
-                    });
-                    this._addDocumentFromEditServiceTemplateDialog.setMaximized(false);
-
-                    this._addDocumentFromEditServiceTemplateDialog.show(ecm.model.desktop.getRepository("OS1"), null, true, false, lang.hitch(this, function (item) {
-                        // this.actionEditWithNativeApplication(repository,  [item], null, null, null, {newAdded: true});
-                    }), null, false);
+                Desktop.getDefaultRepository().retrieveItem(folderClass, lang.hitch(this, function (currentItem) {
+                    console.log("Amit");
                 }));
             },
 
