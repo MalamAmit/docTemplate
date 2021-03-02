@@ -121,7 +121,7 @@ define(["dojo/_base/declare",
                 // this.addContentItem.show();
 
 
-                CommonActionsHandler.actionCopyToEditService();
+                actionCopyToEditService();
 
             },
 
