@@ -18,7 +18,7 @@ define(["dojo/_base/declare",
               TemplatesDialog,
               SearchDialog,
               SearchTemplate,
-              AddDocumentDialog,
+              AddDocumentFromEditServiceTemplateDialog,
               AddContentItemDialog,
               Desktop,
               BaseDialog) {
