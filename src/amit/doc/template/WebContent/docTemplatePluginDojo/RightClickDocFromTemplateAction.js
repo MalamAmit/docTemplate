@@ -124,9 +124,61 @@ define(["dojo/_base/declare",
                 //     destroyWhenFinished: true
                 // });
                 // this.addContentItem.show();
+                new CommonActionsHandler();
+                this._actionAddEditServiceDocument(null, ecm.model.desktop.getRepository("OS1"), null, null, null, null, null);
+            },
 
-                _actionAddEditServiceDocument(null, null, null, null, null, null, null) ;
-                },
+
+            _actionAddEditServiceDocument: function (categoryId, repository, items, callback, teamspace, resultSet, sourceDocument) {
+
+                if (this._addDocumentFromEditServiceTemplateDialog) {
+                    this._addDocumentFromEditServiceTemplateDialog.destroyRecursive();
+                }
+                var source = null;
+                if (sourceDocument && sourceDocument.length > 0) {
+                    source = sourceDocument[0];
+                }
+                this._addDocumentFromEditServiceTemplateDialog = AddDocumentFromEditServiceTemplateDialog({
+                    categoryId: categoryId,
+                    sourceDocument: source
+                });
+
+                var parentFolder = null;
+                // if (items && items.length > 0) {
+                //     if (!items[0].isFolder()) {
+                //         var parent = items[0].parent;
+                //         if (parent && parent.isInstanceOf && parent.isInstanceOf(ecm.model.Favorite)) { // If the parent item is a favorite...
+                //             if (parent.item && parent.item.isFolder && parent.item.isFolder()) { // If this is a folder favorite, use the folder item.
+                //                 parent = parent.item;
+                //             } else {
+                //                 parent = null;
+                //             }
+                //         } else if (parent && !parent.isFolder()) {
+                //             parent = null;
+                //         }
+                //         parentFolder = parent;
+                //     } else {
+                //         parentFolder = items[0];
+                //     }
+                // }
+
+
+                // Use search result content class as default if no parentFolder
+                var defaultContentClass = null;
+                if (!parentFolder && resultSet) {
+                    var contentClass = this._getSearchTemplateSingleContentClass(resultSet.searchTemplate, repository);
+                    if (contentClass)
+                        defaultContentClass = contentClass;
+                }
+                this._addDocumentFromEditServiceTemplateDialog.setDefaultContentClass(defaultContentClass);
+
+                // The parent folder repository may be different than the one passed above in P8.
+                // Users can add documents/folders to folder work item attachments in other object stores.
+                var targetRepository = (parentFolder && parentFolder.repository) || repository;
+
+                this._showAddDocDialogForEditService(repository, parentFolder, targetRepository, teamspace);
+            },
+
             setBrowseRootFolder: function (newRootFolder, browseFeature) {
                 browseFeature.folderTree.setFolder(newRootFolder);
                 // optionally set content list to the first child.
