@@ -6,6 +6,8 @@ define(["dojo/_base/declare",
         "ecm/model/SearchTemplate",
         "ecm/widget/dialog/AddDocumentFromEditServiceTemplateDialog",
         "ecm/widget/dialog/AddContentItemDialog",
+        "ecm/model/Desktop",
+
         "ecm/widget/dialog/BaseDialog"],
     function (declare,
               Action,
@@ -15,6 +17,7 @@ define(["dojo/_base/declare",
               SearchTemplate,
               AddDocumentDialog,
               AddContentItemDialog,
+              Desktop,
               BaseDialog) {
         return declare("docTemplatePluginDojo.RightClickDocFromTemplateAction", [Action], {
 
@@ -68,13 +71,13 @@ define(["dojo/_base/declare",
                             // });
 
                             // todo - new
-                            // this.searchTemplateSelector.repository.retrieveSearchTemplate("", this._editData.searchTemplateVsId, "released", lang.hitch(this, function (searchTemplate) {
-                            //     this.searchTemplateSelector.setSelected(searchTemplate);
-                            //     this._onFieldChange();
-                            // }), lang.hitch(this, function () {
-                            //     alert("Search Template could not be retrieved");
-                            //     // Remove the search template from recent searches if it could not be retrieved.
-                            // }));
+                            Desktop.getDefaultRepository().retrieveSearchTemplate("", this._editData.searchTemplateVsId, "released", lang.hitch(this, function (searchTemplate) {
+                                this.searchTemplateSelector.setSelected(searchTemplate);
+                                this._onFieldChange();
+                            }), lang.hitch(this, function () {
+                                alert("Search Template could not be retrieved");
+                                // Remove the search template from recent searches if it could not be retrieved.
+                            }));
 
                             self.srchDialog = new SearchDialog({
                                 searchTemplate: template,
