@@ -5,7 +5,6 @@ define(["dojo/_base/declare",
         "ecm/model/Request",
         "docTemplatePluginDojo/TemplatesDialog",
         "ecm/widget/search/SearchDialog",
-        "ecm/widget/layout/CommonActionsHandler",
 
         "ecm/model/SearchTemplate",
         "ecm/widget/dialog/AddDocumentFromEditServiceTemplateDialog",
@@ -18,14 +17,12 @@ define(["dojo/_base/declare",
               Request,
               TemplatesDialog,
               SearchDialog,
-              CommonActionsHandler,
               SearchTemplate,
               AddDocumentDialog,
               AddContentItemDialog,
               Desktop,
               BaseDialog) {
         return declare("docTemplatePluginDojo.RightClickDocFromTemplateAction", [
-            CommonActionsHandler,
             Action
         ], {
 
@@ -124,7 +121,6 @@ define(["dojo/_base/declare",
                 //     destroyWhenFinished: true
                 // });
                 // this.addContentItem.show();
-                new CommonActionsHandler();
                 this._actionAddEditServiceDocument(null, ecm.model.desktop.getRepository("OS1"), null, null, null, null, null);
             },
 
