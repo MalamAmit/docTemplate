@@ -58,12 +58,23 @@ define(["dojo/_base/declare",
                             className = response.enableFolderClassName;
                             folderParams = response.folderSelectorParam;
 
-                            var template = new SearchTemplate({
-                                id: "StoredSearch,{0DC081DE-3B0D-42C6-B213-63729230F9A9},{60F57A6E-0000-CD1D-815E-3F792C408580}",
-                                name: "StoredSearch",
-                                repository: ecm.model.desktop.getRepository("OS1"),
-                                description: "item.description"
-                            });
+
+                            // todo - old
+                            // var template = new SearchTemplate({
+                            //     id: "StoredSearch,{0DC081DE-3B0D-42C6-B213-63729230F9A9},{60F57A6E-0000-CD1D-815E-3F792C408580}",
+                            //     name: "StoredSearch",
+                            //     repository: ecm.model.desktop.getRepository("OS1"),
+                            //     description: "item.description"
+                            // });
+
+                            // todo - new
+                            // this.searchTemplateSelector.repository.retrieveSearchTemplate("", this._editData.searchTemplateVsId, "released", lang.hitch(this, function (searchTemplate) {
+                            //     this.searchTemplateSelector.setSelected(searchTemplate);
+                            //     this._onFieldChange();
+                            // }), lang.hitch(this, function () {
+                            //     alert("Search Template could not be retrieved");
+                            //     // Remove the search template from recent searches if it could not be retrieved.
+                            // }));
 
                             self.srchDialog = new SearchDialog({
                                 searchTemplate: template,

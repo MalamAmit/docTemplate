@@ -39,34 +39,15 @@ define([
                         if (this._editData.folderClass) {
                             this.enableFolderClassName.setSelected(this._editData.folderClass);
                         }
-                        if (this._editData.searchTemplateVsId)
-
-                            //retrieve search template
-                            var request = this.repository.retrieveSearchTemplate(item.id, item.vsId, "released", lang.hitch(this, function(searchTemplate) {
-                                this._treeModel.onChange(searchTemplate);
-                                this._addContextMenu(evt, searchTemplate);
-                            }), lang.hitch(this, function() {
+                        if (this._editData.searchTemplateVsId) {
+                            this.searchTemplateSelector.repository.retrieveSearchTemplate("", this._editData.searchTemplateVsId, "released", lang.hitch(this, function (searchTemplate) {
+                                this.searchTemplateSelector.setSelected(searchTemplate);
+                                this._onFieldChange();
+                            }), lang.hitch(this, function () {
+                                alert("Search Template could not be retrieved");
                                 // Remove the search template from recent searches if it could not be retrieved.
-                                if (this.teamspace) {
-                                    this.teamspace.removeRecentSearches([
-                                        item
-                                    ]);
-                                } else {
-                                    this.repository.removeRecentSearches([
-                                        item
-                                    ]);
-                                }
                             }));
-
-
-                            // var sTemplate = new SearchTemplate({
-                            //     id: this._editData.searchTemplateVsId,
-                            //     name: "StoredSearch",
-                            //     repository: ecm.model.desktop.getRepository("OS1"),
-                            //     description: "item.description"
-                            // });
-                        this.searchTemplateSelector.setSelected(sTemplate);
-                        this._onFieldChange();
+                        }
                     }, 300));
                 }
             },
@@ -101,7 +82,7 @@ define([
             saveData: function () {
                 this.getVsId = function () {
                     if (this.searchTemplateSelector.getSelected().vsId) {
-                         return this.searchTemplateSelector.getSelected().vsId;
+                        return this.searchTemplateSelector.getSelected().vsId;
                     } else {
                         // todo: get version Id
                         // return ...
