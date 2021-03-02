@@ -63,17 +63,12 @@ define(["dojo/_base/declare",
                             className = response.enableFolderClassName;
                             folderParams = response.folderSelectorParam;
 
+                            // todo - replace
+                            // todo - replace
+                            // todo - replace
+                            var vsId = "{1031E877-0000-CC1E-BAFF-E5B64CF41B41}";
 
-                            // todo - old
-                            // var template = new SearchTemplate({
-                            //     id: "StoredSearch,{0DC081DE-3B0D-42C6-B213-63729230F9A9},{60F57A6E-0000-CD1D-815E-3F792C408580}",
-                            //     name: "StoredSearch",
-                            //     repository: ecm.model.desktop.getRepository("OS1"),
-                            //     description: "item.description"
-                            // });
-
-                            // todo - new
-                            Desktop.getDefaultRepository().retrieveSearchTemplate("", this._editData.searchTemplateVsId, "released", lang.hitch(this, function (searchTemplate) {
+                            Desktop.getDefaultRepository().retrieveSearchTemplate("", vsId, "released", lang.hitch(this, function (searchTemplate) {
                                 console.log("amit")
 
                                 self.srchDialog = new SearchDialog({
