@@ -5,6 +5,8 @@ define(["dojo/_base/declare",
         "ecm/model/Request",
         "docTemplatePluginDojo/TemplatesDialog",
         "ecm/widget/search/SearchDialog",
+        "ecm/widget/layout/CommonActionsHandler",
+
         "ecm/model/SearchTemplate",
         "ecm/widget/dialog/AddDocumentFromEditServiceTemplateDialog",
         "ecm/widget/dialog/AddContentItemDialog",
@@ -16,6 +18,7 @@ define(["dojo/_base/declare",
               Request,
               TemplatesDialog,
               SearchDialog,
+              CommonActionsHandler,
               SearchTemplate,
               AddDocumentDialog,
               AddContentItemDialog,
@@ -112,11 +115,13 @@ define(["dojo/_base/declare",
                 // targetRepository = ecm.model.desktop.getRepository("OS1");
                 // parentFolder = targetRepository.rootItem
                 // this.addDocumentDialog.show(targetRepository, parentFolder, true, false, null, null, true);
+                // this.addContentItem = new AddContentItemDialog({
+                //     destroyWhenFinished: true
+                // });
+                // this.addContentItem.show();
 
-                this.addContentItem = new AddContentItemDialog({
-                    destroyWhenFinished: true
-                });
-                this.addContentItem.show();
+
+                CommonActionsHandler.actionCopyToEditService();
 
             },
 
