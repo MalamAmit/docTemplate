@@ -75,26 +75,25 @@ define(["dojo/_base/declare",
                             // todo - new
                             Desktop.getDefaultRepository().retrieveSearchTemplate("", this._editData.searchTemplateVsId, "released", lang.hitch(this, function (searchTemplate) {
                                 console.log("amit")
-                                // this.searchTemplateSelector.setSelected(searchTemplate);
-                                // this._onFieldChange();
+
+                                self.srchDialog = new SearchDialog({
+                                    searchTemplate: searchTemplate,
+                                    repository: ecm.model.desktop.getRepository("OS1"),
+                                    showSearch: true,
+                                    style: {minHeight: "700px", minWidth: "1000px"}
+                                });
+
+                                self.srchDialog.setTitle("Choose template");
+                                self.srchDialog.setMaximized(false)
+                                self.srchDialog.addButton("Select Template", function () {self.selectTemplate(self.srchDialog)}, false, true);
+                                self.srchDialog.show();
+
                             }), lang.hitch(this, function () {
                                 alert("Search Template could not be retrieved");
                                 // Remove the search template from recent searches if it could not be retrieved.
                             }));
 
-                            // self.srchDialog = new SearchDialog({
-                            //     searchTemplate: template,
-                            //     repository: ecm.model.desktop.getRepository("OS1"),
-                            //     showSearch: true,
-                            //     style: {minHeight: "700px", minWidth: "1000px"}
-                            // });
-                            //
-                            // self.srchDialog.setTitle("Choose template");
-                            // self.srchDialog.setMaximized(false)
-                            // self.srchDialog.addButton("Select Template", function () {
-                            //     self.selectTemplate(self.srchDialog)
-                            // }, false, true);
-                            // self.srchDialog.show();
+
                         }
                     });
             },
