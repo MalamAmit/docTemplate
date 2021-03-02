@@ -127,32 +127,21 @@ define(["dojo/_base/declare",
                 // this.addContentItem.show();
 
                 Desktop.getDefaultRepository().retrieveItem(selected, lang.hitch(this, function (currentItem) {
-
                     if (this._addDocumentFromEditServiceTemplateDialog) {
                         this._addDocumentFromEditServiceTemplateDialog.destroyRecursive();
                     }
 
                     this._addDocumentFromEditServiceTemplateDialog = AddDocumentFromEditServiceTemplateDialog({
                         categoryId: null,
-                        sourceDocument: currentItem
+                        sourceDocument: currentItem,
+                        style: {minHeight: "700px", minWidth: "1000px"}
                     });
+                    this._addDocumentFromEditServiceTemplateDialog.setMaximized(false);
 
-                    var parentFolder = null;
-                    // Use search result content class as default if no parentFolder
-                    var defaultContentClass = null;
-                    if (!parentFolder && resultSet) {
-                        var contentClass = this._getSearchTemplateSingleContentClass(resultSet.searchTemplate, ecm.model.desktop.getRepository("OS1"));
-                        if (contentClass)
-                            defaultContentClass = contentClass;
-                    }
-                    this._addDocumentFromEditServiceTemplateDialog.setDefaultContentClass(defaultContentClass);
-
-
-                    this._addDocumentFromEditServiceTemplateDialog.show(ecm.model.desktop.getRepository("OS1"), parentFolder, true, false, lang.hitch(this, function (item) {
+                    this._addDocumentFromEditServiceTemplateDialog.show(ecm.model.desktop.getRepository("OS1"), null, true, false, lang.hitch(this, function (item) {
                         // this.actionEditWithNativeApplication(repository,  [item], null, null, null, {newAdded: true});
                     }), null, false);
                 }));
-
             },
 
             setBrowseRootFolder: function (newRootFolder, browseFeature) {
