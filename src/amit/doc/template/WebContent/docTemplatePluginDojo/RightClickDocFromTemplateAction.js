@@ -24,7 +24,10 @@ define(["dojo/_base/declare",
               AddContentItemDialog,
               Desktop,
               BaseDialog) {
-        return declare("docTemplatePluginDojo.RightClickDocFromTemplateAction", [Action], {
+        return declare("docTemplatePluginDojo.RightClickDocFromTemplateAction", [
+            CommonActionsHandler,
+            Action
+        ], {
 
 
             isEnabled: function (repository, listType, items, teamspace, resultSet) {
