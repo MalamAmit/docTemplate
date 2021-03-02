@@ -39,21 +39,14 @@ define([
                         if (this._editData.folderClass) {
                             this.enableFolderClassName.setSelected(this._editData.folderClass);
                         }
-                        if (this._editData.searchTemplateVsId) {
-                            var template = new SearchTemplate({
-                                id: "StoredSearch,{0DC081DE-3B0D-42C6-B213-63729230F9A9},{60F57A6E-0000-CD1D-815E-3F792C408580}",
+                        if (this._editData.searchTemplateVsId)
+                            var sTemplate = new SearchTemplate({
+                                id: this._editData.searchTemplateVsId,
                                 name: "StoredSearch",
                                 repository: ecm.model.desktop.getRepository("OS1"),
                                 description: "item.description"
                             });
-                            // var sTemplate = new SearchTemplate({
-                            //     id: this._editData.searchTemplateVsId,
-                            //     name: "StoredSearch",
-                            //     repository: ecm.model.desktop.getRepository("OS1"),
-                            //     description: "item.description"
-                            // });
-                            this.searchTemplateSelector.setSelected(sTemplate);
-                        }
+                        this.searchTemplateSelector.setSelected(sTemplate);
                         this._onFieldChange();
                     }, 300));
                 }
