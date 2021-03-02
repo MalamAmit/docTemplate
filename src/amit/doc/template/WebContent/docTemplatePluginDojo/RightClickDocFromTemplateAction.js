@@ -83,7 +83,9 @@ define(["dojo/_base/declare",
 
                                 self.srchDialog.setTitle("Choose template");
                                 self.srchDialog.setMaximized(false)
-                                self.srchDialog.addButton("Select Template", function () {self.selectTemplate(self.srchDialog)}, false, true);
+                                self.srchDialog.addButton("Select Template", function () {
+                                    self.selectTemplate(self.srchDialog)
+                                }, false, true);
                                 self.srchDialog.show();
 
                             }), lang.hitch(this, function () {
@@ -121,10 +123,8 @@ define(["dojo/_base/declare",
                 // this.addContentItem.show();
 
 
-                actionCopyToEditService();
-
+                actionCopyToEditService(ecm.model.desktop.getRepository("OS1"), null, null, null, null, null, null, null)
             },
-
             setBrowseRootFolder: function (newRootFolder, browseFeature) {
                 browseFeature.folderTree.setFolder(newRootFolder);
                 // optionally set content list to the first child.
