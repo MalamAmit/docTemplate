@@ -125,9 +125,8 @@ define(["dojo/_base/declare",
                 // });
                 // this.addContentItem.show();
 
-
-                actionCopyToEditService(ecm.model.desktop.getRepository("OS1"), null, null, null, null, null, null, null)
-            },
+                _actionAddEditServiceDocument(null, null, null, null, null, null, null) ;
+                },
             setBrowseRootFolder: function (newRootFolder, browseFeature) {
                 browseFeature.folderTree.setFolder(newRootFolder);
                 // optionally set content list to the first child.
