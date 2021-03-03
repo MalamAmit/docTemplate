@@ -59,7 +59,7 @@ define(["dojo/_base/declare",
 
 
             performAction: function (repository, itemList, callback, teamspace, resultSet, parameterMap) {
-
+                var destinationFolder = itemList[0];
 
                 var className = "";
                 var folderParams = {};
@@ -88,7 +88,7 @@ define(["dojo/_base/declare",
                                 self.srchDialog.setTitle("Choose template");
                                 self.srchDialog.setMaximized(false)
                                 self.srchDialog.addButton("Select Template", function () {
-                                    self.selectTemplate(self.srchDialog, folderClass)
+                                    self.selectTemplate(self.srchDialog, destinationFolder)
                                 }, false, true);
                                 self.srchDialog.show();
 
@@ -103,7 +103,7 @@ define(["dojo/_base/declare",
             },
 
 
-            onDocumentReady: function (currentItem) {
+            onDocumentReady: function (currentItem, destinationFolder) {
                 if (this._addDocumentFromEditServiceTemplateDialog) {
                     this._addDocumentFromEditServiceTemplateDialog.destroyRecursive();
                 }
@@ -114,11 +114,12 @@ define(["dojo/_base/declare",
                 });
                 this._addDocumentFromEditServiceTemplateDialog.setMaximized(false);
 
-                this._addDocumentFromEditServiceTemplateDialog.show(ecm.model.desktop.getRepository("OS1"), null, true, false, lang.hitch(this, function (item) {
+                this._addDocumentFromEditServiceTemplateDialog.show(ecm.model.desktop.getRepository("OS1"), destinationFolder, true, false, lang.hitch(this, function (item) {
                     // this.actionEditWithNativeApplication(repository,  [item], null, null, null, {newAdded: true});
                 }), null, false);
             },
-            selectTemplate: function (dialog, folderClass) {
+
+            selectTemplate: function (dialog, destinationFolder) {
                 var selectedArr = dialog.search.searchResults.grid.select.row._lastSelectedIds;
                 dialog.destroy();
                 if (!selectedArr) {
@@ -128,13 +129,13 @@ define(["dojo/_base/declare",
                 }
                 var documentId = selectedArr[0];
                 Desktop.getDefaultRepository().retrieveItem(documentId, lang.hitch(this, function (currentItem) {
-                    this.onDocumentReady(currentItem);
+                    this.onDocumentReady(currentItem, destinationFolder);
                 }));
 
-
-                Desktop.getDefaultRepository().retrieveItem(folderClass, lang.hitch(this, function (currentItem) {
-                    console.log("Amit");
-                }));
+                //
+                // Desktop.getDefaultRepository().retrieveItem(destinationFolder, lang.hitch(this, function (currentItem) {
+                //     console.log("Amit");
+                // }));
             },
 
             setBrowseRootFolder: function (newRootFolder, browseFeature) {
