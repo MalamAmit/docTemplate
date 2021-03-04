@@ -32,11 +32,10 @@ define(["dojo/_base/declare",
 
 
             isEnabled: function (repository, listType, items, teamspace, resultSet) {
-                var self = this;
+                var enabled = this.inherited(arguments);
                 Request.invokePluginService("DocTemplatePlugin",
                     "GetConfigurationService", {
                         requestCompleteCallback: function (response) {
-                            var enabled = self.inherited(arguments);
 
                             if (items && items[0].isFolder && items[0].getContentClass) {
                                 return enabled &&
@@ -72,10 +71,10 @@ define(["dojo/_base/declare",
                             var vsId = response.configurationGridData[0].searchTemplateVsId;
                             var folderClass = response.configurationGridData[0].folderClass;
 
-                            Desktop.getDefaultRepository().retrieveSearchTemplate("", vsId, "released", lang.hitch(this, function (searchTemplate) {
+                            repository.retrieveSearchTemplate("", vsId, "released", lang.hitch(this, function (searchTemplate) {
                                 self.srchDialog = new SearchDialog({
                                     searchTemplate: searchTemplate,
-                                    repository: ecm.model.desktop.getRepository("OS1"),
+                                    repository: repository,
                                     showSearch: true,
                                     style: {minHeight: "700px", minWidth: "1000px"}
                                 });

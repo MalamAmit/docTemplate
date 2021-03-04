@@ -1,4 +1,4 @@
-package amit.doc.template;
+package com.malam.ecm.NewDocByTemplate;
 
 import java.util.Locale;
 
@@ -333,7 +333,7 @@ public class DocTemplatePlugin extends Plugin {
 	 */
 	public PluginService[] getServices() {
 		if (pluginServices.length == 0) {
-			pluginServices = new PluginService[] {new amit.doc.template.GetConfigurationService()};
+			pluginServices = new PluginService[] {new GetConfigurationService()};
 		}
 		return pluginServices;
 	}
@@ -350,8 +350,8 @@ public class DocTemplatePlugin extends Plugin {
 	public PluginAction[] getActions() {
 		if (pluginActions.length == 0) {
 			pluginActions = new PluginAction[] {
-					new amit.doc.template.CreateDocFromTemplateAction(),
-					new amit.doc.template.RightClickDocFromTemplateAction()};
+					new CreateDocFromTemplateAction(),
+					new RightClickDocFromTemplateAction()};
 		}
 		return pluginActions;
 	}

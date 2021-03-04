@@ -31,7 +31,7 @@
 		<jar jarfile="DocTemplatePlugin.jar">
 			<fileset dir="./temp" includes="**/*" />
 			<manifest>
-				<attribute name="Plugin-Class" value="amit.doc.template.DocTemplatePlugin" />
+				<attribute name="Plugin-Class" value="com.malam.ecm.NewDocByTemplate.DocTemplatePlugin" />
 				<section name="build">
 					<attribute name="Built-By" value="${user.name}" />
 					<attribute name="Build" value="${TODAY}" />

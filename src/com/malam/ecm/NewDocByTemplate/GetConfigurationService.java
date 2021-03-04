@@ -1,4 +1,4 @@
-package amit.doc.template;
+package com.malam.ecm.NewDocByTemplate;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
