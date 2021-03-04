@@ -5,7 +5,7 @@
 	<target name="all" depends="clean,compile,jar" />
 
 	<path id="classpath">
-		<pathelement location="C:/Users/amit_y/Desktop/Jars/navigatorAPI.jar" />
+		<pathelement location="C:/Libraries/Jars/navigatorAPI.jar" />
 		<pathelement location="./lib/j2ee.jar" />
 		<pathelement location="./temp" />
 	</path>

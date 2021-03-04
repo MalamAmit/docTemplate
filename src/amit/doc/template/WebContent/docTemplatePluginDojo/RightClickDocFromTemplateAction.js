@@ -32,24 +32,20 @@ define(["dojo/_base/declare",
 
 
             isEnabled: function (repository, listType, items, teamspace, resultSet) {
+                var self = this;
+                Request.invokePluginService("DocTemplatePlugin",
+                    "GetConfigurationService", {
+                        requestCompleteCallback: function (response) {
+                            var enabled = self.inherited(arguments);
 
-                var enabled = this.inherited(arguments);
-
-                if (items && items[0].isFolder && items[0].getContentClass) {
-                    // var hasChildren = false;
-                    // if (!!items[0]._folderContents) {
-                    //     items[0]._folderContents[""]?.items.forEach(item => {
-                    //         if (item.mimeType && item.mimeType === "folder") {
-                    //             hasChildren = true;
-                    //         }
-                    //     });
-                    // }
-                    return enabled &&
-                        items[0].isFolder() &&
-                        items[0].getContentClass().name == "AmitFolder"
-                    //&& !hasChildren;
-                }
-                return false;
+                            if (items && items[0].isFolder && items[0].getContentClass) {
+                                return enabled &&
+                                    items[0].isFolder() &&
+                                    items[0].getContentClass().name == "AmitFolder"
+                            }
+                            return false;
+                        }
+                    });
             },
 
 
@@ -77,7 +73,6 @@ define(["dojo/_base/declare",
                             var folderClass = response.configurationGridData[0].folderClass;
 
                             Desktop.getDefaultRepository().retrieveSearchTemplate("", vsId, "released", lang.hitch(this, function (searchTemplate) {
-                                console.log("amit")
                                 self.srchDialog = new SearchDialog({
                                     searchTemplate: searchTemplate,
                                     repository: ecm.model.desktop.getRepository("OS1"),

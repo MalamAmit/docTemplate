@@ -38,7 +38,6 @@ define(["dojo/_base/declare",
                     this.configurationGrid = this.createGrid();
                 },
 
-
                 createGrid: function () {
                     var store = new MemoryStore({
                         idProperty: "id",
