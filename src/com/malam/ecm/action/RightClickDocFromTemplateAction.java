@@ -214,6 +214,6 @@ public class RightClickDocFromTemplateAction extends PluginAction {
 	 *         for this action.
 	 */
 	public String getActionModelClass() {
-		return "newDocByTemplateDojo.RightClickDocFromTemplateAction";
+		return "newDocByTemplateDojo.action.RightClickDocFromTemplateAction";
 	}
 }

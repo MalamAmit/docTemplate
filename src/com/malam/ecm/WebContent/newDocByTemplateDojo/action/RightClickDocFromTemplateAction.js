@@ -11,9 +11,7 @@ define(["dojo/_base/declare",
         "ecm/widget/dialog/AddContentItemDialog",
         "ecm/model/Desktop",
 
-        "ecm/widget/layout/CommonActionsHandler",
-
-        "ecm/widget/dialog/BaseDialog"],
+        "ecm/widget/layout/CommonActionsHandler"],
     function (declare, lang,
               Action,
               Request,
@@ -23,9 +21,8 @@ define(["dojo/_base/declare",
               AddDocumentFromEditServiceTemplateDialog,
               AddContentItemDialog,
               Desktop,
-              CommonActionsHandler,
-              BaseDialog) {
-        return declare("newDocByTemplateDojo.RightClickDocFromTemplateAction", [
+              CommonActionsHandler) {
+        return declare("newDocByTemplateDojo.action.RightClickDocFromTemplateAction", [
             CommonActionsHandler,
             Action
         ], {
