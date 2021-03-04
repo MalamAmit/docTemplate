@@ -27,7 +27,7 @@ define(["dojo/_base/declare",
               CommonActionsHandler,
               BaseDialog,
               LocalDefinition) {
-        return declare("newDocByTemplateDojo.RightClickDocFromTemplateAction", [
+        return declare("newDocByTemplateDojo.action.RightClickDocFromTemplateAction", [
             CommonActionsHandler,
             Action
         ], {
