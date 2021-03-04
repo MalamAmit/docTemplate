@@ -14,7 +14,7 @@ define(["dojo/_base/declare",
         "ecm/widget/layout/CommonActionsHandler",
 
         "ecm/widget/dialog/BaseDialog",
-        "newDocByTemplateDojo.LocalDefinition"],
+        "newDocByTemplateDojo/LocalDefinition"],
     function (declare, lang,
               Action,
               Request,
