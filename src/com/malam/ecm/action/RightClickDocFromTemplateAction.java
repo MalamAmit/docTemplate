@@ -36,7 +36,7 @@ public class RightClickDocFromTemplateAction extends PluginAction {
 	 * @return A short description of the action.
 	 */
 	public String getName(Locale locale) {
-		return "Doc from template";
+		return "Create doc by template";
 	}
 
 	/**
