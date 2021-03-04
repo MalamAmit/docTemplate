@@ -12,7 +12,7 @@ define(["dojo/_base/declare",
         "ecm/model/Desktop",
 
         "ecm/widget/layout/CommonActionsHandler",
-        "newDocByTemplateDojo.LocalDefinition",
+
         "ecm/widget/dialog/BaseDialog"],
     function (declare, lang,
               Action,
@@ -24,7 +24,6 @@ define(["dojo/_base/declare",
               AddContentItemDialog,
               Desktop,
               CommonActionsHandler,
-              LocalDefinition,
               BaseDialog) {
         return declare("newDocByTemplateDojo.RightClickDocFromTemplateAction", [
             CommonActionsHandler,
