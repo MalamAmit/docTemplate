@@ -42,7 +42,7 @@ define(["dojo/_base/declare",
                             {
                                 requestCompleteCallback: dojo.hitch(this,
                                     function(response) {
-                                        this.folderClassName = response.configuration[0].value;
+                                        this.folderClassName = response.configurationGridData[0].folderClass;
                                     })
                             });
                     }
