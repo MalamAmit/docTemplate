@@ -1,7 +1,6 @@
 package com.malam.ecm.action;
 
 import java.util.Locale;
-import java.util.ResourceBundle;
 
 import com.ibm.ecm.extension.PluginAction;
 import com.ibm.json.java.JSONObject;
