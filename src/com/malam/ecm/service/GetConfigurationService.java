@@ -1,4 +1,4 @@
-package com.malam.ecm.NewDocByTemplate.service;
+package com.malam.ecm.service;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

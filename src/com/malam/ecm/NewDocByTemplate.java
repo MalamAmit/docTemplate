@@ -1,4 +1,4 @@
-package com.malam.ecm.NewDocByTemplate;
+package com.malam.ecm;
 
 import java.util.Locale;
 
@@ -19,9 +19,9 @@ import com.ibm.ecm.extension.PluginServiceCallbacks;
 import com.ibm.ecm.extension.PluginViewerDef;
 import com.ibm.ecm.extension.PluginRepositoryType;
 import com.ibm.ecm.extension.PluginAPI;
-import com.malam.ecm.NewDocByTemplate.action.CreateDocFromTemplateAction;
-import com.malam.ecm.NewDocByTemplate.action.RightClickDocFromTemplateAction;
-import com.malam.ecm.NewDocByTemplate.service.GetConfigurationService;
+import com.malam.ecm.action.CreateDocFromTemplateAction;
+import com.malam.ecm.action.RightClickDocFromTemplateAction;
+import com.malam.ecm.service.GetConfigurationService;
 
 /**
  * Provides the main class of an IBM Content Navigator plug-in. The abstract
@@ -40,7 +40,7 @@ import com.malam.ecm.NewDocByTemplate.service.GetConfigurationService;
  * using the IBM Content Navigator administration tool.
  * <p>
  */
-public class DocTemplatePlugin extends Plugin {
+public class NewDocByTemplate extends Plugin {
 
 	private PluginAction[] pluginActions = new PluginAction[0];
 	private PluginOpenAction[]  pluginOpenActions = new PluginOpenAction[0];
@@ -86,7 +86,7 @@ public class DocTemplatePlugin extends Plugin {
 	 *       the language for this locale if it is translated.
 	 */
 	public String getName(Locale locale) {
-		return "doc template";
+		return "New Doc By Template";
 	}
 
 	/**
