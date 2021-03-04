@@ -46,35 +46,15 @@ define(["dojo/_base/declare",
                                     })
                             });
                     }
-                    var sameClass =
-                        (items[0].getContentClass().name==this.folderClassName);
+                    var sameClass = (items[0].getContentClass().name==this.folderClassName);
                     return enabled && items[0].isFolder() && sameClass;
                 }
                 return false;
             },
 
-
-            // isEnabled: function (repository, listType, items, teamspace, resultSet) {
-            //     var enabled = this.inherited(arguments);
-            //     Request.invokePluginService("DocTemplatePlugin",
-            //         "GetConfigurationService", {
-            //             requestCompleteCallback: function (response) {
-            //
-            //                 if (items && items[0].isFolder && items[0].getContentClass) {
-            //                     return enabled &&
-            //                         items[0].isFolder() &&
-            //                         items[0].getContentClass().name == "AmitFolder"
-            //                 }
-            //                 return false;
-            //             }
-            //         });
-            // },
-
-
             isVisible: function (repository, listType) {
                 return this.inherited(arguments);
             },
-
 
             performAction: function (repository, itemList, callback, teamspace, resultSet, parameterMap) {
                 var destinationFolder = itemList[0];
