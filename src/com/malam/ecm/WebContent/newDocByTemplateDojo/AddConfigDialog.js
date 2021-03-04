@@ -7,11 +7,12 @@ define([
         "ecm/widget/dialog/BaseDialog",
         "ecm/widget/ContentClassSelector",
         "ecm/model/SearchTemplate",
+        "ecm/model/Desktop",
 
         "dojo/text!./templates/AddConfigDialog.html"
     ],
     function (declare, lang, array, aspect, MemoryStore,
-              BaseDialog, ContentClassSelector, SearchTemplate, template) {
+              BaseDialog, ContentClassSelector, SearchTemplate, Desktop, template) {
 
         return declare("newDocByTemplateDojo.AddConfigDialog", [
             BaseDialog
