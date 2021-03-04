@@ -8,24 +8,27 @@ define(["dojo/_base/declare",
         "ecm/widget/dialog/AddDocumentFromEditServiceTemplateDialog",
         "ecm/widget/dialog/AddContentItemDialog",
         "ecm/model/Desktop",
-        "ecm/widget/layout/CommonActionsHandler"],
+        "ecm/widget/layout/CommonActionsHandler",
+
+        "newDocByTemplateDojo/LocalDefinition"],
     function (declare, lang,
               Action, Request, SearchDialog, SearchTemplate, AddDocumentFromEditServiceTemplateDialog, AddContentItemDialog, Desktop, CommonActionsHandler,
-    ) {
+              localData) {
         return declare("newDocByTemplateDojo.action.RightClickDocFromTemplateAction", [
             CommonActionsHandler,
             Action
         ], {
 
             folderClassName: null,
+            localData: localData.getCacheResponce(),
 
             isEnabled: function (repository, listType, items, teamspace,
                                  resultSet) {
-
+                this.LocalDefinition.getCacheResponce();
                 var enabled = this.inherited(arguments);
                 if (items && items[0].isFolder && items[0].getContentClass) {
                     if (!this.folderClassName) {
-                        this.folderClassName = this.LocalDefinition.getCacheResponce().configurationGridData[0].folderClass;
+                        this.folderClassName = this.localData.configurationGridData[0].folderClass;
                     }
                     var sameClass = (items[0].getContentClass().name == this.folderClassName);
                     return enabled && items[0].isFolder() && sameClass;
@@ -47,8 +50,8 @@ define(["dojo/_base/declare",
                 // todo - replace
                 // todo - replace
                 // todo - replace
-                var vsId = this.LocalDefinition.getCacheResponce().configurationGridData[0].searchTemplateVsId;
-                var folderClass = this.LocalDefinition.getCacheResponce().configurationGridData[0].folderClass;
+                var vsId = this.localData.configurationGridData[0].searchTemplateVsId;
+                var folderClass = this.localData.configurationGridData[0].folderClass;
 
                 repository.retrieveSearchTemplate("", vsId, "released", lang.hitch(this, function (searchTemplate) {
                     self.srchDialog = new SearchDialog({

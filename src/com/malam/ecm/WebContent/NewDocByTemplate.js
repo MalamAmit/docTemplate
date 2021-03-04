@@ -1,9 +1,12 @@
 require(["dojo/_base/declare",
         "dojo/_base/lang",
-        "ecm/model/Request"],
-    function (declare, lang, Request) {
+        "ecm/model/Request",
+
+        "newDocByTemplateDojo/LocalDefinition"],
+    function (declare, lang, Request, localData) {
+
         lang.setObject("createDocFromTemplateAction", function (repository, items, callback, teamspace, resultSet, parameterMap) {
-            this.LocalDefinition.getCacheResponce();
+            this.localData.getCacheResponce();
         });
 
         lang.setObject("rightClickDocFromTemplateAction", function (repository, items, callback, teamspace, resultSet, parameterMap) {
