@@ -1,6 +1,7 @@
 package com.malam.ecm.action;
 
 import java.util.Locale;
+import java.util.ResourceBundle;
 
 import com.ibm.ecm.extension.PluginAction;
 import com.ibm.json.java.JSONObject;
@@ -36,7 +37,8 @@ public class RightClickDocFromTemplateAction extends PluginAction {
 	 * @return A short description of the action.
 	 */
 	public String getName(Locale locale) {
-		return "Doc from template";
+		ResourceBundle resourceBundle = ResourceBundle.getBundle("com.malam.ecm.uetMessages", locale);
+		return resourceBundle.getString("action.rightClickOnFolder");
 	}
 
 	/**

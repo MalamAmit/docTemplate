@@ -37,8 +37,8 @@ public class CreateDocFromTemplateAction extends PluginAction {
 	 * @return A short description of the action.
 	 */
 	public String getName(Locale locale) {
-//		ResourceBundle resourceBundle = ResourceBundle.getBundle()
-		return "Doc from template";
+		ResourceBundle resourceBundle = ResourceBundle.getBundle("com.malam.ecm.uetMessages", locale);
+		return resourceBundle.getString("action.docFromTemplate");
 	}
 
 	/**
