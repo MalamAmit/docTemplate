@@ -99,7 +99,6 @@ define(["dojo/_base/declare",
                     });
             },
 
-
             onDocumentReady: function (currentItem, destinationFolder) {
                 if (this._addDocumentFromEditServiceTemplateDialog) {
                     this._addDocumentFromEditServiceTemplateDialog.destroyRecursive();

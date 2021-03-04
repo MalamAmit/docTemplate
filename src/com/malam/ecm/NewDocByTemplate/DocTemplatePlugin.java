@@ -19,6 +19,9 @@ import com.ibm.ecm.extension.PluginServiceCallbacks;
 import com.ibm.ecm.extension.PluginViewerDef;
 import com.ibm.ecm.extension.PluginRepositoryType;
 import com.ibm.ecm.extension.PluginAPI;
+import com.malam.ecm.NewDocByTemplate.action.CreateDocFromTemplateAction;
+import com.malam.ecm.NewDocByTemplate.action.RightClickDocFromTemplateAction;
+import com.malam.ecm.NewDocByTemplate.service.GetConfigurationService;
 
 /**
  * Provides the main class of an IBM Content Navigator plug-in. The abstract

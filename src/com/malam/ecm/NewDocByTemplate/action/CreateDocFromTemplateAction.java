@@ -1,4 +1,4 @@
-package com.malam.ecm.NewDocByTemplate;
+package com.malam.ecm.NewDocByTemplate.action;
 
 import java.util.Locale;
 
@@ -11,7 +11,7 @@ import com.ibm.json.java.JSONObject;
  * this class appear on the IBM Content Navigator toolbar and on the context
  * menus within the content list.
  */
-public class RightClickDocFromTemplateAction extends PluginAction {
+public class CreateDocFromTemplateAction extends PluginAction {
 
 	/**
 	 * Returns an alphanumeric identifier that is used to describe this action.
@@ -24,7 +24,7 @@ public class RightClickDocFromTemplateAction extends PluginAction {
 	 *         action.
 	 */
 	public String getId() {
-		return "RightClickDocFromTemplateAction";
+		return "CreateDocFromTemplateAction";
 	}
 
 	/**
@@ -74,7 +74,7 @@ public class RightClickDocFromTemplateAction extends PluginAction {
 	 *         to be enabled.
 	 */
 	public String getPrivilege() {
-		return "";
+		return "privAddItem";
 	}
 
 	/**
@@ -98,7 +98,7 @@ public class RightClickDocFromTemplateAction extends PluginAction {
 	 *         default, this function returns <code>false</code>.
 	 */
 	public boolean isGlobal() {
-		return false;
+		return true;
 	}
 
 	/**
@@ -144,7 +144,7 @@ public class RightClickDocFromTemplateAction extends PluginAction {
 	 *         script files with the plug-in.
 	 */
 	public String getActionFunction() {
-		return "";
+		return "createDocFromTemplateAction";
 	}
 
 	/**
@@ -214,6 +214,6 @@ public class RightClickDocFromTemplateAction extends PluginAction {
 	 *         for this action.
 	 */
 	public String getActionModelClass() {
-		return "docTemplatePluginDojo.RightClickDocFromTemplateAction";
+		return "";
 	}
 }
