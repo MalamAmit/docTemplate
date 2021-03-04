@@ -13,7 +13,8 @@ define(["dojo/_base/declare",
 
         "ecm/widget/layout/CommonActionsHandler",
 
-        "ecm/widget/dialog/BaseDialog"],
+        "ecm/widget/dialog/BaseDialog",
+        "newDocByTemplateDojo.LocalDefinition"],
     function (declare, lang,
               Action,
               Request,
@@ -24,16 +25,17 @@ define(["dojo/_base/declare",
               AddContentItemDialog,
               Desktop,
               CommonActionsHandler,
-              BaseDialog) {
+              BaseDialog,
+              LocalDefinition) {
         return declare("newDocByTemplateDojo.RightClickDocFromTemplateAction", [
             CommonActionsHandler,
             Action
         ], {
 
 
-            folderClassName:null,
-            isEnabled: function(repository, listType, items, teamspace,
-                                resultSet) {
+            folderClassName: null,
+            isEnabled: function (repository, listType, items, teamspace,
+                                 resultSet) {
                 var enabled = this.inherited(arguments);
                 if (items && items[0].isFolder && items[0].getContentClass) {
                     if (!this.folderClassName) {
@@ -41,12 +43,12 @@ define(["dojo/_base/declare",
                             "GetConfigurationService",
                             {
                                 requestCompleteCallback: dojo.hitch(this,
-                                    function(response) {
+                                    function (response) {
                                         this.folderClassName = response.configurationGridData[0].folderClass;
                                     })
                             });
                     }
-                    var sameClass = (items[0].getContentClass().name==this.folderClassName);
+                    var sameClass = (items[0].getContentClass().name == this.folderClassName);
                     return enabled && items[0].isFolder() && sameClass;
                 }
                 return false;
