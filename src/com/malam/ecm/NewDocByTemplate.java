@@ -100,7 +100,7 @@ public class NewDocByTemplate extends Plugin {
 	 *         the plug-in.
 	 */
 	public String getVersion() {
-		return "2.0.7";
+		return "2.0.8";
 	}
 
 	/**
