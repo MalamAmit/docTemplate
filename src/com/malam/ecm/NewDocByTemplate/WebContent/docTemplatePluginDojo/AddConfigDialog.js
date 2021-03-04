@@ -20,7 +20,6 @@ define([
             contentString: template,
             widgetsInTemplate: true,
             _editData: null,
-            staticRepository: ecm.model.desktop.getRepositoryByName("OS1"),
 
             show: function (editData) {
                 console.log("show: function");
@@ -69,8 +68,8 @@ define([
 
                 this.searchTemplateSelector.repository == null;
                 this.enableFolderClassName.repository == null;
-                this.searchTemplateSelector.setRepository(this.staticRepository);
-                this.enableFolderClassName.setRepository(this.staticRepository);
+                this.searchTemplateSelector.setRepository(Desktop.getDefaultRepository());
+                this.enableFolderClassName.setRepository(Desktop.getDefaultRepository());
 
                 this.enableFolderClassName.setVisibleOnlyForFolder(true);
                 this.enableFolderClassName.setRootClassId("Folder");

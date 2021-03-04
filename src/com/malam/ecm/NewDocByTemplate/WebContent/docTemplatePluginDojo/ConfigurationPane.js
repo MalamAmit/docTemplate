@@ -9,20 +9,19 @@ define(["dojo/_base/declare",
 
         "dijit/_TemplatedMixin",
         "dijit/_WidgetsInTemplateMixin",
+
         "ecm/widget/ValidationTextBox",
         "ecm/widget/admin/PluginConfigurationPane",
         "ecm/widget/_FolderSelectorDropDown",
         "ecm/widget/ContentClassSelector",
+        "ecm/model/Desktop",
+
         "dojo/text!./templates/ConfigurationPane.html",
         "docTemplatePluginDojo/AddConfigDialog"],
     function (declare, lang, MemoryStore, aspect,
               Grid, Cache, SelectRow,
-              _TemplatedMixin,
-              _WidgetsInTemplateMixin,
-              ValidationTextBox,
-              PluginConfigurationPane,
-              _FolderSelectorDropDown,
-              ContentClassSelector,
+              _TemplatedMixin, _WidgetsInTemplateMixin,
+              ValidationTextBox, PluginConfigurationPane, _FolderSelectorDropDown, ContentClassSelector, Desktop,
               template,
               AddConfigDialog) {
 
@@ -31,7 +30,6 @@ define(["dojo/_base/declare",
                 templateString: template,
                 widgetsInTemplate: true,
                 configurationGrid: null,
-                staticRepository: ecm.model.desktop.getRepositoryByName("OS1"),
 
                 postCreate: function () {
                     this.inherited(arguments);
@@ -98,7 +96,7 @@ define(["dojo/_base/declare",
 
                     this.own(aspect.after(dialog, "onAdd", lang.hitch(this, function (data) {
                         this.configurationGrid.model.store.add({
-                            "repository": this.staticRepository.id,
+                            "repository": Desktop.getDefaultRepository().id,
                             "orgUnit": data.orgUnitPrefixParam,
                             "folderClass": data.enableFolderClassParam,
                             "searchTemplateVsId": data.searchTemplateVsIdParam,
@@ -122,7 +120,7 @@ define(["dojo/_base/declare",
                     var dialog = new AddConfigDialog();
 
                     this.own(aspect.after(dialog, "onEdit", lang.hitch(this, function (data, originalData) {
-                        currItem.repository = this.staticRepository.id;
+                        currItem.repository = Desktop.getDefaultRepository().id;
                         currItem.orgUnit = data.orgUnitPrefixParam,
                             currItem.folderClass = data.enableFolderClassParam,
                             currItem.searchTemplateVsId = data.searchTemplateVsIdParam,
