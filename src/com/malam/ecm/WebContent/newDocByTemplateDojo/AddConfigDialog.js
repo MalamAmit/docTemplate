@@ -13,7 +13,7 @@ define([
     function (declare, lang, array, aspect, MemoryStore,
               BaseDialog, ContentClassSelector, SearchTemplate, template) {
 
-        return declare("docTemplatePluginDojo.AddConfigDialog", [
+        return declare("newDocByTemplateDojo.AddConfigDialog", [
             BaseDialog
         ], {
 

@@ -75,7 +75,7 @@ public class NewDocByTemplate extends Plugin {
 	 * </p>
 	 */
 	public String getId() {
-		return "DocTemplatePlugin";
+		return "NewDocByTemplate";
 	}
 
 	/**
@@ -127,7 +127,7 @@ public class NewDocByTemplate extends Plugin {
 	 * configuring desktops.
 	 */
 	public String getScript() {
-		return "DocTemplatePlugin.js";
+		return "NewDocByTemplate.js";
 	}
 
 	/**
@@ -149,7 +149,7 @@ public class NewDocByTemplate extends Plugin {
 	 * or package name for a set of Dojo modules or widgets.
 	 */
 	public String getDojoModule() {
-		return "docTemplatePluginDojo";
+		return "newDocByTemplateDojo";
 	}
 
 	/**
@@ -158,7 +158,7 @@ public class NewDocByTemplate extends Plugin {
 	 * when IBM Content Navigator loads the plug-in.
 	 */
 	public String getCSSFileName() {
-		return "DocTemplatePlugin.css";
+		return "NewDocByTemplate.css";
 	}
 
 	/**
@@ -187,7 +187,7 @@ public class NewDocByTemplate extends Plugin {
 	 * </p>
 	 */
 	public String getConfigurationDijitClass() {
-		return "docTemplatePluginDojo.ConfigurationPane";
+		return "newDocByTemplateDojo.ConfigurationPane";
 	}
 
 	/**

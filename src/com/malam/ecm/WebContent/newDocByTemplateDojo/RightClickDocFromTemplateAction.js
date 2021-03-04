@@ -3,7 +3,7 @@ define(["dojo/_base/declare",
 
         "ecm/model/Action",
         "ecm/model/Request",
-        "docTemplatePluginDojo/TemplatesDialog",
+        "newDocByTemplateDojo/TemplatesDialog",
         "ecm/widget/search/SearchDialog",
 
         "ecm/model/SearchTemplate",
@@ -25,7 +25,7 @@ define(["dojo/_base/declare",
               Desktop,
               CommonActionsHandler,
               BaseDialog) {
-        return declare("docTemplatePluginDojo.RightClickDocFromTemplateAction", [
+        return declare("newDocByTemplateDojo.RightClickDocFromTemplateAction", [
             CommonActionsHandler,
             Action
         ], {
@@ -37,7 +37,7 @@ define(["dojo/_base/declare",
                 var enabled = this.inherited(arguments);
                 if (items && items[0].isFolder && items[0].getContentClass) {
                     if (!this.folderClassName) {
-                        Request.invokePluginService("DocTemplatePlugin",
+                        Request.invokePluginService("NewDocByTemplate",
                             "GetConfigurationService",
                             {
                                 requestCompleteCallback: dojo.hitch(this,
@@ -62,7 +62,7 @@ define(["dojo/_base/declare",
                 var className = "";
                 var folderParams = {};
                 var self = this;
-                Request.invokePluginService("DocTemplatePlugin",
+                Request.invokePluginService("NewDocByTemplate",
                     "GetConfigurationService", {
                         requestCompleteCallback: function (response) {
                             className = response.enableFolderClassName;

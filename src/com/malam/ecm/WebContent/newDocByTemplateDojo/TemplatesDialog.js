@@ -19,7 +19,7 @@ define([
              Memory) {
 
 
-    return declare("docTemplatePluginDojo.TemplatesDialog", [BaseDialog], {
+    return declare("newDocByTemplateDojo.TemplatesDialog", [BaseDialog], {
         constructor: function () {
             this._createGrid();
         },

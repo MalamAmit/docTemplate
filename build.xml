@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 
-<project name="DocTemplatePlugin" default="all" basedir=".">
+<project name="NewDocByTemplate" default="all" basedir=".">
 
 	<target name="all" depends="clean,compile,jar" />
 
@@ -28,7 +28,7 @@
 				<include name="**/WebContent/**" />
 			</fileset>
 		</copy>
-		<jar jarfile="DocTemplatePlugin.jar">
+		<jar jarfile="NewDocByTemplate.jar">
 			<fileset dir="./temp" includes="**/*" />
 			<manifest>
 				<attribute name="Plugin-Class" value="com.malam.ecm.NewDocByTemplate" />

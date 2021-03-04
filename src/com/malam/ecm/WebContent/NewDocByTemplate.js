@@ -4,7 +4,7 @@ require(["dojo/_base/declare",
     function (declare, lang, Request) {
         lang.setObject("createDocFromTemplateAction", function (repository, items, callback, teamspace, resultSet, parameterMap) {
             console.log("amit 1 - requestCompleteCallback")
-            Request.invokePluginService("DocTemplatePlugin",
+            Request.invokePluginService("NewDocByTemplate",
                 "GetConfigurationService", {
                     requestCompleteCallback: function (response) {
                         response.configuration[1].value;

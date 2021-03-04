@@ -17,7 +17,7 @@ define(["dojo/_base/declare",
         "ecm/model/Desktop",
 
         "dojo/text!./templates/ConfigurationPane.html",
-        "docTemplatePluginDojo/AddConfigDialog"],
+        "newDocByTemplateDojo/AddConfigDialog"],
     function (declare, lang, MemoryStore, aspect,
               Grid, Cache, SelectRow,
               _TemplatedMixin, _WidgetsInTemplateMixin,
@@ -25,7 +25,7 @@ define(["dojo/_base/declare",
               template,
               AddConfigDialog) {
 
-        return declare("docTemplatePluginDojo.ConfigurationPane",
+        return declare("newDocByTemplateDojo.ConfigurationPane",
             [PluginConfigurationPane, _TemplatedMixin, _WidgetsInTemplateMixin], {
                 templateString: template,
                 widgetsInTemplate: true,
