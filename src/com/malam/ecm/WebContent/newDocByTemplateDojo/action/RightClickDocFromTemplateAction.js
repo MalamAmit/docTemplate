@@ -10,7 +10,10 @@ define(["dojo/_base/declare",
         "ecm/widget/dialog/AddDocumentFromEditServiceTemplateDialog",
         "ecm/widget/dialog/AddContentItemDialog",
         "ecm/model/Desktop",
-        "ecm/widget/layout/CommonActionsHandler"],
+
+        "ecm/widget/layout/CommonActionsHandler",
+
+        "ecm/widget/dialog/BaseDialog"],
     function (declare, lang,
               Action,
               Request,
@@ -20,16 +23,17 @@ define(["dojo/_base/declare",
               AddDocumentFromEditServiceTemplateDialog,
               AddContentItemDialog,
               Desktop,
-              CommonActionsHandler) {
-        return declare("newDocByTemplateDojo.action.RightClickDocFromTemplateAction", [
+              CommonActionsHandler,
+              BaseDialog) {
+        return declare("newDocByTemplateDojo.RightClickDocFromTemplateAction", [
             CommonActionsHandler,
             Action
         ], {
 
 
-            folderClassName: null,
-            isEnabled: function (repository, listType, items, teamspace,
-                                 resultSet) {
+            folderClassName:null,
+            isEnabled: function(repository, listType, items, teamspace,
+                                resultSet) {
                 var enabled = this.inherited(arguments);
                 if (items && items[0].isFolder && items[0].getContentClass) {
                     if (!this.folderClassName) {
@@ -37,12 +41,12 @@ define(["dojo/_base/declare",
                             "GetConfigurationService",
                             {
                                 requestCompleteCallback: dojo.hitch(this,
-                                    function (response) {
+                                    function(response) {
                                         this.folderClassName = response.configurationGridData[0].folderClass;
                                     })
                             });
                     }
-                    var sameClass = (items[0].getContentClass().name == this.folderClassName);
+                    var sameClass = (items[0].getContentClass().name==this.folderClassName);
                     return enabled && items[0].isFolder() && sameClass;
                 }
                 return false;
