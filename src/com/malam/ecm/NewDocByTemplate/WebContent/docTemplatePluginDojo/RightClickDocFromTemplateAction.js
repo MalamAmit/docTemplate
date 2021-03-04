@@ -112,7 +112,7 @@ define(["dojo/_base/declare",
                 this._addDocumentFromEditServiceTemplateDialog.setMaximized(false);
 
                 debugger;
-                this._addDocumentFromEditServiceTemplateDialog.show(ecm.model.desktop.getRepository("OS1"), destinationFolder, true, false, lang.hitch(this, function (item) {
+                this._addDocumentFromEditServiceTemplateDialog.show(currentItem.repository, destinationFolder, true, false, lang.hitch(this, function (item) {
                     // this.actionEditWithNativeApplication(repository,  [item], null, null, null, {newAdded: true});
                 }), null, false);
             },
