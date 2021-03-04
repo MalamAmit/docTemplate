@@ -19,10 +19,10 @@ define(["dojo/_base/declare",
             Action
         ], {
 
-
             folderClassName: null,
             isEnabled: function (repository, listType, items, teamspace,
                                  resultSet) {
+                LocalDefinition.getCacheResponce();
                 var enabled = this.inherited(arguments);
                 if (items && items[0].isFolder && items[0].getContentClass) {
                     if (!this.folderClassName) {

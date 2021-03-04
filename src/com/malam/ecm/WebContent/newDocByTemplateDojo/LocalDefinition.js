@@ -3,7 +3,6 @@ define([
     "ecm/model/Request",
     "ecm/model/_ModelObject"
 ], function (declare, Request,_ModelObject) {
-	debugger;
 	var LocalDefinition = declare("newDocByTemplateDojo.LocalDefinition", [_ModelObject], {
 		cacheResponce : null,	
 		
