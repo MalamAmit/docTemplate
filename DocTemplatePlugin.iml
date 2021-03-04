@@ -205,9 +205,18 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="navigatorAPI.jar">
+      <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Desktop/Jars/navigatorAPI.jar!/" />
+          <root url="jar://C:/Libraries/Jars/navigatorAPI.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/Libraries/Jars/Jace.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
