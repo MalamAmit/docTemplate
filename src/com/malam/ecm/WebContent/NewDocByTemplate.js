@@ -6,7 +6,6 @@ require(["dojo/_base/declare",
     function (declare, lang, Request, localData) {
 
         lang.setObject("createDocFromTemplateAction", function (repository, items, callback, teamspace, resultSet, parameterMap) {
-            this.localData.getCacheResponce();
         });
 
         lang.setObject("rightClickDocFromTemplateAction", function (repository, items, callback, teamspace, resultSet, parameterMap) {

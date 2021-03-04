@@ -13,18 +13,17 @@ define(["dojo/_base/declare",
         "newDocByTemplateDojo/LocalDefinition"],
     function (declare, lang,
               Action, Request, SearchDialog, SearchTemplate, AddDocumentFromEditServiceTemplateDialog, AddContentItemDialog, Desktop, CommonActionsHandler,
-              localData) {
+              LocalDefinition) {
         return declare("newDocByTemplateDojo.action.RightClickDocFromTemplateAction", [
             CommonActionsHandler,
             Action
         ], {
 
             folderClassName: null,
-            localData: localData.getCacheResponce(),
+            localData: LocalDefinition.getCacheResponce(),
 
             isEnabled: function (repository, listType, items, teamspace,
                                  resultSet) {
-                this.LocalDefinition.getCacheResponce();
                 var enabled = this.inherited(arguments);
                 if (items && items[0].isFolder && items[0].getContentClass) {
                     if (!this.folderClassName) {
