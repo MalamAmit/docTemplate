@@ -128,11 +128,6 @@ define(["dojo/_base/declare",
                 Desktop.getDefaultRepository().retrieveItem(documentId, lang.hitch(this, function (currentItem) {
                     this.onDocumentReady(currentItem, destinationFolder);
                 }));
-
-                //
-                // Desktop.getDefaultRepository().retrieveItem(destinationFolder, lang.hitch(this, function (currentItem) {
-                //     console.log("Amit");
-                // }));
             },
 
             setBrowseRootFolder: function (newRootFolder, browseFeature) {

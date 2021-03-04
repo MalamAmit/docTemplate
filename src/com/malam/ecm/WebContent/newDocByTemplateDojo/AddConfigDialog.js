@@ -22,7 +22,6 @@ define([
             _editData: null,
 
             show: function (editData) {
-                console.log("show: function");
                 this.okButton.set("disabled", true);
                 this._editData = editData;
                 this._loadData();
@@ -56,7 +55,6 @@ define([
             },
 
             postCreate: function () {
-                console.log("postCreate: function");
                 this.inherited(arguments);
                 this.setResizable(false);
                 this.setMaximized(false);
