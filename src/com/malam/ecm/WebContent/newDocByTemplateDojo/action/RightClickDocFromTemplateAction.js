@@ -8,32 +8,24 @@ define(["dojo/_base/declare",
         "ecm/widget/dialog/AddDocumentFromEditServiceTemplateDialog",
         "ecm/widget/dialog/AddContentItemDialog",
         "ecm/model/Desktop",
-        "ecm/widget/layout/CommonActionsHandler",
-
-        "newDocByTemplateDojo/LocalDefinition"],
+        "ecm/widget/layout/CommonActionsHandler"],
     function (declare, lang,
               Action, Request, SearchDialog, SearchTemplate, AddDocumentFromEditServiceTemplateDialog, AddContentItemDialog, Desktop, CommonActionsHandler,
-              LocalDefinition) {
+    ) {
         return declare("newDocByTemplateDojo.action.RightClickDocFromTemplateAction", [
             CommonActionsHandler,
             Action
         ], {
 
             folderClassName: null,
+
             isEnabled: function (repository, listType, items, teamspace,
                                  resultSet) {
-                LocalDefinition.getCacheResponce();
+
                 var enabled = this.inherited(arguments);
                 if (items && items[0].isFolder && items[0].getContentClass) {
                     if (!this.folderClassName) {
-                        Request.invokePluginService("NewDocByTemplate",
-                            "GetConfigurationService",
-                            {
-                                requestCompleteCallback: dojo.hitch(this,
-                                    function (response) {
-                                        this.folderClassName = response.configurationGridData[0].folderClass;
-                                    })
-                            });
+                        this.folderClassName = this.LocalDefinition.getCacheResponce().configurationGridData[0].folderClass;
                     }
                     var sameClass = (items[0].getContentClass().name == this.folderClassName);
                     return enabled && items[0].isFolder() && sameClass;
@@ -51,41 +43,32 @@ define(["dojo/_base/declare",
                 var className = "";
                 var folderParams = {};
                 var self = this;
-                Request.invokePluginService("NewDocByTemplate",
-                    "GetConfigurationService", {
-                        requestCompleteCallback: function (response) {
-                            className = response.enableFolderClassName;
-                            folderParams = response.folderSelectorParam;
 
-                            // todo - replace
-                            // todo - replace
-                            // todo - replace
-                            var vsId = response.configurationGridData[0].searchTemplateVsId;
-                            var folderClass = response.configurationGridData[0].folderClass;
+                // todo - replace
+                // todo - replace
+                // todo - replace
+                var vsId = this.LocalDefinition.getCacheResponce().configurationGridData[0].searchTemplateVsId;
+                var folderClass = this.LocalDefinition.getCacheResponce().configurationGridData[0].folderClass;
 
-                            repository.retrieveSearchTemplate("", vsId, "released", lang.hitch(this, function (searchTemplate) {
-                                self.srchDialog = new SearchDialog({
-                                    searchTemplate: searchTemplate,
-                                    repository: repository,
-                                    showSearch: true,
-                                    style: {minHeight: "700px", minWidth: "1000px"}
-                                });
-
-                                self.srchDialog.setTitle("Choose template");
-                                self.srchDialog.setMaximized(false)
-                                self.srchDialog.addButton("Select Template", function () {
-                                    self.selectTemplate(self.srchDialog, destinationFolder)
-                                }, false, true);
-                                self.srchDialog.show();
-
-                            }), lang.hitch(this, function () {
-                                alert("Search Template could not be retrieved");
-                                // Remove the search template from recent searches if it could not be retrieved.
-                            }));
-
-
-                        }
+                repository.retrieveSearchTemplate("", vsId, "released", lang.hitch(this, function (searchTemplate) {
+                    self.srchDialog = new SearchDialog({
+                        searchTemplate: searchTemplate,
+                        repository: repository,
+                        showSearch: true,
+                        style: {minHeight: "700px", minWidth: "1000px"}
                     });
+
+                    self.srchDialog.setTitle("Choose template");
+                    self.srchDialog.setMaximized(false)
+                    self.srchDialog.addButton("Select Template", function () {
+                        self.selectTemplate(self.srchDialog, destinationFolder)
+                    }, false, true);
+                    self.srchDialog.show();
+
+                }), lang.hitch(this, function () {
+                    alert("Search Template could not be retrieved");
+                    // Remove the search template from recent searches if it could not be retrieved.
+                }));
             },
 
             onDocumentReady: function (currentItem, destinationFolder) {

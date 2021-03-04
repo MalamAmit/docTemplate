@@ -3,15 +3,7 @@ require(["dojo/_base/declare",
         "ecm/model/Request"],
     function (declare, lang, Request) {
         lang.setObject("createDocFromTemplateAction", function (repository, items, callback, teamspace, resultSet, parameterMap) {
-            Request.invokePluginService("NewDocByTemplate",
-                "GetConfigurationService", {
-                    requestCompleteCallback: function (response) {
-                        response.configuration[1].value;
-                        response.configuration[0].value;
-                        console.log("configuration[1] " + response.configuration[1].value);
-                        console.log("configuration[0] " + response.configuration[0].value);
-                    }
-                });
+            this.LocalDefinition.getCacheResponce();
         });
 
         lang.setObject("rightClickDocFromTemplateAction", function (repository, items, callback, teamspace, resultSet, parameterMap) {
