@@ -36,6 +36,11 @@ define(["dojo/_base/declare",
                 return false;
             },
 
+            isGlobalEnabled: function (resultSet, items, repository) {
+                debugger;
+                return this.inherited(arguments);
+            },
+
             isVisible: function (repository, listType) {
                 return this.inherited(arguments);
             },
