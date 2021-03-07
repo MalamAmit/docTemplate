@@ -37,8 +37,15 @@ define(["dojo/_base/declare",
             },
 
             isGlobalEnabled: function (resultSet, items, repository) {
-                debugger;
-                return this.inherited(arguments);
+                var enabled = this.inherited(arguments);
+                if (items && items[0].isFolder && items[0].getContentClass) {
+                    if (!this.folderClassName) {
+                        this.folderClassName = LocalDefinition.getCacheResponce().configurationGridData[0].folderClass;
+                    }
+                    var sameClass = (items[0].getContentClass().name == this.folderClassName);
+                    return enabled && items[0].isFolder() && sameClass;
+                }
+                return false;
             },
 
             isVisible: function (repository, listType) {
