@@ -1,5 +1,6 @@
 define(["dojo/_base/declare",
         "dojo/_base/lang",
+        "dojo/i18n!newDocByTemplateDojo/nls/messages",
 
         "ecm/model/Action",
         "ecm/model/Request",
@@ -11,7 +12,7 @@ define(["dojo/_base/declare",
         "ecm/widget/layout/CommonActionsHandler",
 
         "newDocByTemplateDojo/LocalDefinition"],
-    function (declare, lang,
+    function (declare, lang, ExtMessages,
               Action, Request, SearchDialog, SearchTemplate, AddDocumentFromEditServiceTemplateDialog, AddContentItemDialog, Desktop, CommonActionsHandler,
               LocalDefinition) {
         return declare("newDocByTemplateDojo.action.RightClickDocFromTemplateAction", [
@@ -21,6 +22,7 @@ define(["dojo/_base/declare",
 
             folderClassName: null,
             localData: LocalDefinition.getCacheResponce(),
+            _extMessages: ExtMessages,
 
             isEnabled: function (repository, listType, items, teamspace,
                                  resultSet) {
@@ -60,9 +62,9 @@ define(["dojo/_base/declare",
                         style: {minHeight: "700px", minWidth: "1000px"}
                     });
 
-                    self.srchDialog.setTitle("Choose template");
+                    self.srchDialog.setTitle(this._extMessages.CHOOSE_TEMPLATE);
                     self.srchDialog.setMaximized(false)
-                    self.srchDialog.addButton("Select Template", function () {
+                    self.srchDialog.addButton(this._extMessages.CHOOSE_TEMPLATE, function () {
                         self.selectTemplate(self.srchDialog, destinationFolder)
                     }, false, true);
                     self.srchDialog.show();
