@@ -50,7 +50,7 @@ define(["dojo/_base/declare",
                 // todo - replace
                 // todo - replace
                 // todo - replace
-                var vsId = this.localData.configurationGridData[0].searchTemplateVsId;
+                var vsId = LocalDefinition.getCacheResponce().configurationGridData[0].searchTemplateVsId;
                 var folderClass = LocalDefinition.getCacheResponce().configurationGridData[0].folderClass;
 
                 repository.retrieveSearchTemplate("", vsId, "released", lang.hitch(this, function (searchTemplate) {
