@@ -1,6 +1,7 @@
 package com.malam.ecm.action;
 
 import java.util.Locale;
+import java.util.ResourceBundle;
 
 import com.ibm.ecm.extension.PluginAction;
 import com.ibm.json.java.JSONObject;
@@ -36,7 +37,8 @@ public class CreateDocFromTemplateAction extends PluginAction {
 	 * @return A short description of the action.
 	 */
 	public String getName(Locale locale) {
-		return "Create doc by template";
+		ResourceBundle resource = ResourceBundle.getBundle("com.malam.ecm.nls.uetMessages", locale);
+		return resource.getString("action.createDocByTemplate");
 	}
 
 	/**
