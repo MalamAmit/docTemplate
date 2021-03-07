@@ -62,11 +62,14 @@ define(["dojo/_base/declare",
                 var vsId = LocalDefinition.getCacheResponce().configurationGridData[0].searchTemplateVsId;
 
                 repository.retrieveSearchTemplate("", vsId, "released", lang.hitch(this, function (searchTemplate) {
+
+                    searchTemplate.hideSearchCriteria(true)
                     self.srchDialog = new SearchDialog({
                         searchTemplate: searchTemplate,
                         repository: repository,
-                        showSearch: true,
-                        style: {minHeight: "700px", minWidth: "1000px"}
+                        showSearch: false,
+                        hideSearchCriteria: true,
+                        style: {minHeight: "700px", minWidth: "1000px"},
                     });
 
                     self.srchDialog.setTitle(this._extMessages.CHOOSE_TEMPLATE);
@@ -93,19 +96,18 @@ define(["dojo/_base/declare",
                 });
                 this._addDocumentFromEditServiceTemplateDialog.setMaximized(false);
 
-                debugger;
                 this._addDocumentFromEditServiceTemplateDialog.show(currentItem.repository, destinationFolder, true, false, lang.hitch(this, function (item) {
                 }), null, false);
             },
 
             selectTemplate: function (dialog, destinationFolder) {
                 var selectedArr = dialog.search.searchResults.grid.select.row._lastSelectedIds;
-                dialog.destroy();
                 if (!selectedArr) {
                     console.log("no item selected in this grid");
                     alert("Please select template from the list");
                     return;
                 }
+                dialog.destroy();
                 var documentId = selectedArr[0];
                 Desktop.getDefaultRepository().retrieveItem(documentId, lang.hitch(this, function (currentItem) {
                     this.onDocumentReady(currentItem, destinationFolder);
