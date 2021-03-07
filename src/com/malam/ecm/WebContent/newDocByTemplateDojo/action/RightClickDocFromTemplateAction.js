@@ -63,7 +63,6 @@ define(["dojo/_base/declare",
 
                 repository.retrieveSearchTemplate("", vsId, "released", lang.hitch(this, function (searchTemplate) {
 
-                    searchTemplate.hideSearchCriteria(true)
                     self.srchDialog = new SearchDialog({
                         searchTemplate: searchTemplate,
                         repository: repository,
