@@ -25,6 +25,7 @@
 	<target name="jar">
 		<copy todir="temp">
 			<fileset dir="src">
+				<include name="**/nls/**" />
 				<include name="**/WebContent/**" />
 			</fileset>
 		</copy>
