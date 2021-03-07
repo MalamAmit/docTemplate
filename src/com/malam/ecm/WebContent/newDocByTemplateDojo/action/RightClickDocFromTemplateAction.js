@@ -21,7 +21,6 @@ define(["dojo/_base/declare",
         ], {
 
             folderClassName: null,
-            localData: LocalDefinition.getCacheResponce(),
             _extMessages: ExtMessages,
 
             isEnabled: function (repository, listType, items, teamspace,
@@ -29,7 +28,7 @@ define(["dojo/_base/declare",
                 var enabled = this.inherited(arguments);
                 if (items && items[0].isFolder && items[0].getContentClass) {
                     if (!this.folderClassName) {
-                        this.folderClassName = this.localData.configurationGridData[0].folderClass;
+                        this.folderClassName = LocalDefinition.getCacheResponce().configurationGridData[0].folderClass;
                     }
                     var sameClass = (items[0].getContentClass().name == this.folderClassName);
                     return enabled && items[0].isFolder() && sameClass;
@@ -52,7 +51,7 @@ define(["dojo/_base/declare",
                 // todo - replace
                 // todo - replace
                 var vsId = this.localData.configurationGridData[0].searchTemplateVsId;
-                var folderClass = this.localData.configurationGridData[0].folderClass;
+                var folderClass = LocalDefinition.getCacheResponce().configurationGridData[0].folderClass;
 
                 repository.retrieveSearchTemplate("", vsId, "released", lang.hitch(this, function (searchTemplate) {
                     self.srchDialog = new SearchDialog({
