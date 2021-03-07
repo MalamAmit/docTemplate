@@ -43,15 +43,10 @@ define(["dojo/_base/declare",
             performAction: function (repository, itemList, callback, teamspace, resultSet, parameterMap) {
                 var destinationFolder = itemList[0];
 
-                var className = "";
-                var folderParams = {};
                 var self = this;
 
-                // todo - replace
-                // todo - replace
-                // todo - replace
+                // todo - replace to dynamic configuration
                 var vsId = LocalDefinition.getCacheResponce().configurationGridData[0].searchTemplateVsId;
-                var folderClass = LocalDefinition.getCacheResponce().configurationGridData[0].folderClass;
 
                 repository.retrieveSearchTemplate("", vsId, "released", lang.hitch(this, function (searchTemplate) {
                     self.srchDialog = new SearchDialog({
@@ -87,7 +82,6 @@ define(["dojo/_base/declare",
 
                 debugger;
                 this._addDocumentFromEditServiceTemplateDialog.show(currentItem.repository, destinationFolder, true, false, lang.hitch(this, function (item) {
-                    // this.actionEditWithNativeApplication(repository,  [item], null, null, null, {newAdded: true});
                 }), null, false);
             },
 
@@ -103,11 +97,6 @@ define(["dojo/_base/declare",
                 Desktop.getDefaultRepository().retrieveItem(documentId, lang.hitch(this, function (currentItem) {
                     this.onDocumentReady(currentItem, destinationFolder);
                 }));
-
-                //
-                // Desktop.getDefaultRepository().retrieveItem(destinationFolder, lang.hitch(this, function (currentItem) {
-                //     console.log("Amit");
-                // }));
             },
 
             setBrowseRootFolder: function (newRootFolder, browseFeature) {
