@@ -22,7 +22,7 @@ define([
         "ecm/widget/dialog/BaseDialog",
         "ecm/widget/dialog/LoginDialog",
         // "dojo/text!./templates/SearchDialogContent.html"
-        "ecm/widget/search/templates/SearchDialogContent.html"
+        "ecm/widget/search/templates/SearchDialogContent"
     ],
 
     function (declare, //
