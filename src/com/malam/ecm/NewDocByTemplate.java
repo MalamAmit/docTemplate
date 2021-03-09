@@ -19,7 +19,6 @@ import com.ibm.ecm.extension.PluginServiceCallbacks;
 import com.ibm.ecm.extension.PluginViewerDef;
 import com.ibm.ecm.extension.PluginRepositoryType;
 import com.ibm.ecm.extension.PluginAPI;
-import com.malam.ecm.action.CreateDocFromTemplateAction;
 import com.malam.ecm.action.RightClickDocFromTemplateAction;
 import com.malam.ecm.service.GetConfigurationService;
 
@@ -353,7 +352,6 @@ public class NewDocByTemplate extends Plugin {
 	public PluginAction[] getActions() {
 		if (pluginActions.length == 0) {
 			pluginActions = new PluginAction[] {
-					new CreateDocFromTemplateAction(),
 					new RightClickDocFromTemplateAction()};
 		}
 		return pluginActions;

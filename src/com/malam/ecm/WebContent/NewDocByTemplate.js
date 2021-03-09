@@ -1,10 +1,6 @@
 require(["dojo/_base/declare",
-        "dojo/_base/lang",
-        "ecm/model/Request"],
-    function (declare, lang, Request) {
-
-        lang.setObject("createDocFromTemplateAction", function (repository, items, callback, teamspace, resultSet, parameterMap) {
-        });
+        "dojo/_base/lang"],
+    function (declare, lang) {
 
         lang.setObject("rightClickDocFromTemplateAction", function (repository, items, callback, teamspace, resultSet, parameterMap) {
             console.log("rightClickDocFromTemplateAction")
