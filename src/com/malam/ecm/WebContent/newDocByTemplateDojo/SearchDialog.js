@@ -80,6 +80,7 @@ define([
                     this.setTitle(this.messages.workspacebuilder_search_dialog_title);
                 }
 
+                this.search.hideSearchCriteria = true;
                 this.search.repository = this.repository;
                 this.search.setSearchTemplate(this.searchTemplate);
 
