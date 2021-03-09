@@ -21,7 +21,8 @@ define([
         "ecm/widget/search/SearchTab",
         "ecm/widget/dialog/BaseDialog",
         "ecm/widget/dialog/LoginDialog",
-        "dojo/text!./templates/SearchDialogContent.html"
+        // "dojo/text!./templates/SearchDialogContent.html"
+        "ecm/widget/search/templates/SearchDialogContent.html"
     ],
 
     function (declare, //
