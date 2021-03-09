@@ -67,9 +67,10 @@ define(["dojo/_base/declare",
                         searchTemplate: searchTemplate,
                         repository: repository,
                         showSearch: false,
-                        hideSearchCriteria: true,
+                        search: {hideSearchCriteria: true},
                         style: {minHeight: "700px", minWidth: "1000px"},
                     });
+
 
                     self.srchDialog.setTitle(this._extMessages.CHOOSE_TEMPLATE);
                     self.srchDialog.setMaximized(false)
