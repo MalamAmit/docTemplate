@@ -4,7 +4,6 @@ define(["dojo/_base/declare",
 
         "ecm/model/Action",
         "ecm/model/Request",
-        // "ecm/widget/search/SearchDialog",
         "newDocByTemplateDojo/Override/AmitSearchDialog",
         "ecm/model/SearchTemplate",
         "ecm/widget/dialog/AddDocumentFromEditServiceTemplateDialog",

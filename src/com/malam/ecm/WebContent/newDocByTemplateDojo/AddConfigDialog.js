@@ -6,9 +6,7 @@ define([
         "dojo/store/Memory",
         "ecm/widget/dialog/BaseDialog",
         "ecm/widget/ContentClassSelector",
-
         "ecm/model/SearchTemplate",
-
         "ecm/model/Desktop",
 
         "dojo/text!./templates/AddConfigDialog.html"
