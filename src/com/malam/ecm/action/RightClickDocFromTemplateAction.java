@@ -10,72 +10,59 @@ import com.ibm.json.java.JSONObject;
 public class RightClickDocFromTemplateAction extends PluginAction {
 
 
-	public String getId() {
-		return "RightClickDocFromTemplateAction";
-	}
+    public String getId() {
+        return "RightClickDocFromTemplateAction";
+    }
 
-	public String getName(Locale locale) {
-		ResourceBundle resource = ResourceBundle.getBundle("com.malam.ecm.nls.uetMessages", locale);
-		return resource.getString("action.createDocByTemplate");
-	}
-
-
-	public String getIcon() {
-		return "";
-	}
-<<<<<<< HEAD
-	
-=======
-
->>>>>>> 5e3738dd8634e6f7ef58343f82508a146598d2ce
-	public String getIconClass() {
-		return "";
-	}
+    public String getName(Locale locale) {
+        ResourceBundle resource = ResourceBundle.getBundle("com.malam.ecm.nls.uetMessages", locale);
+        return resource.getString("action.createDocByTemplate");
+    }
 
 
-	public String getPrivilege() {
-		return "";
-	}
+    public String getIcon() {
+        return "";
+    }
+
+    public String getIconClass() {
+        return "";
+    }
 
 
-	public boolean isMultiDoc() {
-		return false;
-	}
+    public String getPrivilege() {
+        return "";
+    }
 
 
-	public boolean isGlobal() {
-		return true;
-	}
-
-<<<<<<< HEAD
-	
-=======
-
->>>>>>> 5e3738dd8634e6f7ef58343f82508a146598d2ce
-	public String getActionFunction() {
-		return "";
-	}
+    public boolean isMultiDoc() {
+        return false;
+    }
 
 
-	public String getServerTypes() {
-		return "p8";
-	}
+    public boolean isGlobal() {
+        return true;
+    }
 
-<<<<<<< HEAD
-		public String[] getMenuTypes() {
-=======
-	public String[] getMenuTypes() {
->>>>>>> 5e3738dd8634e6f7ef58343f82508a146598d2ce
-		return new String[0];
-	}
+    public String getActionFunction() {
+        return "";
+    }
 
 
-	public JSONObject getAdditionalConfiguration(Locale locale) {
-		return new JSONObject();
-	}
+    public String getServerTypes() {
+        return "p8";
+    }
+
+    public String[] getMenuTypes() {
+        return new String[0];
+    }
 
 
-	public String getActionModelClass() {
-		return "newDocByTemplateDojo.action.RightClickDocFromTemplateAction";
-	}
+    public JSONObject getAdditionalConfiguration(Locale locale) {
+        return new JSONObject();
+    }
+
+
+    public String getActionModelClass() {
+        return "newDocByTemplateDojo.action.RightClickDocFromTemplateAction";
+    }
 }
