@@ -4,8 +4,7 @@ define([
     "ecm/model/_ModelObject"
 ], function (declare, Request,_ModelObject) {
 	var LocalDefinition = declare("newDocByTemplateDojo.LocalDefinition", [_ModelObject], {
-		cacheResponce : null,	
-		
+		cacheResponce : null,
 		setCacheResponce:function (){
 			if (!this.cacheResponce){
 		          var self=this;
@@ -29,7 +28,7 @@ define([
 		},
 		
 		constructor: function () {
-			//debugger;
+			debugger;
 			this.setCacheResponce();
 		}
 
