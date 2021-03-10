@@ -39,7 +39,7 @@ define([
 	"ecm/model/SearchCriterion",
 	"ecm/model/SearchTemplate",
 	// "ecm/model/SearchCriteria",
-	"newDocByTemplateDojo/Override/SearchTab",
+	"newDocByTemplateDojo/Override/AmitSearchCriteria",
 	"ecm/model/UnifiedSearchTemplate",
 	"ecm/model/_searchUtils",
 	"ecm/model/admin/AdminConfig",

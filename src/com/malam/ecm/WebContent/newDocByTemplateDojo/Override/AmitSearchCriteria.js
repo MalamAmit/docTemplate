@@ -20,7 +20,7 @@ define([
 	 * @augments ecm.model._ModelObject
 	 * @since 3.0.8
 	 */
-	var SearchCriteria = declare("ecm.model.SearchCriteria", null, {
+	var SearchCriteria = declare("ecm.model.MITSearchCriteria", null, {
 		/** @lends ecm.model.SearchCriteria.prototype */
 		
 		/**
