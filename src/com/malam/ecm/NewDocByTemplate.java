@@ -1,32 +1,12 @@
 package com.malam.ecm;
 
-import java.util.Locale;
 import com.ibm.ecm.extension.Plugin;
 import com.ibm.ecm.extension.PluginAction;
 import com.ibm.ecm.extension.PluginService;
 import com.malam.ecm.action.RightClickDocFromTemplateAction;
 import com.malam.ecm.service.GetConfigurationService;
-/*
-import javax.servlet.http.HttpServletRequest;
 
-import com.ibm.ecm.extension.Plugin;
-import com.ibm.ecm.extension.PluginAction;
-import com.ibm.ecm.extension.PluginFeature;
-import com.ibm.ecm.extension.PluginLayout;
-import com.ibm.ecm.extension.PluginMenu;
-import com.ibm.ecm.extension.PluginMenuType;
-import com.ibm.ecm.extension.PluginODAuthenticationService;
-import com.ibm.ecm.extension.PluginOpenAction;
-import com.ibm.ecm.extension.PluginRequestFilter;
-import com.ibm.ecm.extension.PluginResponseFilter;
-import com.ibm.ecm.extension.PluginService;
-import com.ibm.ecm.extension.PluginServiceCallbacks;
-import com.ibm.ecm.extension.PluginViewerDef;
-import com.ibm.ecm.extension.PluginRepositoryType;
-import com.ibm.ecm.extension.PluginAPI;
-import com.malam.ecm.action.RightClickDocFromTemplateAction;
-import com.malam.ecm.service.GetConfigurationService;
-*/
+import java.util.Locale;
 
 public class NewDocByTemplate extends Plugin {
 
@@ -87,7 +67,7 @@ public class NewDocByTemplate extends Plugin {
 	public String getDebugCSSFileName() {
 		return getCSSFileName();
 	}
-		
+
 
 	public String getConfigurationDijitClass() {
 		return "newDocByTemplateDojo.ConfigurationPane";
@@ -95,7 +75,7 @@ public class NewDocByTemplate extends Plugin {
 
 	public PluginService[] getServices() {
 		if (pluginServices.length == 0) {
-			pluginServices = new PluginService[] {new GetConfigurationService()};
+			pluginServices = new PluginService[]{new GetConfigurationService()};
 		}
 		return pluginServices;
 	}
@@ -103,7 +83,7 @@ public class NewDocByTemplate extends Plugin {
 
 	public PluginAction[] getActions() {
 		if (pluginActions.length == 0) {
-			pluginActions = new PluginAction[] {
+			pluginActions = new PluginAction[]{
 					new RightClickDocFromTemplateAction()};
 		}
 		return pluginActions;
