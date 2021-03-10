@@ -39,7 +39,7 @@ define([
 	"ecm/model/SearchCriterion",
 	"ecm/model/SearchTemplate",
 	// "ecm/model/SearchCriteria",
-	"newDocByTemplateDojo/SearchTab",
+	"newDocByTemplateDojo/Override/SearchTab",
 	"ecm/model/UnifiedSearchTemplate",
 	"ecm/model/_searchUtils",
 	"ecm/model/admin/AdminConfig",
@@ -59,7 +59,7 @@ define([
 	"ecm/widget/listView/gridModules/DndRowCopy",
 	"ecm/widget/listView/gridModules/DndFromDesktopAddDoc",
 	"ecm/widget/listView/gridModules/RowContextMenu",
-	"dojo/text!./templates/SearchTab.html"
+	"dojo/text!../templates/SearchTab.html"
 ], function(declare, lang, array, aspect,
 			domClass, domGeometry, domStyle,
 			on, string, query, nlt, nlm,
