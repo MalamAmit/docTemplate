@@ -19,7 +19,7 @@ define([
         "ecm/model/SearchTemplate",
         "ecm/model/UnifiedSearchTemplate",
         // "ecm/widget/search/SearchTab",
-        "newDocByTemplateDojo/SearchTab",
+        "newDocByTemplateDojo/Override/SearchTab",
         "ecm/widget/dialog/BaseDialog",
         "ecm/widget/dialog/LoginDialog",
         "dojo/text!../templates/SearchDialogContent.html"
