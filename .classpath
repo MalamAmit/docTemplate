@@ -19,7 +19,7 @@
 	<classpathentry kind="lib" path="C:/Program Files/Java/jre1.8.0_271/lib/ext/sunpkcs11.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files/Java/jre1.8.0_271/lib/ext/zipfs.jar"/>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="lib/j2ee.jar"/>
-	<classpathentry kind="lib" path="C:/Users/amit_y/Desktop/Jars/navigatorAPI.jar"/>
+	<classpathentry kind="lib" path="C:/libraries/jars/j2ee.jar"/>
+	<classpathentry kind="lib" path="C:/libraries/jars/navigatorAPI.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
