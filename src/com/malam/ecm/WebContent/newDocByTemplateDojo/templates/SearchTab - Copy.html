@@ -1,0 +1,90 @@
+<div class="ecmSearchTab" data-dojo-attach-point="searchContainerNode">
+<div data-dojo-type="idx.layout.BorderContainer" gutters="false" data-dojo-attach-point="mainContainer" toggleable="false">
+	<div data-dojo-type="dijit.layout.ContentPane" region="top" splitter="true" class="searchArea dijitTitlePane" data-dojo-attach-point="searchCriteriaPane" minSize="45" style="visibility: hidden">
+		<div class="searchTopArea dijitOpen" data-dojo-attach-point="searchCriteriaHeader">
+			<div class="titleHeaderContainer" data-dojo-attach-point="searchCriteriaHeaderContentNode">
+				<table style="width:100%" role="presentation">
+				<tr>
+				<td>
+					<div class="titleHeader dijitinline" style="overflow: hidden;" data-dojo-attach-event="onclick:_toggleSearchCriteria, onkeydown:_onKeyDownToggleSearchCriteria" tabindex="0" data-dojo-attach-point="searchCriteriaHeaderTitleNode" role="button" aria-pressed="true">
+						<div class="searchCriteriaDetailsLeading" data-dojo-attach-point="searchCriteriaDetailsLeading">
+							<img role="presentation" class="dijitArrowNode,searchArrowNode" alt="" src="dojo/resources/blank.gif" data-dojo-attach-point="imageToggleNode"/
+							><span class="title" data-dojo-attach-point="titleToggleNode">${messages.search_criteria}</span
+							><span class="dijitHidden" data-dojo-type="ecm.widget.search.ClassCriteria" data-dojo-attach-point="_class" id="${id}_class"></span
+							><span class="dijitHidden" data-dojo-type="ecm.widget.search.SearchInCriteria" data-dojo-attach-point="_searchIn" id="${id}_searchIn"></span
+							><span class="dijitHidden" data-dojo-type="ecm.widget.search.SearchMoreOptions" data-dojo-attach-point="_moreOptions" id="${id}_moreOptions" objectTypeOptionHidden="true" propertyTextOptionHidden="true"></span
+							><span class="dijitHidden" data-dojo-type="ecm.widget.search.SearchPropertyOptions" data-dojo-attach-point="_propertyOptions" id="${id}_propertyOptions"></span>
+						</div>
+						<div class="searchCriteriaDetailsEnd" data-dojo-attach-point="searchCriteriaDetailsEnd">
+							<span class="dijitHidden searchCriteriaDetails" data-dojo-type="ecm.widget.search.UnifiedSearchScope" data-dojo-attach-point="_unifiedSearchScope" id="${id}_unifiedSearchScope"></span>
+						</div>
+					</div>
+				</td>
+				</tr>
+				</table>
+			</div>
+		</div><div data-dojo-attach-point="searchToggleArea" class="searchToggleArea">
+			<div class="searchFormArea" data-dojo-type="ecm.widget.search.SearchForm" data-dojo-attach-point="searchForm" showFormButtons="false">
+			</div>
+			<div  data-dojo-attach-point="searchBottomArea" class="searchBottomArea">
+					<button data-dojo-attach-point="searchButton" data-dojo-type="dijit.form.Button" data-dojo-attach-event="onClick:_search" class="solid searchTabButton">${messages.search}</button>
+					<button data-dojo-attach-point="resetButton" data-dojo-type="dijit.form.Button" data-dojo-attach-event="onClick:_reset">${messages.reset}</button>
+					<button data-dojo-attach-point="editButton" data-dojo-type="dijit.form.Button" data-dojo-attach-event="onClick:_edit" style="display:none">${messages.edit}</button>
+					<button data-dojo-attach-point="saveQueryDropDownButton" data-dojo-type="dijit.form.DropDownButton" disabled="true" style="display:none">
+						<span>${messages.saved_searches}</span>
+						<div data-dojo-attach-point="savedQueryDropDownButtonMenu" data-dojo-type="dijit.Menu" style="display: none">
+
+						</div>
+					</button>
+					<input id="${id}_appendResults" name="${id}_appendResults" data-dojo-attach-point="_appendResults" data-dojo-type="dijit.form.CheckBox" value="" type="checkbox" style="display: none;"/>
+					<label for="${id}_appendResults" data-dojo-attach-point="_appendResultsLabel" style="display: none;" class="appendResultsLabel">${messages.append_to_search}</label>
+					<div id="${id}_resultsDisplayOptions" data-dojo-attach-point="_resultsDisplayOptions" data-dojo-type="ecm.widget.search.SearchResultsDisplayOptions"></div>
+					<div class="dijitHidden" id="${id}_resultsDisplayButton" data-dojo-attach-point="_resultsDisplayButton" data-dojo-type="dijit.form.Button" label="${messages.search_results_dropdown_button}" title="${messages.search_results_columns_description}" data-dojo-attach-event="onClick:_showResultsDisplayOptions"></div>
+					<br>
+					<span class="dijitHidden ecmDisplayAllPropertiesCheckBox" data-dojo-attach-point="_displayAllPropsArea">
+						<input id="${id}_displayAllProps" name="${id}_displayAllProps" data-dojo-attach-point="_displayAllProps" data-dojo-type="dijit.form.CheckBox"  data-dojo-attach-event="onClick:_dispAllPropsClick" value="" type="checkbox"/>
+						<label for="${id}_displayAllProps" >${messages.display_all_properties_label}</label>
+					</span>										
+					<span class="ecmKeepSearchCriteriaExpandedCheckBox">
+						<input id="${id}_keepSearchCriteriaExpanded" name="${id}_keepSearchCriteriaExpanded" data-dojo-attach-point="keepSearchCriteriaExpanded" data-dojo-type="dijit.form.CheckBox" value="" type="checkbox"/>
+						<label for="${id}_keepSearchCriteriaExpanded" >${messages.keep_search_criteria_expanded}</label>
+					</span>
+			</div>
+		</div>
+	</div>
+	<div data-dojo-type="dijit.layout.ContentPane" region="center"  class="dijitTitlePane searchResultsPane" data-dojo-attach-point="searchResultsPane" >
+		<div class="dijitClosed searchResultsTopArea" data-dojo-attach-point="searchResultsHeader">
+			<div class="titleHeaderContainer">
+				<table style="width:100%" role="presentation">
+				<tr>
+				<td>
+					<div class="titleHeader dijitinline" style="white-space: nowrap;" tabindex="0" data-dojo-attach-point="searchResultsHeaderTitleNode" role="button" aria-pressed="false"
+						><img role="presentation" class="dijitArrowNode,searchArrowNode" alt="" src="dojo/resources/blank.gif" data-dojo-attach-point="searchResultsHeaderArrowNode"
+						/><span class="title">${messages.search_results}</span
+					></div>
+				</td>
+				<td style="text-align:right">
+				</td>
+				</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
+
+<div> test</div>
+
+
+<div data-dojo-type="idx.layout.BorderContainer" gutters="false" data-dojo-attach-point="searchResultsContainer" class="searchResultsArea dijitHidden">
+	<div data-dojo-type="dijit.layout.ContentPane" region="center">
+		<div data-dojo-attach-point="searchResults" data-dojo-type="ecm.widget.listView.ContentList" showCheckboxes=true usePaginationBar=true emptyMessage="${messages.no_results_were_found}" selectFirstRowOnSetResult=false clearOnLogout="false" class="dijitHidden">
+		</div>
+		<div data-dojo-type="dijit.layout.ContentPane" data-dojo-attach-point="emptySearchResultsPane">
+			<div class="emptySearchResultsPaneMessage" tabIndex="0">${messages.empty_search_results_pane}</div>
+		</div>
+	</div>
+</div>
+
+</div>
