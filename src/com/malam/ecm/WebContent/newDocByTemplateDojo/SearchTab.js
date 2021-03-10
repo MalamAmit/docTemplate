@@ -36,9 +36,9 @@ define([
 	"ecm/model/Message",
 	"ecm/model/ResultSet",
 	"ecm/model/SearchConfiguration",
-	"ecm/model/SearchCriteria",
 	"ecm/model/SearchCriterion",
 	"ecm/model/SearchTemplate",
+	"ecm/model/SearchCriteria",
 	"ecm/model/UnifiedSearchTemplate",
 	"ecm/model/_searchUtils",
 	"ecm/model/admin/AdminConfig",
@@ -59,7 +59,15 @@ define([
 	"ecm/widget/listView/gridModules/DndFromDesktopAddDoc",
 	"ecm/widget/listView/gridModules/RowContextMenu",
 	"dojo/text!./templates/SearchTab.html"
-], function(declare, lang, array, aspect, domClass, domGeometry, domStyle, on, string, query, nlt, nlm, entities, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, focus, Menu, MenuItem, MenuSeparator, PopupMenuItem, Button, CheckBox, DropDownButton, ContentPane, BorderContainer, idxHtml, LoggerMixin, Desktop, Message, ResultSet, SearchConfiguration, SearchCriteria, SearchCriterion, SearchTemplate, UnifiedSearchTemplate, utils, AdminConfig, _SearchPaneContainer, ClassCriteria, SearchInCriteria, SearchMoreOptions, SearchPropertyOptions, SearchResultsDisplayOptions, UnifiedSearchScope, SearchForm, MessageDialog, ODSaveSearchDialog, ODManageSaveSearchDialog, ContentList, SingleSort, DndRowCopy, DndFromDesktopAddDoc, RowContextMenu, template) {
+], function(declare, lang, array, aspect,
+			domClass, domGeometry, domStyle,
+			on, string, query, nlt, nlm,
+			entities, _WidgetBase, _TemplatedMixin,
+			_WidgetsInTemplateMixin, focus, Menu, MenuItem,
+			MenuSeparator, PopupMenuItem, Button, CheckBox,
+			DropDownButton, ContentPane, BorderContainer,
+			idxHtml, LoggerMixin, Desktop, Message,
+			ResultSet, SearchConfiguration, SearchCriterion, SearchTemplate,SearchCriteria,  UnifiedSearchTemplate, utils, AdminConfig, _SearchPaneContainer, ClassCriteria, SearchInCriteria, SearchMoreOptions, SearchPropertyOptions, SearchResultsDisplayOptions, UnifiedSearchScope, SearchForm, MessageDialog, ODSaveSearchDialog, ODManageSaveSearchDialog, ContentList, SingleSort, DndRowCopy, DndFromDesktopAddDoc, RowContextMenu, template) {
 
 	/**
 	 * @name ecm.widget.search.SearchTab
