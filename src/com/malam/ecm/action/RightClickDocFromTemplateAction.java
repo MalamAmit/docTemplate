@@ -23,7 +23,11 @@ public class RightClickDocFromTemplateAction extends PluginAction {
 	public String getIcon() {
 		return "";
 	}
+<<<<<<< HEAD
+	
+=======
 
+>>>>>>> 5e3738dd8634e6f7ef58343f82508a146598d2ce
 	public String getIconClass() {
 		return "";
 	}
@@ -43,7 +47,11 @@ public class RightClickDocFromTemplateAction extends PluginAction {
 		return true;
 	}
 
+<<<<<<< HEAD
+	
+=======
 
+>>>>>>> 5e3738dd8634e6f7ef58343f82508a146598d2ce
 	public String getActionFunction() {
 		return "";
 	}
@@ -53,7 +61,11 @@ public class RightClickDocFromTemplateAction extends PluginAction {
 		return "p8";
 	}
 
+<<<<<<< HEAD
+		public String[] getMenuTypes() {
+=======
 	public String[] getMenuTypes() {
+>>>>>>> 5e3738dd8634e6f7ef58343f82508a146598d2ce
 		return new String[0];
 	}
 
