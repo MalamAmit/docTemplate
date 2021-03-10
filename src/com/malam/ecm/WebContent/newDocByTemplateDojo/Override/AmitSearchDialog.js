@@ -18,7 +18,7 @@ define([
         "dijit/layout/ContentPane",
         "ecm/model/SearchTemplate",
         "ecm/model/UnifiedSearchTemplate",
-        "ecm/widget/search/SearchTab",
+        // "ecm/widget/search/SearchTab",
         "newDocByTemplateDojo/Override/AmitSTab",
         "ecm/widget/dialog/BaseDialog",
         "ecm/widget/dialog/LoginDialog",
