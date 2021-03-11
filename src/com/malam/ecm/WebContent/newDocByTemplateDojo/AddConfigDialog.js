@@ -36,6 +36,7 @@ define([
                             this.orgUnitPrefixField.set('value', this._editData.orgUnit);
 
                         if (this._editData.folderClass) {
+                            debugger;
                             this.enableFolderClassName.setSelected(this._editData.folderClass);
                         }
                         if (this._editData.searchTemplateVsId) {

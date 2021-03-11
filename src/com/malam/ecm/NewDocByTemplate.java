@@ -36,7 +36,7 @@ public class NewDocByTemplate extends Plugin {
 
 
 	public String getVersion() {
-		return "3.0.9";
+		return "3.0.10";
 	}
 
 

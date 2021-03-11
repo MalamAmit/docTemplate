@@ -18,7 +18,8 @@ define([
         "dijit/layout/ContentPane",
         "ecm/model/SearchTemplate",
         "ecm/model/UnifiedSearchTemplate",
-        "newDocByTemplateDojo/Override/AmitSTab",
+        // "newDocByTemplateDojo/Override/MySTab",
+        "ecm/widget/search/SearchTab",
         "ecm/widget/dialog/BaseDialog",
         "ecm/widget/dialog/LoginDialog",
         "dojo/text!../templates/SearchDialogContent.html"
@@ -38,7 +39,7 @@ define([
               ContentPane, //
               SearchTemplate, //
               UnifiedSearchTemplate, //
-              AmitSTab, //
+              MySTab, //
               BaseDialog, //
               LoginDialog, //
               template) {
@@ -113,7 +114,9 @@ define([
                 this._LoginDialogOnCancelHandle = null;
             },
 
-            show: function () {
+            show: function (showExtra) {
+                domStyle.set(this.search.searchResults.topContainer.domNode, "display", "none");
+                domStyle.set(this.search.searchCriteriaPane.domNode, "display", "none");
                 this.inherited(arguments);
                 this.resize();
             },

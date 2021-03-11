@@ -39,7 +39,7 @@ define([
     "ecm/model/SearchCriterion",
     "ecm/model/SearchTemplate",
     // "ecm/model/SearchCriteria",
-    "newDocByTemplateDojo/Override/AmitSearchCriteria",
+    "newDocByTemplateDojo/Override/MySearchCriteria",
     "ecm/model/UnifiedSearchTemplate",
     "ecm/model/_searchUtils",
     "ecm/model/admin/AdminConfig",
@@ -78,7 +78,7 @@ define([
      *        <code>container</code> attribute to this widget.
      * @augments dijit._WidgetBase
      */
-    return declare("newDocByTemplateDojo.Override.AmitSTab", [
+    return declare("newDocByTemplateDojo.Override.MySTab", [
         _WidgetBase,
         _TemplatedMixin,
         _WidgetsInTemplateMixin,

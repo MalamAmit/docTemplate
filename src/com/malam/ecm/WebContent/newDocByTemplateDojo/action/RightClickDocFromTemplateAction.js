@@ -4,7 +4,7 @@ define(["dojo/_base/declare",
 
         "ecm/model/Action",
         "ecm/model/Request",
-        "newDocByTemplateDojo/Override/AmitSearchDialog",
+        "newDocByTemplateDojo/Override/MySearchDialog",
         "ecm/model/SearchTemplate",
         "ecm/widget/dialog/AddDocumentFromEditServiceTemplateDialog",
         "ecm/widget/dialog/AddContentItemDialog",
@@ -91,7 +91,7 @@ define(["dojo/_base/declare",
                     self.srchDialog.addButton(this._extMessages.CHOOSE_TEMPLATE, function () {
                         self.selectTemplate(self.srchDialog, destinationFolder)
                     }, false, true);
-                    self.srchDialog.show();
+                    self.srchDialog.show(true);
 
                 }), lang.hitch(this, function () {
                     alert("Search Template could not be retrieved");
@@ -116,9 +116,9 @@ define(["dojo/_base/declare",
 
             selectTemplate: function (dialog, destinationFolder) {
                 var selectedArr = dialog.search.searchResults.grid.select.row._lastSelectedIds;
-                if (!selectedArr) {
+                if (!selectedArr || selectedArr.length > 1) {
                     // console.log("no item selected in this grid");
-                    alert("Please select template from the list");
+                    alert("Please select One template from the list");
                     return;
                 }
                 dialog.destroy();
