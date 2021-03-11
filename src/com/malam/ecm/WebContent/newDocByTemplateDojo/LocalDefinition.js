@@ -28,7 +28,6 @@ define([
 		},
 		
 		constructor: function () {
-			debugger;
 			this.setCacheResponce();
 		}
 

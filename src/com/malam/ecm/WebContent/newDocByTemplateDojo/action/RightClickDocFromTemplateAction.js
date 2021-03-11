@@ -10,10 +10,11 @@ define(["dojo/_base/declare",
         "ecm/widget/dialog/AddContentItemDialog",
         "ecm/model/Desktop",
         "ecm/widget/layout/CommonActionsHandler",
-
-        "newDocByTemplateDojo/LocalDefinition"],
+        "dojo/_base/array",
+        "newDocByTemplateDojo/LocalDefinition"
+    ],
     function (declare, lang, ExtMessages,
-              Action, Request, SearchDialog, SearchTemplate, AddDocumentFromEditServiceTemplateDialog, AddContentItemDialog, Desktop, CommonActionsHandler,array,
+              Action, Request, SearchDialog, SearchTemplate, AddDocumentFromEditServiceTemplateDialog, AddContentItemDialog, Desktop, CommonActionsHandler, array,
               LocalDefinition) {
         return declare("newDocByTemplateDojo.action.RightClickDocFromTemplateAction", [
             CommonActionsHandler,
@@ -23,46 +24,40 @@ define(["dojo/_base/declare",
             associateEntryTemplate: null,
             _extMessages: ExtMessages,
 
-            isEnabled: function (repository, listType, items, teamspace,   resultSet) {
-                debugger;
+            isEnabled: function (repository, listType, items, teamspace, resultSet) {
                 var enabled = this.inherited(arguments);
                 if (items && items[0].isFolder && items[0].getContentClass) {
-                    var currentFolder =items[0];
-                    //debugger;
-                    this.associateEntryTemplate = array.filter(LocalDefinition.getCacheResponce().configurationGridData, function(fld) {
-                        if (currentFolder.attributes.FldNumerator && currentFolder.attributes.FldNumerator!=null)
+                    var currentFolder = items[0];
+                    this.associateEntryTemplate = array.filter(LocalDefinition.getCacheResponce().configurationGridData, function (fld) {
+                        if (currentFolder.attributes.FldNumerator && currentFolder.attributes.FldNumerator != null)
                             return fld.folderClass == currentFolder.getContentClass().id && currentFolder.attributes.FldNumerator.startsWith(fld.orgUnit)
                         else
                             return false;
-                    },this);
-                    // debugger;
+                    }, this);
                     return enabled && this.associateEntryTemplate && this.associateEntryTemplate.length == 1;
                 }
-                //debugger;
                 return false;
 
             },
 
             isVisible: function (repository, listType) {
-                debugger;
                 return this.inherited(arguments);
             },
 
-            isGlobalEnabled: function(resultSet, items, repository) {
+            isGlobalEnabled: function (resultSet, items, repository) {
                 if (resultSet && resultSet.parentFolder && resultSet.parentFolder.isFolder()) {
-                    var currentFolder =resultSet.parentFolder;
+                    var currentFolder = resultSet.parentFolder;
 
                     if (!currentFolder.hasPrivilege("privAddToFolder"))
                         return false;
-                    // debugger;
-                    this.associateEntryTemplate = array.filter(LocalDefinition.getCacheResponce().configurationGridData, function(fld) {
-                        if (currentFolder.attributes.FldNumerator && currentFolder.attributes.FldNumerator!=null)
+                    this.associateEntryTemplate = array.filter(LocalDefinition.getCacheResponce().configurationGridData, function (fld) {
+                        if (currentFolder.attributes.FldNumerator && currentFolder.attributes.FldNumerator != null)
                             return fld.folderClass == currentFolder.getContentClass().id && currentFolder.attributes.FldNumerator.startsWith(fld.orgUnit)
                         else
                             return false;
-                    },this);
+                    }, this);
 
-                    return  this.associateEntryTemplate && this.associateEntryTemplate.length == 1;
+                    return this.associateEntryTemplate && this.associateEntryTemplate.length == 1;
                 }
                 return false;
             },
@@ -72,17 +67,15 @@ define(["dojo/_base/declare",
 
                 var self = this;
 
-                // debugger;
-                this.associateEntryTemplate = array.filter(LocalDefinition.getCacheResponce().configurationGridData, function(fld) {
-                    if (destinationFolder.attributes.FldNumerator && destinationFolder.attributes.FldNumerator!=null)
+                this.associateEntryTemplate = array.filter(LocalDefinition.getCacheResponce().configurationGridData, function (fld) {
+                    if (destinationFolder.attributes.FldNumerator && destinationFolder.attributes.FldNumerator != null)
                         return fld.folderClass == destinationFolder.getContentClass().id && destinationFolder.attributes.FldNumerator.startsWith(fld.orgUnit)
                     else
                         return false;
-                },this);
-                if (!(this.associateEntryTemplate && this.associateEntryTemplate.length == 1)){
+                }, this);
+                if (!(this.associateEntryTemplate && this.associateEntryTemplate.length == 1)) {
                     return;
                 }
-                debugger;
                 var vsId = this.associateEntryTemplate[0].searchTemplateVsId;
 
                 repository.retrieveSearchTemplate("", vsId, "released", lang.hitch(this, function (searchTemplate) {
@@ -117,7 +110,6 @@ define(["dojo/_base/declare",
                 });
                 this._addDocumentFromEditServiceTemplateDialog.setMaximized(false);
 
-                debugger;
                 this._addDocumentFromEditServiceTemplateDialog.show(currentItem.repository, destinationFolder, true, false, lang.hitch(this, function (item) {
                 }), null, false);
             },
