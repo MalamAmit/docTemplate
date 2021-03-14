@@ -3,6 +3,7 @@ define([
         "dojo/_base/lang",
         "dojo/_base/array",
         "dojo/aspect",
+        "dijit/form/Select",
         "dojo/store/Memory",
         "ecm/widget/dialog/BaseDialog",
         "ecm/widget/ContentClassSelector",
@@ -11,7 +12,7 @@ define([
 
         "dojo/text!./templates/AddConfigDialog.html"
     ],
-    function (declare, lang, array, aspect, MemoryStore,
+    function (declare, lang, array, aspect,Select, MemoryStore,
               BaseDialog, ContentClassSelector, SearchTemplate, Desktop, template) {
 
         return declare("newDocByTemplateDojo.AddConfigDialog", [
@@ -36,8 +37,10 @@ define([
                             this.orgUnitPrefixField.set('value', this._editData.orgUnit);
 
                         if (this._editData.folderClass) {
-                            debugger;
                             this.enableFolderClassName.setSelected(this._editData.folderClass);
+                        }
+                        if (this._editData.showResultsOnly) {
+                            this.showResultsOnlyField.set('value', this._editData.showResultsOnly);
                         }
                         if (this._editData.searchTemplateVsId) {
                             this.searchTemplateSelector.repository.retrieveSearchTemplate("", this._editData.searchTemplateVsId, "released", lang.hitch(this, function (searchTemplate) {
@@ -73,10 +76,6 @@ define([
 
                 this.enableFolderClassName.setVisibleOnlyForFolder(true);
                 this.enableFolderClassName.setRootClassId("Folder");
-
-                // if (params.searchTemplate) {
-                //     this.searchTemplateSelector.setSelected(params.searchTemplate);
-                // }
             },
             saveData: function () {
                 this.getVsId = function () {
@@ -90,6 +89,7 @@ define([
                 if (this._validateData()) {
                     var body = {};
                     body.orgUnitPrefixParam = this.orgUnitPrefixField.get("value");
+                    body.showResultsOnlyParam = this.showResultsOnlyField.get("value");
                     body.enableFolderClassParam = this.enableFolderClassName.getSelected().id;
                     body.searchTemplateVsIdParam = this.getVsId();
                     if (this._isEdit()) {
@@ -119,6 +119,10 @@ define([
                 if (value == null || value == "")
                     return false;
 
+                value = this.showResultsOnlyField.get("value");
+                if (value == null || value == "")
+                    return false;
+
                 return true;
             },
             // override to get data entered on the screen
@@ -129,9 +133,5 @@ define([
             onAdd: function (screenData) {
             },
 
-
-            // _isEdit: function () {
-            //     return this._editData != null && this._editData;
-            // },
         })
     })

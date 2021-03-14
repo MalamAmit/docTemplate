@@ -47,25 +47,31 @@ define(["dojo/_base/declare",
                             id: "repository",
                             field: "repository",
                             name: "Repository",
-                            width: "25%"
+                            width: "20%"
                         },
                         {
                             id: "orgUnit",
                             field: "orgUnit",
                             name: "Org Unit",
-                            width: "25%"
+                            width: "20%"
                         },
                         {
                             id: "folderClass",
                             field: "folderClass",
                             name: "Folder Class",
-                            width: "25%"
+                            width: "20%"
                         },
                         {
                             id: "searchTemplateVsId",
                             field: "searchTemplateVsId",
                             name: "Search template VsId",
-                            width: "25%"
+                            width: "20%"
+                        },
+                        {
+                            id: "showResultsOnly",
+                            field: "showResultsOnly",
+                            name: "Show results only",
+                            width: "20%"
                         },
                     ];
 
@@ -100,6 +106,7 @@ define(["dojo/_base/declare",
                             "orgUnit": data.orgUnitPrefixParam,
                             "folderClass": data.enableFolderClassParam,
                             "searchTemplateVsId": data.searchTemplateVsIdParam,
+                            "showResultsOnly": data.showResultsOnlyParam,
                         });
                         this._onFieldChange();
                         this.configurationGrid.resize();
@@ -116,14 +123,17 @@ define(["dojo/_base/declare",
                     currData.orgUnit = currItem.orgUnit;
                     currData.folderClass = currItem.folderClass;
                     currData.searchTemplateVsId = currItem.searchTemplateVsId;
+                    currData.showResultsOnly = currItem.showResultsOnly;
 
                     var dialog = new AddConfigDialog();
 
                     this.own(aspect.after(dialog, "onEdit", lang.hitch(this, function (data, originalData) {
+                        console.log("editButtonClick", data)
                         currItem.repository = Desktop.getDefaultRepository().id;
                         currItem.orgUnit = data.orgUnitPrefixParam,
                             currItem.folderClass = data.enableFolderClassParam,
                             currItem.searchTemplateVsId = data.searchTemplateVsIdParam,
+                            currItem.showResultsOnly = data.showResultsOnlyParam,
                             this.configurationGrid.model.store.put(currItem, {
                                 id: currItem.id,
                                 overwrite: true

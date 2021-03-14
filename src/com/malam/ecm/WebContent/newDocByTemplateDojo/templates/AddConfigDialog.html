@@ -51,5 +51,21 @@
                 </div>
             </td>
         </tr>
+
+
+        <tr>
+            <td class="propertyRowLabel">
+                <label>Show results only</label>&nbsp;
+            </td>
+            <td class="propertyRowValue">
+                <select data-dojo-attach-point="showResultsOnlyField"
+                        name="select1"
+                        data-dojo-attach-event="onchange: _onParamChange"
+                        data-dojo-type="dijit/form/Select">
+                    <option value=true>True</option>
+                    <option value=false selected="false">False</option>
+                </select>
+            </td>
+        </tr>
     </table>
 </div>

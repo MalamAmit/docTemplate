@@ -46,7 +46,13 @@ define(["dojo/_base/declare",
 
             isGlobalEnabled: function (resultSet, items, repository) {
                 if (resultSet && resultSet.parentFolder && resultSet.parentFolder.isFolder()) {
-                    var currentFolder = resultSet.parentFolder;
+
+                    var currentFolder =null;
+
+                    if (resultSet.parentFolder.item)
+                        currentFolder=resultSet.parentFolder.item;
+                    else
+                        currentFolder=resultSet.parentFolder
 
                     if (!currentFolder.hasPrivilege("privAddToFolder"))
                         return false;
@@ -91,7 +97,7 @@ define(["dojo/_base/declare",
                     self.srchDialog.addButton(this._extMessages.CHOOSE_TEMPLATE, function () {
                         self.selectTemplate(self.srchDialog, destinationFolder)
                     }, false, true);
-                    self.srchDialog.show(true);
+                    self.srchDialog.show(this.associateEntryTemplate[0].showResultsOnly);
 
                 }), lang.hitch(this, function () {
                     alert("Search Template could not be retrieved");

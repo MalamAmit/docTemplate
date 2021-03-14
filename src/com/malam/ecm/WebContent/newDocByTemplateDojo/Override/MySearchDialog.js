@@ -114,9 +114,11 @@ define([
                 this._LoginDialogOnCancelHandle = null;
             },
 
-            show: function (showExtra) {
-                domStyle.set(this.search.searchResults.topContainer.domNode, "display", "none");
-                domStyle.set(this.search.searchCriteriaPane.domNode, "display", "none");
+            show: function (showResultsOnly) {
+                if (showResultsOnly == "false") {
+                    domStyle.set(this.search.searchResults.topContainer.domNode, "display", "none");
+                    domStyle.set(this.search.searchCriteriaPane.domNode, "display", "none");
+                }
                 this.inherited(arguments);
                 this.resize();
             },
