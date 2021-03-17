@@ -4,6 +4,8 @@ define(["dojo/_base/declare",
 
         "ecm/model/Action",
         "ecm/model/Request",
+        "ecm/model/ContentItem",
+
         "newDocByTemplateDojo/Override/MySearchDialog",
         "ecm/model/SearchTemplate",
         "ecm/widget/dialog/AddDocumentFromEditServiceTemplateDialog",
@@ -14,7 +16,7 @@ define(["dojo/_base/declare",
         "newDocByTemplateDojo/LocalDefinition"
     ],
     function (declare, lang, ExtMessages,
-              Action, Request, SearchDialog, SearchTemplate, AddDocumentFromEditServiceTemplateDialog, AddContentItemDialog, Desktop, CommonActionsHandler, array,
+              Action, Request,ContentItem, SearchDialog, SearchTemplate, AddDocumentFromEditServiceTemplateDialog, AddContentItemDialog, Desktop, CommonActionsHandler, array,
               LocalDefinition) {
         return declare("newDocByTemplateDojo.action.RightClickDocFromTemplateAction", [
             CommonActionsHandler,
@@ -47,12 +49,12 @@ define(["dojo/_base/declare",
             isGlobalEnabled: function (resultSet, items, repository) {
                 if (resultSet && resultSet.parentFolder && resultSet.parentFolder.isFolder()) {
 
-                    var currentFolder =null;
+                    var currentFolder = null;
 
                     if (resultSet.parentFolder.item)
-                        currentFolder=resultSet.parentFolder.item;
+                        currentFolder = resultSet.parentFolder.item;
                     else
-                        currentFolder=resultSet.parentFolder
+                        currentFolder = resultSet.parentFolder
 
                     if (!currentFolder.hasPrivilege("privAddToFolder"))
                         return false;
@@ -114,12 +116,128 @@ define(["dojo/_base/declare",
                     sourceDocument: currentItem,
                     style: {minHeight: "700px", minWidth: "1000px"}
                 });
-                this._addDocumentFromEditServiceTemplateDialog.setMaximized(false);
 
+                var self = this;
+                this._addDocumentFromEditServiceTemplateDialog.setMaximized(false);
+                // this._addDocumentFromEditServiceTemplateDialog.addButton("Generate from template", function () {
+                //     self.addDoc(self._addDocumentFromEditServiceTemplateDialog);
+                // }, false, true);
                 this._addDocumentFromEditServiceTemplateDialog.show(currentItem.repository, destinationFolder, true, false, lang.hitch(this, function (item) {
                 }), null, false);
             },
 
+
+
+
+
+
+            // addDoc: function (dialog) {
+            //     debugger;
+            //
+            //
+            //
+            //     if (!dialog.isValid(true)) {
+            //         return;
+            //     }
+            //     var selectedFolder = dialog.addContentItemGeneralPane.folderSelector.getSelected().item;
+            //     var folderId;
+            //     if (dialog.repository.type == "cm") {
+            //         if (dialog.addContentItemGeneralPane._unfiled && dialog.addContentItemGeneralPane._unfiled.checked) {
+            //             folderId = "";
+            //         } else if (selectedFolder && selectedFolder.id) {
+            //             folderId =  selectedFolder.id;
+            //         }
+            //     } else if (dialog.repository.type == "p8") {
+            //         folderId = selectedFolder && selectedFolder.id && !selectedFolder.rootFolder ? selectedFolder.id : "";
+            //     }
+            //
+            //     var className = dialog.addContentItemPropertiesPane.getDocumentType();
+            //     var titlePropertyName = dialog.addContentItemPropertiesPane.getTitlePropertyName();
+            //     var titleField = titlePropertyName ? dialog.addContentItemPropertiesPane.getPropertyValue(titlePropertyName) : "";
+            //
+            //     var properties = dialog.addContentItemPropertiesPane.getPropertiesJSON();
+            //     var permissions = dialog.addContentItemSecurityPane.getPermissions();
+            //
+            //     var setSecurityParent = (dialog._teamspace && dialog.repository._isP8());
+            //     if (!setSecurityParent && dialog._entryTemplate && dialog._entryTemplate.inheritSecurityFromParentFolder) {
+            //         setSecurityParent = true;
+            //     }
+            //
+            //     var templateId = "";
+            //     var vsId = "";
+            //     var mimeType ="";
+            //     var templateName = "";
+            //     if (!dialog.sourceDocument) {
+            //         if (dialog._templateCtrl) {
+            //             if (dialog._templateCtrl instanceof FilteringSelect) {
+            //                 templateId = dialog._templateCtrl.get("value");
+            //                 var selectedItem = dialog._templateCtrl.store.query({id: templateId});
+            //                 if (selectedItem && selectedItem.length > 0) {
+            //                     vsId = selectedItem[0].vsId;
+            //                     mimeType = selectedItem[0].mimeType;
+            //                     templateName = selectedItem[0].label;
+            //                 }
+            //             } else {
+            //                 if (dialog._items && dialog._items.length > 0) {
+            //                     templateId = dialog._items[0].id;
+            //                     vsId = dialog._items[0].vsId;
+            //                     mimeType = dialog._items[0].repository.type == "cm" ? dialog._items[0].attributes.mimeType : dialog._items[0].attributes.MimeType;
+            //                     templateName = dialog._items[0].name;
+            //                 } else {
+            //                     if (dialog.categoryId == "Word") {
+            //                         templateName = dialog.defaultWordTemplateName;
+            //                     } else if (dialog.categoryId == "PowerPoint") {
+            //                         templateName = dialog.defaultPowerPointTemplateName;
+            //                     } else if (dialog.categoryId == "Excel"){
+            //                         templateName = dialog.defaultExcelTemplateName;
+            //                     }
+            //                 }
+            //             }
+            //         }
+            //     } else {
+            //         templateId = dialog.sourceDocument.id;
+            //         templateName = dialog.sourceDocument.filename;
+            //         vsId = dialog.sourceDocument.vsId;
+            //         mimeType = dialog.sourceDocument.mimetype;
+            //     }
+            //
+            //     var bodyParms = {
+            //         "acl": permissions,
+            //         "criterias": properties
+            //     };
+            //     var params = {
+            //         "repositoryId": dialog.repository.id,
+            //         "categoryId": dialog.categoryId,
+            //         "documentTitle": titleField,
+            //         "folderId": folderId,
+            //         "className": className,
+            //         "securityPolicyId": dialog._getSecurityPolicyId(),
+            //         "set_security_parent": setSecurityParent ? "true" : "false",
+            //         "editServiceTemplateId": templateId,
+            //         "editServiceTemplateName": templateName,
+            //         "vsId": vsId,
+            //         "mimetype" : mimeType
+            //     };
+            //     var request = Request.postService("editServiceCreateDocument", dialog.repository.type, params, "text/json", JSON.stringify(bodyParms),
+            //         lang.hitch(dialog, function(response) { // success
+            //             if (response) {
+            //                 var item = ContentItem.createFromJSON(response, dialog.repository, dialog.resultSet, selectedFolder);
+            //                 item.id = item.docid;
+            //                 item.originalId = item.id
+            //                 selectedFolder.refresh();
+            //
+            //                 if (dialog._callback) {
+            //                     dialog._callback(item);
+            //                 }
+            //
+            //                 if (dialog._entryTemplate && dialog._entryTemplate.workflow) {
+            //                     dialog._startWorkflow(item);
+            //                 }
+            //
+            //                 dialog.onCancel();
+            //             }
+            //         }));
+            // },
             selectTemplate: function (dialog, destinationFolder) {
                 var selectedArr = dialog.search.searchResults.grid.select.row._lastSelectedIds;
                 if (!selectedArr || selectedArr.length > 1) {
