@@ -96,7 +96,7 @@ define(["dojo/_base/declare",
                     self.srchDialog.setTitle(this._extMessages.CHOOSE_TEMPLATE);
                     self.srchDialog.setMaximized(false)
                     self.srchDialog.addButton(this._extMessages.CHOOSE_TEMPLATE, function () {
-                        self.selectTemplate(self.srchDialog, destinationFolder)
+                        self.selectTemplate(self, self.srchDialog, destinationFolder)
                     }, false, true);
                     self.srchDialog.show(this.associateEntryTemplate[0].showResultsOnly);
 
@@ -106,33 +106,34 @@ define(["dojo/_base/declare",
                 }));
             },
 
-            onDocumentReady: function (currentItem, destinationFolder) {
-                if (this._addDocumentFromEditServiceTemplateDialog) {
-                    this._addDocumentFromEditServiceTemplateDialog.destroyRecursive();
+            onDocumentReady: function (self, currentItem, destinationFolder) {
+                if (self._addDocumentFromEditServiceTemplateDialog) {
+                    self._addDocumentFromEditServiceTemplateDialog.destroyRecursive();
                 }
-                this._addDocumentFromEditServiceTemplateDialog = AddDocumentFromEditServiceTemplateDialog({
+                self._addDocumentFromEditServiceTemplateDialog = AddDocumentFromEditServiceTemplateDialog({
                     categoryId: null,
                     sourceDocument: currentItem,
                     style: {minHeight: "700px", minWidth: "1000px"}
                 });
 
-                var self = this;
-                this._addDocumentFromEditServiceTemplateDialog.setMaximized(false);
-                this._addDocumentFromEditServiceTemplateDialog.show(currentItem.repository, destinationFolder, true, false, lang.hitch(this, function (item) {
+                self._addDocumentFromEditServiceTemplateDialog.setMaximized(false);
+                self._addDocumentFromEditServiceTemplateDialog.show(currentItem.repository, destinationFolder, true, false, lang.hitch(self, function (item) {
+                    // self.actionEditWithNativeApplication(currentItem.repository,  [item]);
                 }), null, false);
             },
 
-            selectTemplate: function (dialog, destinationFolder) {
+            selectTemplate: function (self, dialog, destinationFolder) {
                 var selectedArr = dialog.search.searchResults.grid.select.row._lastSelectedIds;
                 if (!selectedArr || selectedArr.length > 1) {
                     // console.log("no item selected in this grid");
                     alert("Please select One template from the list");
                     return;
                 }
+
                 dialog.destroy();
                 var documentId = selectedArr[0];
                 Desktop.getDefaultRepository().retrieveItem(documentId, lang.hitch(this, function (currentItem) {
-                    this.onDocumentReady(currentItem, destinationFolder);
+                    this.onDocumentReady(self, currentItem, destinationFolder);
                 }));
             },
 
